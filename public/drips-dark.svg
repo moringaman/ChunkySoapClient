@@ -1,0 +1,36 @@
+<svg width="751" height="431" viewBox="0 0 751 431" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0)">
+<rect width="751" height="431" fill="white"/>
+<rect x="-30" y="-160" width="800" height="345" fill="#95DCCB"/>
+<rect x="186" y="154" width="63" height="162" fill="white"/>
+<circle cx="217.5" cy="152.5" r="31.5" fill="white"/>
+<rect x="313" y="191" width="63" height="162" fill="white"/>
+<circle cx="343.5" cy="189.5" r="31.5" fill="white"/>
+<rect x="438" y="152" width="63" height="162" fill="white"/>
+<circle cx="469.5" cy="150.5" r="31.5" fill="white"/>
+<rect x="564" y="121" width="63" height="162" fill="white"/>
+<circle cx="595.5" cy="119.5" r="31.5" fill="white"/>
+<rect x="690" y="121" width="63" height="162" fill="white"/>
+<circle cx="721.5" cy="119.5" r="31.5" fill="white"/>
+<rect x="60" y="97" width="63" height="162" fill="white"/>
+<circle cx="91.5" cy="95.5" r="31.5" fill="white"/>
+<rect width="63" height="162" transform="matrix(1 0 0 -1 375 276)" fill="#95DCCB"/>
+<circle r="31.5" transform="matrix(1 0 0 -1 406.5 277.5)" fill="#95DCCB"/>
+<rect width="63" height="162" transform="matrix(1 0 0 -1 627 253)" fill="#95DCCB"/>
+<circle r="31.5" transform="matrix(1 0 0 -1 658.5 254.5)" fill="#95DCCB"/>
+<rect width="63" height="162" transform="matrix(1 0 0 -1 249 249)" fill="#95DCCB"/>
+<circle r="31.5" transform="matrix(1 0 0 -1 280.5 250.5)" fill="#95DCCB"/>
+<rect width="63" height="162" transform="matrix(1 0 0 -1 -3 239)" fill="#95DCCB"/>
+<circle r="31.5" transform="matrix(1 0 0 -1 28.5 240.5)" fill="#95DCCB"/>
+<circle cx="280.5" cy="246.5" r="31.5" fill="#95DCCB"/>
+<circle cx="406.5" cy="372.5" r="31.5" fill="white"/>
+<circle cx="532.5" cy="189.5" r="31.5" fill="#95DCCB"/>
+<circle cx="153.5" cy="301.5" r="31.5" fill="white"/>
+<circle cx="154.5" cy="187.5" r="31.5" fill="#95DCCB"/>
+</g>
+<defs>
+<clipPath id="clip0">
+<rect width="751" height="431" fill="white"/>
+</clipPath>
+</defs>
+</svg>

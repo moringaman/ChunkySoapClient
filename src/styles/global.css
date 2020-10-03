@@ -1,0 +1,16 @@
+@import './ui/images.css' ;
+
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  outline: none;
+  font-size: 16px;
+}
+  body {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+  }
