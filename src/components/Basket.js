@@ -10,18 +10,28 @@ import AnimatedButton from '../components/ui/AnimatedButton'
 import AddToCart from '../components/ui/AddToCartBtn'
 import { Trash2, MinusCircle, PlusCircle, CreditCard } from 'react-feather'
 import * as fn from '../helpers/functions'
+import { BasketWrapper, ProductRow, Divider } from '../styles/ui/basket'
 
 const Basket = (props) => {
 
-    const [ postage, setPostage ] = useState(0)
-
     const { basket } = useSelector(state => state.basket)
+
+    const [ postage, setPostage ] = useState(0)
+    const [ total, setTotal ] = useState(0)
+
 
     useEffect(() => {
         if (fn.getCartTotal(basket.products) < 25) {
             setPostage(4.50)
+        } else {
+            setPostage(0)
         }
-    })
+        setTotal(fn.getCartTotal(basket.products, postage))
+    }, [basket])
+
+    useEffect(() => {
+        setTotal(fn.getCartTotal(basket.products, postage))
+    }, [postage])
 
     console.log("BASKET PAGE ", basket)
     return (
@@ -76,21 +86,30 @@ const Basket = (props) => {
                         </ProductRow>
                     ) :  <Heading2>You Dont Have any Items in you basket yet</Heading2>}
                     <ProductRow>
+                        <Divider />
+                    </ProductRow>
+                    <ProductRow narrow>
+                        <Heading2>
+                            Postage &pound;{fn.getCartTotal(basket.products) < 25 ? 4.50.toFixed(2) : 0.00.toFixed(2)}
+                        </Heading2>
+                    </ProductRow>
+                    <ProductRow narrow>
+                        <Heading2>
+                            Sales Tax &pound; {0.00.toFixed(2)}
+                        </Heading2>
+                    </ProductRow>
+                    <ProductRow narrow>
+                        <Heading2>
+                            Total &pound;{total.toFixed(2)}
+                        </Heading2>
+                    </ProductRow>
+                    <ProductRow>
                             <AnimatedButton text="Secure Checkout" med 
                             // style={{position: 'absolute', right: 130, transform: 'translateX(-50%)'}}
-                            style={{marginRight: '10%'}}
+                            style={{marginRight: '9%'}}
                             >
                                 <CreditCard />
                             </AnimatedButton>
-                    </ProductRow>
-                    <ProductRow>
-                        <Heading2>Postage &pound;{fn.getCartTotal(basket.products) < 25 ? 4.50.toFixed(2) : 0.00.toFixed(2)}</Heading2>
-                    </ProductRow>
-                    <ProductRow>
-                        <Heading2>Sales Tax &pound; {0.00.toFixed(2)}</Heading2>
-                    </ProductRow>
-                    <ProductRow>
-                        <Heading2>Total &pound;{fn.getCartTotal(basket.products, postage).toFixed(2)}</Heading2>
                     </ProductRow>
                 </BasketWrapper>
             </Container>
@@ -100,18 +119,3 @@ const Basket = (props) => {
 }
 
 export default Basket
-
-const ProductRow = styled.div`
-    margin: 0px 20px;
-    padding: 20px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    align-content: center;
-    flex-gap: 10px; 
-    ${'' /* border: 1px red solid; */}
-`
-const BasketWrapper = styled.div`
-    margin-top: 50px;
-    margin-left: auto;
-`

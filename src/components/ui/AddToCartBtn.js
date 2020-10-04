@@ -7,6 +7,8 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import { ShoppingCart, Trash2 } from 'react-feather'
 
 const AddToCart = (props) => {
+    
+    const { basket } = useSelector(state => state.basket)
 
     const dispatch = useDispatch()
     const [ currentCart, setCurrentCart ] = useState([])
@@ -36,14 +38,15 @@ const AddToCart = (props) => {
       )
   }
 
-  const checkIfInCart = (currentCart, _id) => {
-         return  currentCart.filter(item => item._id === _id)
+  const checkIfInCart = (_id) => {
+        //  return  currentCart.filter(item => item._id === _id)
+         return  basket.products.filter(item => item._id === _id)
   }
 
   const removeFromCart = () => {
-            const itemsInCart = checkIfInCart(currentCart, _id)
+            const itemsInCart = checkIfInCart(_id)
         // find index of item in basket array
-            const newCartArray = currentCart
+            const newCartArray = basket.products
           const itemIndex = newCartArray.findIndex(item => item._id === _id)
           const item = newCartArray[itemIndex]
           if(itemsInCart[0].product_qty == 1) {
@@ -91,8 +94,8 @@ const AddToCart = (props) => {
           localStorage.setItem('soap-cart', JSON.stringify([newProduct]))
         console.log("ADDED FIRST")
       } else {
-          let newCartArray = currentCart
-         const productInCart = checkIfInCart(currentCart, _id)
+          let newCartArray = basket.products
+         const productInCart = checkIfInCart(_id)
         //  newCartArray.filter(item => item._id === _id)
          if (productInCart.length > 0) {
           // find index and increase quantity

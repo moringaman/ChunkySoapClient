@@ -55,14 +55,15 @@ const Navbar = (props) => {
             <li><PageLink id="a" to="/">About</PageLink></li>
             <li><PageLink to="/contact">Contact</PageLink></li>
                 <li>
-                <PageLink to="/products" withMenu menuData={categories} menuTitle="Categories">
+                <PageLink to="#" withMenu menuData={categories} menuTitle="Categories">
                         Categories
                 </PageLink>
                 </li>
             <li>Sign In</li>
             <li><AnimatedButton sml text="New Account"><User /></AnimatedButton></li>
             <li>
-                <PageLink to="/basket" withMenu menuTitle="Cart Items" menuData={basket.products}>
+                <PageLink to="/basket">
+                {/* <PageLink to="/basket" withMenu menuTitle="Cart Items" menuData={basket.products}> */}
                     &pound;{basket && basketTotal} 
                     <div style={{marginLeft: 10}}>
                         <ShoppingCart color={vars.palette.secondaryColor1} size={28} />
