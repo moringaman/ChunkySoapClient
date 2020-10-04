@@ -54,6 +54,9 @@ const Basket = (props) => {
                     <Heading2 style={{flex: 1}}>Quantity</Heading2>
                     <Heading2 style={{flex: 1}}>Total</Heading2>
                 </ProductRow>
+                    <Divider />
+                <ProductRow>
+                </ProductRow>
                     {basket.products.length > 0 ?  basket.products.map(el => 
                         
                         <ProductRow key={el._id}>
@@ -62,26 +65,26 @@ const Basket = (props) => {
                                 style={{display: 'block', maxHeight: '70px', maxWidth: '70px', width: 'auto', height: 'auto'}}
                                 />
                             </ProductFrame>
-                            <div style={{flex: 2, paddingRight: 80}}>
+                            <div style={{flex: 2, paddingRight: 90}}>
                                 {el.product_name} <br/>
                                 {el.product_description}
                             </div>
                             <div style={{flex: 1, margin: 5}}>
                                 &pound;{el.product_price}
                             </div>
-                            <div style={{flex: 0.5, marginRight: 85, display: 'flex', justifyContent: 'space-around', alignItems: 'center'}}>
+                            <div style={{flex: .5, marginRight: 75, display: 'flex', justifyContent: 'space-around', alignItems: 'center'}}>
                                 <AddToCart product={el} function="delete" icon={true}>
-                                    <MinusCircle color='gray' size={32}/>
+                                    <MinusCircle color='gray' size={28}/>
                                 </AddToCart>
                                 {el.product_qty}
                                 {/* <AddToCart product={delete Object.assign(el, {['product_picture_1.url']: el['product_picture_1']})['product_picture_1']} function="add" icon={true}> */}
                                 <AddToCart product={el} function="add" icon={true}>
-                                    <PlusCircle color="lightgreen" size={32}/>
+                                    <PlusCircle color="lightgreen" size={28}/>
                                 </AddToCart>
                             </div>
-                            <div style={{flex: 1, margin: 5, display: 'flex', alignItems: 'center', justifyContent: 'space-around'}}>
+                            <div style={{flex: 1, marginRight: 60, display: 'flex', alignItems: 'center', justifyContent: 'space-around'}}>
                                &pound;{el.total_price.toFixed(2)}
-                                <Trash2 size={32} color="#837D7D" style={{transform: 'translateX(20px)'}}/>
+                                {/* <Trash2 size={32} color="#837D7D" style={{transform: 'translateX(20px)'}}/> */}
                             </div>
                         </ProductRow>
                     ) :  <Heading2>You Dont Have any Items in you basket yet</Heading2>}
@@ -89,18 +92,14 @@ const Basket = (props) => {
                         <Divider />
                     </ProductRow>
                     <ProductRow narrow>
-                        <Heading2>
-                            Postage &pound;{fn.getCartTotal(basket.products) < 25 ? 4.50.toFixed(2) : 0.00.toFixed(2)}
-                        </Heading2>
+                            Postage: &pound;{fn.getCartTotal(basket.products) < 25 ? 4.50.toFixed(2) : 0.00.toFixed(2)}
+                    </ProductRow>
+                    <ProductRow narrow>
+                            Sales Tax: &pound; {0.00.toFixed(2)}
                     </ProductRow>
                     <ProductRow narrow>
                         <Heading2>
-                            Sales Tax &pound; {0.00.toFixed(2)}
-                        </Heading2>
-                    </ProductRow>
-                    <ProductRow narrow>
-                        <Heading2>
-                            Total &pound;{total.toFixed(2)}
+                            Total: &pound;{total.toFixed(2)}
                         </Heading2>
                     </ProductRow>
                     <ProductRow>

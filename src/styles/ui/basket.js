@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import * as vars from '../variables'
 
 
 export const ProductRow = styled.div`
@@ -18,7 +19,7 @@ export const ProductRow = styled.div`
 export const Divider = styled.div`
     width: 100%;
     height: 1px;
-    background-color: gray;
+    background-color: ${vars.palette.colorGray7};
 `
 export const BasketWrapper = styled.div`
     margin-top: 50px;

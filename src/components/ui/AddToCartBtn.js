@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import styled from 'styled-components'
 import Button from '../../styles/components/button'
 import AnimatedButton from '../ui/AnimatedButton'
 import Loader from 'react-loader-spinner'
@@ -122,7 +123,7 @@ const AddToCart = (props) => {
 
     return (
         <>
-        {props.function === 'add' ?
+        {(props.function === 'add' && !props.icon) && 
 
         <AnimatedButton med fixed 
             withIcon={props.icon}
@@ -133,8 +134,8 @@ const AddToCart = (props) => {
             {loading &&  renderLoader() }
             {!loading && <ShoppingCart />}
         </AnimatedButton>
-        : 
-
+        }
+        { (!props.icon && !props.function === 'add') &&
         <AnimatedButton med fixed 
             withIcon={props.icon}
             style={{maxWidth: 200}} 
@@ -145,8 +146,22 @@ const AddToCart = (props) => {
             {!loading && <Trash2/>}
         </AnimatedButton>
         }
+        {props.icon && props.function === 'add' ?
+          <IconButton handleClick onClick={() => addToCart()}>
+            {props.children}
+          </IconButton>
+          :
+          <IconButton onClick={() => removeFromCart()}>
+            {props.children}
+          </IconButton>
+        }
+
         </>
     )
 }
 
 export default AddToCart
+
+const IconButton = styled.div`
+  cursor: pointer;
+`
