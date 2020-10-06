@@ -6,7 +6,7 @@ import fetch from 'isomorphic-unfetch'
 import { Hero } from '../styles/layout'
 import { Container } from '../styles/layout'
 import { BannerHeading, BannerHeading2 } from '../styles/typography'
-import { Bubble } from '../styles/ui/bubble'
+import { Bubble } from '../styles/ui'
 import { SectionHeading } from '../styles/typography'
 import ProductSlider from '../components/ui/ProductSlider'
 import WxButton from '../styles/components/button'
@@ -16,6 +16,7 @@ import ProductItem from '../components/ui/ProductItem'
 import useModal from '../hooks/useModal'
 import { useDispatch, useSelector } from 'react-redux'
 import * as fn from '../helpers/functions'
+import * as vars from '../styles/variables'
 
 export default function HomePage(props) {
 
@@ -53,17 +54,6 @@ export default function HomePage(props) {
   }, [currentCart])
 
 
-  const bubbles = [{size: 230, opac: 0.6, x: 10, t: 500},
-                   {size: 170, opac: 0.4, x: 200, t:680},
-                   {size: 190, opac: 0.2, x:1300, t:560},
-                   {size: 120, opac: 0.3, x:800, t: 690},
-                   {size: 60, opac: 0.2, x:920, t: 790},
-                   {size: 50, opac: 0.7, x: 80, t: 900, dark: 'yes'},
-                   {size: 120, opac: 0.7, x: 160, t: 950, dark: 'yes'},
-                  ]
-
-  // console.log("URL ", process.env.API_URI)
-
     const handleClick = (id) => {
         // e.preventDefault()
         console.log('event')
@@ -74,48 +64,6 @@ export default function HomePage(props) {
         toggle()
     }
 
-  //   const addToCart = () => {
-  //     const { _id, product_name, product_short_description, product_price, product_picture_1, product_discount } = selectedProduct
-       
-  //     const adjustedPrice = parseFloat(product_price - (product_price * product_discount) / 100)
-
-  //       const newProduct = {
-  //         _id,
-  //         product_name,
-  //         product_description: product_short_description,
-  //         product_picture: product_picture_1.url,
-  //         product_price: adjustedPrice,
-  //         product_qty: 1,
-  //         total_price: adjustedPrice
-  //       }
-
-  //     if ( currentCart.length === 0 ) {
-  //       setCurrentCart([newProduct])
-  //         dispatch({type: 'ADD_TO_BASKET', payload: [newProduct]})
-  //       console.log("ADDED FIRST")
-  //     } else {
-  //         let newCartArray = currentCart
-  //        const productInCart = newCartArray.filter(item => item._id === _id)
-  //        if (productInCart.length > 0) {
-  //         // find index and increase quantity
-  //         const itemIndex = newCartArray.findIndex(item => item._id === _id)
-  //         const item = newCartArray[itemIndex]
-  //         item.product_qty++
-  //         item.total_price = parseFloat(item.product_price * item.product_qty)
-  //         setCurrentCart(newCartArray)
-  //         dispatch({type: 'ADD_TO_BASKET', payload: newCartArray})
-  //         localStorage.setItem('soap-cart', JSON.stringify(newCartArray))
-  //         console.log("QUANTITY UPDATED")
-  //        } else {
-  //          const newCartArray = [...currentCart, newProduct]
-  //          localStorage.setItem('soap-cart', JSON.stringify(newCartArray))
-  //          setCurrentCart([...currentCart, newProduct])
-  //          dispatch({type: 'ADD_TO_BASKET', payload: newCartArray})
-  //          console.log("ADDED NEW")
-  //        }
-  //     }
-    
-  // }
 
     const viewProduct = (id) => {
         history.push(`/product/${id}`)
@@ -128,7 +76,7 @@ export default function HomePage(props) {
         <img src="/drips.png" alt="drips" style={{float: 'right', width: '500px', transform: 'translateY(-30px)'}}/>
         <img src="/logo-big.svg" alt="chunky soap" style={{float: 'left', width: '450px', transform: 'translateX(-40px)'}}/>
         <img className="girl-pic" src="/girl.webp" alt="chunky soap girl" style={{position: 'absolute', width: '480px', transform: 'translateX(-120px)', top: 158 }}/>
-        {bubbles.map((b, i) => (
+        {vars.heroBubbles.map((b, i) => (
         <Bubble {...b} key={i} />
         ))}
         <div style={{top: 260, left: '51%', width: 550, position: 'absolute'}}>
@@ -141,6 +89,9 @@ export default function HomePage(props) {
     {/* </Container> */}
     </Hero>
     <Container>
+        {vars.bodyBubbles.map((b, i) => (
+        <Bubble {...b} key={i} />
+        ))}
       <SectionHeading>Featured Products</SectionHeading>
       <ProductSlider>
       {

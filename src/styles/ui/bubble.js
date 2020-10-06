@@ -1,13 +1,14 @@
 import styled, { css } from 'styled-components'
 import * as vars from '../../styles/variables'
 
-export const Bubble = styled.div`
+const Bubble = styled.div`
     height: 100px;
     width: 100px;
     border-radius: 50%;
     background-color: white;
     opacity: 0.5;
     position: absolute;
+    z-index: 6;
     ${props => props.dark && css`
         background-color: ${vars.palette.primaryColor1};
         ${'' /* background-color: red; */}
@@ -29,3 +30,5 @@ export const Bubble = styled.div`
         height: ${props.size}px;
     `}
 `
+
+export default Bubble

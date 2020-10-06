@@ -60,7 +60,7 @@ const ProductItem = (props) => {
         max-width: 60px;
         color: white;
         background-color: #F9B233;
-        ${'' /* z-index: 100; */}
+        z-index: 10;
         transform: translate(300px, -280px);
        }
  `

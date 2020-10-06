@@ -12,7 +12,7 @@ const ProductFrame = styled.div`
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    ${'' /* z-index: 100; */}
+    z-index: 7;
     transition: all 0.2s ease-in;
     position: relative;
     ${props => props.sml && css`

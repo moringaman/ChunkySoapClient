@@ -11,6 +11,7 @@ const PageLink = ({children, to, withMenu, menuData, menuTitle , color }) => {
     const history = useHistory()
     const location = useLocation()
 
+    console.log("ROUTING", "Location: ", location, "History: ", history)
 
     const style = {
         fontWeight: 600,
