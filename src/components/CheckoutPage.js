@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useSelector, useReducer } from 'react-redux'
+import styled from 'styled-components'
 import { Container , Section} from '../styles/layout'
 import { ProductFrame, Bubble } from '../styles/ui'
 import { BannerHeading, Heading1, Heading2, Paragraph } from '../styles/typography'
+import { BasketWrapper, ProductRow, Divider } from '../styles/ui/basket'
 import * as vars from '../styles/variables'
 
 const CheckoutPage = () => {
+// do logged in check
+    const { basket } = useSelector(state => state.basket)
+
     return (
         <>
         <Section dark height={180}>
@@ -19,9 +25,17 @@ const CheckoutPage = () => {
             </Container>
             <img src="/oversholder.webp" alt="girl-pic" style={{position: 'absolute', top: 31, left: 560, maxHeight: 320}}/>
         </Section>
-        <Section light height={800}>
+        <Section light height={1300}>
             <Container>
                 <Heading1>Secure Checkout</Heading1>
+                <CheckoutWrapper>
+                    <CheckoutActions>
+                        Steps
+                    </CheckoutActions>
+                    <BasketSection>
+                        Basket
+                    </BasketSection>
+                </CheckoutWrapper>
             </Container>
         </Section>
         </>
@@ -29,3 +43,24 @@ const CheckoutPage = () => {
 }
 
 export default CheckoutPage
+
+const CheckoutWrapper = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+`
+
+const CheckoutActions = styled.div`
+    width: 50%;
+    min-width: 500px;
+    height: 800px;
+    flex: 2;
+    border: 1px solid gray;
+    padding: 20px;
+`
+const BasketSection = styled.div`
+    flex: 1;
+    border: 1px solid gray;
+    min-width: 300px;
+    min-height: 800px;
+    padding: 20px;
+`
