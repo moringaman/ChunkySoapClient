@@ -2,7 +2,8 @@ import React, { useEffect } from 'react'
 import { useSelector, useReducer } from 'react-redux'
 import styled from 'styled-components'
 import { Container , Section} from '../styles/layout'
-import { ProductFrame, Bubble } from '../styles/ui'
+import { WxStep } from '../components/ui'
+import { ProductFrame, Bubble, Step } from '../styles/ui'
 import { BannerHeading, Heading1, Heading2, Paragraph } from '../styles/typography'
 import { BasketWrapper, ProductRow, Divider } from '../styles/ui/basket'
 import * as vars from '../styles/variables'
@@ -30,7 +31,12 @@ const CheckoutPage = () => {
                 <Heading1>Secure Checkout</Heading1>
                 <CheckoutWrapper>
                     <CheckoutActions>
-                        Steps
+                        <Steps>
+                            <WxStep label='Account' step='Account'start/>
+                            <WxStep label='Shipping'/>
+                            <WxStep label='Payment'/>
+                            <WxStep label='Sucess'/>
+                        </Steps>
                     </CheckoutActions>
                     <BasketSection>
                         Basket
@@ -63,4 +69,9 @@ const BasketSection = styled.div`
     min-width: 300px;
     min-height: 800px;
     padding: 20px;
+`
+const Steps = styled.div`
+    display: flex:
+    flex-direction: row;
+    justify-content: space-around;
 `
