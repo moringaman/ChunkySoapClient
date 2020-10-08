@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useReducer } from 'react-redux'
 import styled from 'styled-components'
 import { Container , Section} from '../styles/layout'
-import { WxStep } from '../components/ui'
+import { WxStep, SimpleTextInput } from '../components/ui'
 import { ProductFrame, Bubble, Step } from '../styles/ui'
 import { BannerHeading, Heading1, Heading2, Paragraph } from '../styles/typography'
 import { BasketWrapper, ProductRow, Divider } from '../styles/ui/basket'
@@ -59,6 +59,9 @@ const CheckoutPage = () => {
                         )
                         }
                         </Steps>
+                        <div style={{ marginTop: 300}}>
+                            <SimpleTextInput placeholder="email address"/>
+                        </div>
                     </CheckoutActions>
                     <BasketSection style={{borderLeft: '1px solid #D8D8D8'}}>
                 <BasketWrapper style={{transform: 'translateY(-120px)'}}>
@@ -95,6 +98,9 @@ const CheckoutPage = () => {
                 </div>
                     <ProductRow>
                         <Divider />
+                    </ProductRow>
+                    <ProductRow narrow>
+                            Subtotal: &pound; {fn.getCartTotal(basket.products).toFixed(2) }
                     </ProductRow>
                     <ProductRow narrow>
                             Postage: &pound;{fn.getCartTotal(basket.products) < 25 ? 4.50.toFixed(2) : 0.00.toFixed(2)}
