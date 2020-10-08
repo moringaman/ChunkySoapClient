@@ -40,8 +40,8 @@ export const headerBubbles = [{size: 30, opac: 0.2, x: 290, t: 310},
                    {size: 120, opac: 0.2, x:750, t: 190},
                    {size: 30, opac: 0.2, x:910, t: 230},
                    {size: 120, opac: 0.2, x:990, t: 320},
-                   {size: 30, opac: 0.4, x: 380, t: 390, dark: 'yes'},
-                   {size: 100, opac: 0.2, x: 260, t: 400, dark: 'yes'},
+                   {size: 30, opac: 0.2, x: 380, t: 390, dark: 'yes'},
+                   {size: 100, opac: 0.1, x: 260, t: 400, dark: 'yes'},
                   ]
 
 export const bodyBubbles = [

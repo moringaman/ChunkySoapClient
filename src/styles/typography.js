@@ -48,4 +48,8 @@ export const Paragraph = styled.p`
     margin-bottom: 20px;
     margin-top: 20px;
     color: ${vars.palette.colorGray3};
+    ${props => props.big && css `
+        font-size: 22px;
+        color: ${vars.palette.colorGray2};
+    `}
 `
