@@ -11,9 +11,6 @@ const Step = styled.div`
         display: inline-block;
         margin-right: 150px;
         flex-shrink: 4;
-        ${'' /* ${props => props.number === 4 && css `
-            margin-right: 0px;
-        `} */}
         ${props => props.step >= props.number && css`
             background-color: ${vars.palette.primaryColor};
            `}

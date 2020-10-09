@@ -28,7 +28,7 @@ const  WxButton = styled.button`
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transform: translateY(-2px);
+            transform: translateY(2px);
         }
         & .button-content >* {
             font-weight: 600;
@@ -49,7 +49,7 @@ const  WxButton = styled.button`
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transform: translateY(-1px);
+            transform: translateY(1px);
         }
         & .button-content >* {
             font-weight: 600;

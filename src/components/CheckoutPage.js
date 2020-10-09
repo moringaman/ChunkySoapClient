@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector, useReducer } from 'react-redux'
+import React, { useEffect, useState, useReducer } from 'react'
+import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 import { Container , Section} from '../styles/layout'
 import { WxStep, SimpleTextInput } from '../components/ui'
+import { checkoutReducer, CheckoutSteps } from './'
 import { ProductFrame, Bubble, Step } from '../styles/ui'
 import { BannerHeading, Heading1, Heading2, Paragraph } from '../styles/typography'
 import { BasketWrapper, ProductRow, Divider } from '../styles/ui/basket'
@@ -15,6 +16,13 @@ const CheckoutPage = () => {
     const [ total, setTotal ] = useState(0)
     const [ postage, setPostage ] = useState(0)
 
+    const initialState = {
+        step: 1
+    }
+
+    const [cartState, cartDispatch] = useReducer(checkoutReducer, initialState)
+
+    console.log("CART STATE " , cartState)
     useEffect(() => {
         if (fn.getCartTotal(basket.products) < 25) {
             setPostage(4.50)
@@ -27,6 +35,10 @@ const CheckoutPage = () => {
     useEffect(() => {
         setTotal(fn.getCartTotal(basket.products, postage))
     }, [postage])
+
+    const handleChange = (e) => {
+        console.log("EVENT ", e.target.value, e.target.name)
+    }
 
     const steps = [
         {no: 1, label: 'Account'},   
@@ -53,15 +65,13 @@ const CheckoutPage = () => {
                 <Heading1>Checkout</Heading1>
                 <CheckoutWrapper>
                     <CheckoutActions>
-                        <Steps>
+                        <CheckoutSteps />
+                        {/* <Steps>
                         { steps.map(step => 
-                            <WxStep label={step.label} step={2} number={step.no} key={step.no}/>
+                            <WxStep label={step.label} step={cartState.step} number={step.no} key={step.no}/>
                         )
                         }
-                        </Steps>
-                        <div style={{ marginTop: 300}}>
-                            <SimpleTextInput placeholder="email address"/>
-                        </div>
+                        </Steps> */}
                     </CheckoutActions>
                     <BasketSection style={{borderLeft: '1px solid #D8D8D8'}}>
                 <BasketWrapper style={{transform: 'translateY(-120px)'}}>
@@ -99,6 +109,9 @@ const CheckoutPage = () => {
                     <ProductRow>
                         <Divider />
                     </ProductRow>
+                    <ProductRow>
+                            <SimpleTextInput withButton buttonText="Apply" label="Redeem Coupon / Discount Code" type="text" placeholder="COUPON CODE" handleChange={() => {}}/>
+                    </ProductRow>
                     <ProductRow narrow>
                             Subtotal: &pound; {fn.getCartTotal(basket.products).toFixed(2) }
                     </ProductRow>
@@ -131,7 +144,7 @@ const CheckoutWrapper = styled.div`
 
 const CheckoutActions = styled.div`
     width: 50%;
-    min-width: 500px;
+    min-width: 700px;
     height: 800px;
     flex: 2;
     ${'' /* border: 1px solid gray; */}

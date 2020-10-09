@@ -10,7 +10,7 @@ const WxStep = (props) => {
             <Paragraph>
                 {props.label}
             </Paragraph>
-            </div>
+        </div>
         </>
     )
 }
