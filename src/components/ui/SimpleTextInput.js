@@ -10,8 +10,10 @@ const SimpleTextInput = ({handleChange, label, withButton, buttonText, ...rest }
             <Paragraph>
                 {label}
             </Paragraph>
+            <div style={{display: 'flex'}}>
             <TextInput {...rest} withButton={withButton} onChange={(e) => handleChange(e)} onFocus={() => console.log("focussed")}/>
-            { withButton && <AnimatedButton big text={buttonText} style={{position: 'absolute', display: 'block', transform: 'translate(280px, 60px)', right: 300 }}/> }
+            { withButton && <AnimatedButton big text={buttonText} style={{marginLeft: -80}} /> }
+            </div>
         </div>
         </>
     )
