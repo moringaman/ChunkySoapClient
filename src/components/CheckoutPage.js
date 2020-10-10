@@ -109,7 +109,7 @@ const CheckoutPage = () => {
                     <ProductRow>
                         <Divider />
                     </ProductRow>
-                    <ProductRow>
+                    <ProductRow narrow>
                             <SimpleTextInput withButton buttonText="Apply" label="Redeem Coupon / Discount Code" type="text" placeholder="COUPON CODE" handleChange={() => {}}/>
                     </ProductRow>
                     <ProductRow narrow>

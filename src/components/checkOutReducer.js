@@ -19,6 +19,12 @@ const checkoutReducer = (state, action) => {
                 ...state,
                 step: state.step - 1
             }
+        case "LOGGED_IN":
+            return {
+                ...state,
+                authenticated: true,
+                guest: false
+            }
 
         case 'UPDATE_FIELD':
             console.log("UPDATING IN REDUCER", action.fieldName, action.fieldValue)

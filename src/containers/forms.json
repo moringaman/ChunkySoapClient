@@ -1,0 +1,48 @@
+
+{
+    "views": {
+        
+        "login": [
+            {
+                "placeholder": "example@gmail.com",
+                "label": "Email Address",
+                "type": "text",
+                "name": "email"
+            },
+            {
+                "placeholder": "*********",
+                "label": "Password",
+                "type": "password",
+                "name": "password"
+            }
+        ],
+            "register": [
+            {
+                "placeholder": "example@gmail.com",
+                "label": "Email Address",
+                "type": "text",
+                "name": "email"
+            },
+            {
+                "placeholder": "*********",
+                "label": "Password",
+                "type": "password",
+                "name": "password"
+            },
+            {
+                "placeholder": "*********",
+                "label": "Confirm Password",
+                "type": "password",
+                "name": "password_confirmation"
+            }
+        ],
+        "forgot-password": [
+            {
+                "placeholder": "example@gmail.com",
+                "label": "Email Address",
+                "type": "text",
+                "name": "email"
+            }
+        ]
+    }
+}
