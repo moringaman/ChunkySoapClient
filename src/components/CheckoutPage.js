@@ -60,7 +60,7 @@ const CheckoutPage = () => {
             </Container>
             <img src="/oversholder.webp" alt="girl-pic" style={{position: 'absolute', top: 31, left: 560, maxHeight: 320}}/>
         </Section>
-        <Section light height={1300}>
+        <Section light height={1900}>
             <Container>
                 <Heading1>Checkout</Heading1>
                 <CheckoutWrapper>
@@ -145,7 +145,7 @@ const CheckoutWrapper = styled.div`
 const CheckoutActions = styled.div`
     width: 50%;
     min-width: 700px;
-    height: 800px;
+    ${'' /* height: 800px; */}
     flex: 2;
     ${'' /* border: 1px solid gray; */}
     padding: 20px;

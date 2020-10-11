@@ -17,6 +17,7 @@ import useModal from '../hooks/useModal'
 import { useDispatch, useSelector } from 'react-redux'
 import * as fn from '../helpers/functions'
 import * as vars from '../styles/variables'
+import { myApi } from '../helpers'
 
 export default function HomePage(props) {
 
@@ -36,11 +37,11 @@ export default function HomePage(props) {
         }
     }
     if(products.products.length) return
-    apiCall()
+    _apiCall()
 
   }, [])
 
-  const apiCall = async() => {
+  const _apiCall = async() => {
   const res = await fetch(`http://localhost:1337/products`)
   // const res = await fetch(`${API_URI}/products`)
   const data = await res.json()

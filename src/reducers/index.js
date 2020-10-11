@@ -5,8 +5,8 @@ import basketReducer from './basketReducer'
 import categoryReducer from './categoryReducer'
 
 export default combineReducers({
-    user: userReducer,
     products: productReducer ,
     basket: basketReducer,
-    categories: categoryReducer
+    categories: categoryReducer,
+    user: userReducer,
 })

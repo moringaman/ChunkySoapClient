@@ -48,17 +48,11 @@ const AddToCart = (props) => {
             const itemsInCart = checkIfInCart(_id)
         // find index of item in basket array
             const newCartArray = basket.products
-          const itemIndex = newCartArray.findIndex(item => item._id === _id)
-          const item = newCartArray[itemIndex]
+            const itemIndex = newCartArray.findIndex(item => item._id === _id)
+            const item = newCartArray[itemIndex]
           if(itemsInCart[0].product_qty == 1) {
-              console.log("ITEM IN CART ", itemsInCart[0])
-            //   newCartArray.splice(itemIndex, 1)
             const newArray = newCartArray.filter(el => el != item)
-            //   console.log("NEW BASKET STATE ", newCartArray)
-            // dispatch({type: 'ADD_TO_BASKET', payload: newCartArray})
-            // console.log("ITEM NO IN CART ", itemsInCart.length)
             dispatch({type: 'REMOVE_FROM_BASKET', payload: item})
-            console.log("NEW ARRAY ", newArray)
             localStorage.setItem('soap-cart', JSON.stringify(newArray))
           } else {
             item.product_qty--
@@ -66,8 +60,6 @@ const AddToCart = (props) => {
             setCurrentCart(newCartArray)
             dispatch({type: 'ADD_TO_BASKET', payload: newCartArray})
             localStorage.setItem('soap-cart', JSON.stringify(newCartArray))
-            console.log("QUANTITY UPDATED")
-            // deletits quanity by 1
           }
   }
 
@@ -93,27 +85,22 @@ const AddToCart = (props) => {
         setCurrentCart([newProduct])
           dispatch({type: 'ADD_TO_BASKET', payload: [newProduct]})
           localStorage.setItem('soap-cart', JSON.stringify([newProduct]))
-        console.log("ADDED FIRST")
       } else {
           let newCartArray = basket.products
          const productInCart = checkIfInCart(_id)
-        //  newCartArray.filter(item => item._id === _id)
          if (productInCart.length > 0) {
-          // find index and increase quantity
-          const itemIndex = newCartArray.findIndex(item => item._id === _id)
-          const item = newCartArray[itemIndex]
-          item.product_qty++
-          item.total_price = parseFloat(item.product_price * item.product_qty)
-          setCurrentCart(newCartArray)
-          dispatch({type: 'ADD_TO_BASKET', payload: newCartArray})
-          localStorage.setItem('soap-cart', JSON.stringify(newCartArray))
-          console.log("QUANTITY UPDATED")
+            const itemIndex = newCartArray.findIndex(item => item._id === _id)
+            const item = newCartArray[itemIndex]
+            item.product_qty++
+            item.total_price = parseFloat(item.product_price * item.product_qty)
+            setCurrentCart(newCartArray)
+            dispatch({type: 'ADD_TO_BASKET', payload: newCartArray})
+            localStorage.setItem('soap-cart', JSON.stringify(newCartArray))
          } else {
-           const newCartArray = [...currentCart, newProduct]
-           localStorage.setItem('soap-cart', JSON.stringify(newCartArray))
-           setCurrentCart([...currentCart, newProduct])
-           dispatch({type: 'ADD_TO_BASKET', payload: newCartArray})
-           console.log("ADDED NEW")
+            const newCartArray = [...currentCart, newProduct]
+            localStorage.setItem('soap-cart', JSON.stringify(newCartArray))
+            setCurrentCart([...currentCart, newProduct])
+            dispatch({type: 'ADD_TO_BASKET', payload: newCartArray})
          }
       }
    setLoading(false)

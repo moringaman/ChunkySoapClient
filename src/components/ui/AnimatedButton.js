@@ -1,8 +1,21 @@
 import React from 'react'
 import WxButton from '../../styles/components/button'
+import { Check } from 'react-feather'
+import Loader from 'react-loader-spinner'
 
 const AnimatedButton = ({...props}) => {
 
+  const renderLoader = () => {
+      return (
+        <Loader
+            type="ThreeDots"
+            color="#FFFFFF"
+            height={29}
+            width={29}
+            timeout={30000} //3 secs
+        />
+      )
+  }
     return (
         <>
         {props.withIcon ? 
@@ -13,10 +26,10 @@ const AnimatedButton = ({...props}) => {
         <WxButton fixed {...props} onClick={() => props.handleClick()} >
           <div className="button-content">
                 <div>
-                    {props.text}
+                    {props.loading ? renderLoader() : props.text }
                 </div>
                 <div>
-                    {props.children}
+                    {props.children || <Check />}
                 </div> 
            </div>
         </WxButton>

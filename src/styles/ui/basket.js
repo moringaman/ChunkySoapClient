@@ -20,6 +20,9 @@ export const Divider = styled.div`
     width: 100%;
     height: 1px;
     background-color: ${vars.palette.colorGray7};
+    ${props => props.mb && css`
+        margin-bottom: ${props.mb};
+    `}
 `
 export const BasketWrapper = styled.div`
     margin-top: 50px;

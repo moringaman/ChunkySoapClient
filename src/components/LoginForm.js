@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { SimpleTextInput, AnimatedButton } from '../components/ui'
+import { ButtonRow } from '../styles/layout'
 import { Heading2 } from '../styles/typography'
 import forms from '../containers/forms.json'
+import { ArrowRight, User }from 'react-feather'
 
 
 const LoginForm = (props) => {
@@ -42,11 +44,10 @@ const views = forms.views
                         <div>
                             I Don't have an account create one <input type="checkbox" name="register" checked={props.data.register}  onChange={props.handleChange}/>
                         </div>
-                        {/* <br/> */}
-                        <div style={{display: 'flex', justifyContent: 'space-between', width: '75%', marginLeft: 130, marginTop: 20}}>
-                        <AnimatedButton type="submit" text="Sign In" med></AnimatedButton><br />
-                        <AnimatedButton text="Guest Checkout" secondary med handleClick={() => cartDispatch({type: 'GUEST_CHECKOUT'})}></AnimatedButton>
-                        </div>
+                        <ButtonRow>
+                            <AnimatedButton type="submit" text="Sign In" med><User /></AnimatedButton><br />
+                            <AnimatedButton text="Guest Checkout" secondary med handleClick={() => cartDispatch({type: 'GUEST_CHECKOUT'})}><ArrowRight/></AnimatedButton>
+                        </ButtonRow>
                 </form>
             </div>
     )   

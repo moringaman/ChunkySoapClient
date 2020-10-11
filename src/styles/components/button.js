@@ -11,6 +11,7 @@ const  WxButton = styled.button`
     cursor: pointer;
     z-index: 200;
     overflow: hidden;
+    margin: 0px 10px;
     & .button-content >* {
         font-weight: 400;
         font-size: 18px;

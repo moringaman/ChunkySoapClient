@@ -1,12 +1,37 @@
 
 {
     "views": {
-        
+        "addressForm": [
+            {
+                "placeholder": "",
+                "label": "Address 1",
+                "type": "text",
+                "name": "customer_address1"
+            },
+            {
+                "placeholder": "",
+                "label": "Address 2",
+                "type": "text",
+                "name": "customer_address2"
+            },
+            {
+                "placeholder": "",
+                "label": "Town / City",
+                "type": "text",
+                "name": "customer_town"
+            },
+            {
+                "placeholder": "",
+                "label": "Postcode",
+                "type": "text",
+                "name": "customer_postcode"
+            }
+        ],
         "login": [
             {
                 "placeholder": "example@gmail.com",
                 "label": "Email Address",
-                "type": "text",
+                "type": "email",
                 "name": "email"
             },
             {

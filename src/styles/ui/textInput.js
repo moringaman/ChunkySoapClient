@@ -8,7 +8,7 @@ const TextInput = styled.input`
     border: none;
     border-radius: 50px;
     background-color: ${vars.palette.colorGray8};
-    color: white;
+    color: ${vars.palette.colorGray4};
     padding: 0px 20px;
     margin: 0px 0px 10px 0px;
     ${props => props.withButton && css`

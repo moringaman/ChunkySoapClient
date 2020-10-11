@@ -7,7 +7,7 @@ export default function userReducer(state = initialState, action) {
         case 'SET_USER_SESSION':
             return {
                 ...state,
-                user: action.value
+                user: action.payload
             }
         default:
             return state;

@@ -40,6 +40,16 @@ export const Heading2 = styled.h2`
     font-weight: 400;
     margin-bottom: 5px;
     color: ${vars.palette.colorGray2};
+    ${props => props.dark && css`
+        color: ${vars.palette.colorGray1};
+    ` }
+`
+
+export const SubHeading1 = styled.h3`
+    font-size: 28px;
+    font-weight: 400;
+    margin-bottom: 15px;
+    color: ${vars.palette.colorGray6.orGray3};
 `
 
 export const Paragraph = styled.p`
