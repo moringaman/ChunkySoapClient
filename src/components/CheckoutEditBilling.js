@@ -22,8 +22,11 @@ const EditBilling = ({user, buttonClick}) => {
     }
 
     useEffect(() => {
-        console.log("ADDRESS ", address)
-    }, [address])
+        console.log("USER DETAILS", user)
+        if (user.customer_address2 = "") {
+            setEditing(true)
+        }
+    }, [])
 
     const submitForm = async(e) => {
         setLoading(true)
@@ -95,7 +98,7 @@ const EditBilling = ({user, buttonClick}) => {
                             }
                         <ButtonRow>
                             <AnimatedButton big secondary text="Cancel" handleClick={() => setEditing(false)}><Edit3/></AnimatedButton>
-                            <AnimatedButton big text="Save" type="submit" loading={loading}></AnimatedButton>
+                            <AnimatedButton big text="Save" type="submit" ></AnimatedButton>
                         </ButtonRow>
                         </form>
                     </FrameBody>

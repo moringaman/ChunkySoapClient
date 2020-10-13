@@ -1,12 +1,13 @@
 import React, {useState, useReducer, useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Check, Edit3, ArrowRight } from 'react-feather'
-import { WxStep, SimpleTextInput, AnimatedButton } from '../components/ui'
+import { WxStep, SimpleTextInput, AnimatedButton , ShippingOption} from '../components/ui'
 import { Heading2, Heading1, SubHeading1 } from '../styles/typography'
 import { Divider } from '../styles/ui/basket'
 import { checkoutReducer, LoginForm, EditBilling } from './'
 import styled from 'styled-components'
 import { auth, request, myApi } from '../helpers/'
+import { FrameHeader , Frame, FrameBody} from '../styles/layout'
 
 
     const steps = [
@@ -22,7 +23,7 @@ import { auth, request, myApi } from '../helpers/'
     const initialState = {
         step: 1,
         authenticated: false,
-        guest: true,
+        guest: false,
         loading: false,
         postage: 'standard',
         fields: {
@@ -34,7 +35,7 @@ import { auth, request, myApi } from '../helpers/'
     }
     const { user } = useSelector(state => state.user)
     const [cartState, cartDispatch] = useReducer(checkoutReducer, initialState)
-    const { step, authenticated, guest, postage, fields: { email, password, register } } = cartState
+    const { step, authenticated, guest, postage, fields: { email, password, register, username } } = cartState
     const dispatch = useDispatch()
 
         useEffect(() => {
@@ -54,9 +55,13 @@ import { auth, request, myApi } from '../helpers/'
         }, [authenticated])
 
         const apiCall = async(query) => {
-           const res = await myApi.send(`/customers${query}`)
-           console.log("CUSTOMER INFO ", res[0])
-           dispatch({type: "SET_USER_SESSION", payload: res[0] })
+            try {
+                const res = await myApi.send(`/customers${query}`)
+                console.log("CUSTOMER INFO ", res[0])
+                dispatch({type: "SET_USER_SESSION", payload: res[0] })
+            } catch (err) {
+                console.log(err)
+            }
         }
 
     const handleChange = (e) => {
@@ -69,12 +74,28 @@ import { auth, request, myApi } from '../helpers/'
         }
         cartDispatch({type: 'UPDATE_FIELD', fieldName: name, fieldValue: value})
     }
+
+    const createCustomer = async(_id) => {
+        const customer = {
+            customer_title: "",
+            customer_firstname: "",
+            customer_lastname: "",
+            customer_address1: "",
+            customer_address2: "",
+            customer_town: "",
+            customer_postcode: "",
+            customer_created: new Date(),
+            user: _id
+        }
+        const res = await myApi.send('http://localhost:1337/customer', 'POST', customer)
+        dispatch({type: "SET_USER_SESSION", payload: res})
+    }
     
 
     const handleLogin = (e) => {
         e.preventDefault()
         console.log("LOGGING IN USER with ", email, password)
-        const body = {identifier: email, password: password};
+        const body = {identifier: email, password: password, username: username};
         const requestURL = register ? 'http://localhost:1337/auth/local/register/' : 'http://localhost:1337/auth/local/';
 
         request(requestURL, { method: 'POST', body})
@@ -82,9 +103,11 @@ import { auth, request, myApi } from '../helpers/'
             auth.setToken(response.jwt, body.rememberMe);
             auth.setUserInfo(response.user, body.rememberMe);
             // set user info in state
-            // set authenticated in reducer
-            // dispatch({type: "SET_USER_SESSION", value: {}})
+            // Create new customer associated with response users id 
             cartDispatch({type: 'LOGGED_IN'})
+                if (register === true) {
+                    createCustomer(response.user.id)
+                }
             }).catch((err) => {
             console.log(err);
             });
@@ -93,7 +116,8 @@ import { auth, request, myApi } from '../helpers/'
     
     const buttonClick = (action) => {
             cartDispatch({type: action})
-    }   
+    }  
+
         return (
             <>
                 <Steps>
@@ -105,7 +129,7 @@ import { auth, request, myApi } from '../helpers/'
                 </Steps>
                 { (step === 1 && !authenticated) &&
                     <>
-                        <LoginForm handleChange={handleChange} handleLogin={handleLogin} data={cartState.fields}/>
+                        <LoginForm handleChange={handleChange} handleLogin={handleLogin} dispatch={cartDispatch} data={cartState.fields}/>
                     </>
                 }
                 {
@@ -117,10 +141,25 @@ import { auth, request, myApi } from '../helpers/'
                          }
                     </>
                 }
-                <div style={{position: 'absolute', top: 380, left: 300}}>
+                {
+                    step === 2 && 
+                    (
+                        <Frame>
+                            <FrameHeader>
+                                <SubHeading1>
+                                    Choose a Shipping Option
+                                </SubHeading1>
+                            </FrameHeader>
+                            <FrameBody>
+                                <ShippingOption />
+                            </FrameBody>
+                        </Frame>
+                    )
+                }
+                {/* <div style={{position: 'absolute', top: 380, left: 300}}>
                     { step > 1 && <AnimatedButton big handleClick={() => buttonClick('PREV_STEP')} text="PREV" ></AnimatedButton> }
                     { step < 4 && <AnimatedButton big handleClick={() => buttonClick('NEXT_STEP')} text="NEXT" ></AnimatedButton> }
-                </div>
+                </div> */}
             </>
         )
     }
@@ -137,41 +176,41 @@ const Steps = styled.div`
    transform: translateX(80px);
 `
 
-const Frame = styled.div`
-    margin-top: 130px;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 550px;
-    padding: 20px 70px;
-    border: 1px solid #DBDBDB;
-    border-radius: 25px;
-    min-height: 320px;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-`
-const FrameHeader = styled.div`
-        padding: 40px 0px;
-        flex: 1;
-`
+// const Frame = styled.div`
+//     margin-top: 130px;
+//     margin-left: auto;
+//     margin-right: auto;
+//     max-width: 550px;
+//     padding: 20px 70px;
+//     border: 1px solid #DBDBDB;
+//     border-radius: 25px;
+//     min-height: 320px;
+//     display: flex;
+//     justify-content: space-between;
+//     flex-direction: column;
+// `
+// const FrameHeader = styled.div`
+//         padding: 40px 0px;
+//         flex: 1;
+// `
 
-const FrameBody = styled.div`
-    flex: 6;
-`
+// const FrameBody = styled.div`
+//     flex: 6;
+// `
 
-const FrameFooter = styled.div`
-    flex: 0.5;
-    height: 70px;
-    ${'' /* border-top: 1px gray solid; */}
-    display: flex;
-    justify-content: space-between;
-    margin-top: 30px;
-    padding: 20px 0px;
-`
-const ButtonRow = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    float: right;
-    width: 100%;
-`
+// const FrameFooter = styled.div`
+//     flex: 0.5;
+//     height: 70px;
+//     ${'' /* border-top: 1px gray solid; */}
+//     display: flex;
+//     justify-content: space-between;
+//     margin-top: 30px;
+//     padding: 20px 0px;
+// `
+// const ButtonRow = styled.div`
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: flex-end;
+//     float: right;
+//     width: 100%;
+// `

@@ -7,7 +7,8 @@ const checkoutReducer = (state, action) => {
         case 'GUEST_CHECKOUT':
         return {
             ...state,
-            guest: true
+            guest: true,
+            step: 2
         }
         case 'NEXT_STEP':
         return {

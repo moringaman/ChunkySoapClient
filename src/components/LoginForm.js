@@ -46,7 +46,7 @@ const views = forms.views
                         </div>
                         <ButtonRow>
                             <AnimatedButton type="submit" text="Sign In" med><User /></AnimatedButton><br />
-                            <AnimatedButton text="Guest Checkout" secondary med handleClick={() => cartDispatch({type: 'GUEST_CHECKOUT'})}><ArrowRight/></AnimatedButton>
+                            <AnimatedButton type="button" text="Guest Checkout" secondary med handleClick={() => props.dispatch({type: 'GUEST_CHECKOUT'})}><ArrowRight/></AnimatedButton>
                         </ButtonRow>
                 </form>
             </div>
