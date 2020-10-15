@@ -43,6 +43,12 @@
         ],
             "register": [
             {
+                "placeholder": "Your Username",
+                "label": "Username",
+                "type": "text",
+                "name": "username"
+            },
+            {
                 "placeholder": "example@gmail.com",
                 "label": "Email Address",
                 "type": "text",

@@ -6,7 +6,7 @@ import { Heading2, Heading1, SubHeading1 } from '../styles/typography'
 import { Divider } from '../styles/ui/basket'
 import { checkoutReducer, LoginForm, EditBilling } from './'
 import styled from 'styled-components'
-import { auth, request, myApi } from '../helpers/'
+import { auth, request, myApi, Strapi } from '../helpers/'
 import { FrameHeader , Frame, FrameBody} from '../styles/layout'
 
 
@@ -37,6 +37,7 @@ import { FrameHeader , Frame, FrameBody} from '../styles/layout'
     const [cartState, cartDispatch] = useReducer(checkoutReducer, initialState)
     const { step, authenticated, guest, postage, fields: { email, password, register, username } } = cartState
     const dispatch = useDispatch()
+    const strapi = new Strapi(dispatch)
 
         useEffect(() => {
            const userInfo = auth.getUserInfo()
@@ -107,6 +108,8 @@ import { FrameHeader , Frame, FrameBody} from '../styles/layout'
             cartDispatch({type: 'LOGGED_IN'})
                 if (register === true) {
                     createCustomer(response.user.id)
+                } else {
+                    dispatch({type: "SET_USER_SESSION", payload: response})
                 }
             }).catch((err) => {
             console.log(err);
