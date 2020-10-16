@@ -4,27 +4,52 @@
         "addressForm": [
             {
                 "placeholder": "",
+                "label": "Title",
+                "type": "text",
+                "name": "customer_title",
+                "width": "20%" 
+            },
+            {
+                "placeholder": "",
+                "label": "Firstname",
+                "type": "text",
+                "name": "customer_firstname",
+                "width": "40%" 
+            },
+            {
+                "placeholder": "",
+                "label": "Lastname",
+                "type": "text",
+                "name": "customer_lastname",
+                "width": "40%"
+            },
+            {
+                "placeholder": "",
                 "label": "Address 1",
                 "type": "text",
-                "name": "customer_address1"
+                "name": "customer_address1",
+                "width": "50%" 
             },
             {
                 "placeholder": "",
                 "label": "Address 2",
                 "type": "text",
-                "name": "customer_address2"
+                "name": "customer_address2",
+                "width": "50%"
             },
             {
                 "placeholder": "",
                 "label": "Town / City",
                 "type": "text",
-                "name": "customer_town"
+                "name": "customer_town",
+                "width": "50%" 
             },
             {
                 "placeholder": "",
                 "label": "Postcode",
                 "type": "text",
-                "name": "customer_postcode"
+                "name": "customer_postcode",
+                "width": "30%"
             }
         ],
         "login": [

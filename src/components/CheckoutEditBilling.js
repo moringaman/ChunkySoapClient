@@ -6,6 +6,7 @@ import { AnimatedButton, SimpleTextInput } from '../components/ui'
 import forms from '../containers/forms.json'
 import { Edit3, ArrowRight } from 'react-feather'
 import { myApi } from '../helpers/'
+import * as fn from '../helpers/functions'
 
 const EditBilling = ({user, buttonClick}) => {
 
@@ -23,16 +24,16 @@ const EditBilling = ({user, buttonClick}) => {
 
     useEffect(() => {
         console.log("USER DETAILS", user)
-        if (user.customer_address2 = "") {
+        if (user.customer_town == "") {
             setEditing(true)
         }
-    }, [])
+    }, [user])
 
     const submitForm = async(e) => {
         setLoading(true)
         e.preventDefault()
             console.log("SUBMITTING FORM")
-        const res = await myApi.send('/customers/5f81aa5ebc96a90e4cdf88ea', 'PUT', address)
+        const res = await myApi.send(`/customers/${user._id}`, 'PUT', address)
         console.log("NEW ADDRESS ", res)
         dispatch({type: 'SET_USER_SESSION', payload: res})
         setEditing(false)
@@ -79,11 +80,12 @@ const EditBilling = ({user, buttonClick}) => {
         return (
             <Frame>
                 <FrameHeader>
-                    <SubHeading1>Please Provide a Billing Address</SubHeading1>
+                    <SubHeading1>Please provide a billing address</SubHeading1>
                 <Divider/>
                 </FrameHeader>
                     <FrameBody>
                         <form onSubmit={(e) => submitForm(e)}>
+                            <div style={{display: 'flex', flexDirection: 'row', width: '100%', flexWrap: 'wrap', justifyContent:'flex-start', alignItems: 'flex-start'}}>
                             {
                                 views.addressForm.map((el, i) => ( 
                                     <SimpleTextInput 
@@ -93,9 +95,11 @@ const EditBilling = ({user, buttonClick}) => {
                                         key={i}
                                         handleChange={(e) => handleInputChange(e)}
                                         required
+                                        cols={el.width}
                                     />
                                 ))
                             }
+                            </div>
                         <ButtonRow>
                             <AnimatedButton big secondary text="Cancel" handleClick={() => setEditing(false)}><Edit3/></AnimatedButton>
                             <AnimatedButton big text="Save" type="submit" ></AnimatedButton>
@@ -108,7 +112,7 @@ const EditBilling = ({user, buttonClick}) => {
 
     return (
         <>
-        { (user && !editing) &&
+        { (user.customer_firstname && !editing) &&
             renderAddress()
         }
         {

@@ -24,6 +24,7 @@ const Navbar = (props) => {
 
     const { basket } = useSelector(state => state.basket) 
     const { categories } = useSelector(state => state.categories || [] )
+    const { user } = useSelector(state => state.user || {}) 
     console.log("CATS ", basket)
     const [ basketTotal, setBasketTotal ] = useState(0)
     // const [basketValue] = useSelector(state => state.basket[products])
@@ -59,7 +60,7 @@ const Navbar = (props) => {
                         Categories
                 </PageLink>
                 </li>
-            <li>Sign In</li>
+            <li>{ !user === {} ?  'Sign In'  : 'Sign Out'}</li>
             <li><AnimatedButton sml text="New Account"><User /></AnimatedButton></li>
             <li>
                 <PageLink to="/basket">

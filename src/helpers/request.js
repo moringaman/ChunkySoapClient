@@ -57,6 +57,7 @@ export default function request(
   stringify = true
 ) {
   // Set headers
+  console.log("REQUEST FUNCTION ", url, options)
   if (stringify) {
 
     options.headers = Object.assign(

@@ -1,34 +1,39 @@
 import { auth, request, myApi } from './'
 
-class Strapi {
-    constructor(dispatch) {
-        this.dipatch = dispatch || {}
-        this.API_URI = process.env.API_URI || 'http://localhost:1337'
-    }
 
-    async login({identifier, password} = {}) {
+ export default {
+
+
+    async login(body, dispatch) {
+    const API_URI = process.env.API_URI || 'http://localhost:1337'
         try {
+            console.log("STRAPI LOGIN ", body)
             const response = await request(`${API_URI}/auth/local/`, { method: 'POST', body})
+            console.log("STRAPI RESPONSE ", response)
             auth.setToken(response.jwt, body.rememberMe);
             auth.setUserInfo(response.user, body.rememberMe);
-            this.dispatch({type: "SET_USER_SESSION", payload: res})
+            dispatch({type: "SET_USER_SESSION", payload: response})
+            return response
         }catch(err) {
             return err
         }
-    }
+    },
 
-    async register() {
+    async register(body, dispatch) {
+            const API_URI = process.env.API_URI || 'http://localhost:1337'
         try {
             const response = await request(`${API_URI}/auth/local/register/`, { method: 'POST', body})
             auth.setToken(response.jwt, body.rememberMe);
             auth.setUserInfo(response.user, body.rememberMe);
-            this.createCustomer(response.user.id)
+            console.log("NEW USER ", response.user)
+            this.createCustomer(response.user.id, dispatch)
         } catch(err) {
             return(err)
         }
-    }
+    },
 
-    async createCustomer(_id) {
+    async createCustomer(_id, dispatch) {
+        console.log("CREATING CUSTOMER")
         const customer = {
             customer_title: "",
             customer_firstname: "",
@@ -41,12 +46,10 @@ class Strapi {
             user: _id
         }
         try {
-            const res = await myApi.send('http://localhost:1337/customer', 'POST', customer)
-            this.dispatch({type: "SET_USER_SESSION", payload: res})
+            const res = await myApi.send('/customers', 'POST', customer)
+            dispatch({type: "SET_USER_SESSION", payload: res})
         } catch (err) {
             return(err)
         }
     }
 }
-
-export default Strapi

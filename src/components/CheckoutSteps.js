@@ -4,10 +4,11 @@ import { Check, Edit3, ArrowRight } from 'react-feather'
 import { WxStep, SimpleTextInput, AnimatedButton , ShippingOption} from '../components/ui'
 import { Heading2, Heading1, SubHeading1 } from '../styles/typography'
 import { Divider } from '../styles/ui/basket'
-import { checkoutReducer, LoginForm, EditBilling } from './'
+import { checkoutReducer, LoginForm, EditBilling, ShippingOptions } from './'
 import styled from 'styled-components'
-import { auth, request, myApi, Strapi } from '../helpers/'
+import { auth, request, myApi, strapi } from '../helpers/'
 import { FrameHeader , Frame, FrameBody} from '../styles/layout'
+import * as fn from '../helpers/functions'
 
 
     const steps = [
@@ -35,25 +36,20 @@ import { FrameHeader , Frame, FrameBody} from '../styles/layout'
     }
     const { user } = useSelector(state => state.user)
     const [cartState, cartDispatch] = useReducer(checkoutReducer, initialState)
-    const { step, authenticated, guest, postage, fields: { email, password, register, username } } = cartState
+    const { step, authenticated, guest, postage, loading, fields: { email, password, register, username } } = cartState
     const dispatch = useDispatch()
-    const strapi = new Strapi(dispatch)
 
         useEffect(() => {
            const userInfo = auth.getUserInfo()
-           if (userInfo ) {
+           if (!fn.isEmpty(userInfo) ) {
                cartDispatch({type: 'LOGGED_IN'})
                const query = `?_where[user._id]=${userInfo._id}`
              apiCall(query)
            }
            console.log("USER SESSION ", userInfo)
 
-        }, [])
+        }, [,authenticated])
 
-        useEffect(() => {
-                console.log("CART STATE: ", cartState)
-                console.log("USER", user)
-        }, [authenticated])
 
         const apiCall = async(query) => {
             try {
@@ -73,48 +69,65 @@ import { FrameHeader , Frame, FrameBody} from '../styles/layout'
             cartDispatch({type: 'UPDATE_FIELD', fieldName: name, fieldValue: checked })
             return
         }
-        cartDispatch({type: 'UPDATE_FIELD', fieldName: name, fieldValue: value})
+            cartDispatch({type: 'UPDATE_FIELD', fieldName: name, fieldValue: value})
     }
 
-    const createCustomer = async(_id) => {
-        const customer = {
-            customer_title: "",
-            customer_firstname: "",
-            customer_lastname: "",
-            customer_address1: "",
-            customer_address2: "",
-            customer_town: "",
-            customer_postcode: "",
-            customer_created: new Date(),
-            user: _id
-        }
-        const res = await myApi.send('http://localhost:1337/customer', 'POST', customer)
-        dispatch({type: "SET_USER_SESSION", payload: res})
-    }
+    // const createCustomer = async(_id) => {
+    //     const customer = {
+    //         customer_title: "",
+    //         customer_firstname: "",
+    //         customer_lastname: "",
+    //         customer_address1: "",
+    //         customer_address2: "",
+    //         customer_town: "",
+    //         customer_postcode: "",
+    //         customer_created: new Date(),
+    //         user: _id
+    //     }
+    //     const res = await myApi.send('http://localhost:1337/customer', 'POST', customer)
+    //     dispatch({type: "SET_USER_SESSION", payload: res})
+    // }
     
-
-    const handleLogin = (e) => {
+    const handleStrapiLogin = async(e) => {
         e.preventDefault()
-        console.log("LOGGING IN USER with ", email, password)
-        const body = {identifier: email, password: password, username: username};
-        const requestURL = register ? 'http://localhost:1337/auth/local/register/' : 'http://localhost:1337/auth/local/';
-
-        request(requestURL, { method: 'POST', body})
-            .then((response) => {
-            auth.setToken(response.jwt, body.rememberMe);
-            auth.setUserInfo(response.user, body.rememberMe);
-            // set user info in state
-            // Create new customer associated with response users id 
+        cartDispatch({type: 'LOGGING_IN'})
+        if(register === true) {
+            console.log("REGISTERING NEW USER")
+        const body = {email: email, password: password, username: username};
+           await strapi.register(body, dispatch)
             cartDispatch({type: 'LOGGED_IN'})
-                if (register === true) {
-                    createCustomer(response.user.id)
-                } else {
-                    dispatch({type: "SET_USER_SESSION", payload: response})
-                }
-            }).catch((err) => {
-            console.log(err);
-            });
+
+        } else {
+            console.log("LOGGING IN USER with ", email, password)
+            await strapi.login(body, dispatch)
+            const body = {identifier: email, password: password, username: username};
+            cartDispatch({type: 'LOGGED_IN'})
+        }
     }
+
+    // const handleLogin = (e) => {
+    //     e.preventDefault()
+    //     console.log("LOGGING IN USER with ", email, password)
+    //     const body = {identifier: email, password: password, username: username};
+    //     const requestURL = register ? 'http://localhost:1337/auth/local/register/' : 'http://localhost:1337/auth/local/';
+
+    //     request(requestURL, { method: 'POST', body})
+    //         .then((response) => {
+    //         auth.setToken(response.jwt, body.rememberMe);
+    //         auth.setUserInfo(response.user, body.rememberMe);
+    //         // set user info in state
+    //         // Create new customer associated with response users id 
+    //         cartDispatch({type: 'LOGGED_IN'})
+    //             if (register === true) {
+    //                 createCustomer(response.user.id)
+    //             } else {
+    //                 cartDispatch({type: 'LOGGED_IN'})
+    //                 dispatch({type: "SET_USER_SESSION", payload: response})
+    //             }
+    //         }).catch((err) => {
+    //         console.log(err);
+    //         });
+    // }
 
     
     const buttonClick = (action) => {
@@ -132,7 +145,13 @@ import { FrameHeader , Frame, FrameBody} from '../styles/layout'
                 </Steps>
                 { (step === 1 && !authenticated) &&
                     <>
-                        <LoginForm handleChange={handleChange} handleLogin={handleLogin} dispatch={cartDispatch} data={cartState.fields}/>
+                        <LoginForm 
+                            handleChange={handleChange}
+                            handleLogin={handleStrapiLogin} 
+                            dispatch={cartDispatch} 
+                            data={cartState.fields}
+                            loading={cartState.loading}
+                            />
                     </>
                 }
                 {
@@ -154,15 +173,11 @@ import { FrameHeader , Frame, FrameBody} from '../styles/layout'
                                 </SubHeading1>
                             </FrameHeader>
                             <FrameBody>
-                                <ShippingOption />
+                                <ShippingOptions dispatch={cartDispatch}/>
                             </FrameBody>
                         </Frame>
                     )
                 }
-                {/* <div style={{position: 'absolute', top: 380, left: 300}}>
-                    { step > 1 && <AnimatedButton big handleClick={() => buttonClick('PREV_STEP')} text="PREV" ></AnimatedButton> }
-                    { step < 4 && <AnimatedButton big handleClick={() => buttonClick('NEXT_STEP')} text="NEXT" ></AnimatedButton> }
-                </div> */}
             </>
         )
     }

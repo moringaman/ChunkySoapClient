@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 export const getCartTotal = (cart, postage = 0, tax = 0) => {
   if (cart.length) {
         const totals = cart.map(item => item.total_price)
@@ -7,4 +9,8 @@ export const getCartTotal = (cart, postage = 0, tax = 0) => {
     return basketValue
   }
   return 0.00
+}
+
+export const isEmpty = (data) => {
+  return _.isEmpty(data)
 }

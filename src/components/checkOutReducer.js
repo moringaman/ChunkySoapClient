@@ -20,11 +20,20 @@ const checkoutReducer = (state, action) => {
                 ...state,
                 step: state.step - 1
             }
+        case "LOGGING_IN":
+            return {
+                ...state,
+                authenticated: false,
+                guest: false,
+                loading: true,
+            }
         case "LOGGED_IN":
             return {
                 ...state,
                 authenticated: true,
-                guest: false
+                guest: false,
+                loading: false,
+                fields: {}
             }
 
         case 'UPDATE_FIELD':
