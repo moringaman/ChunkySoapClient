@@ -4,7 +4,7 @@ import { Check, Edit3, ArrowRight } from 'react-feather'
 import { WxStep, SimpleTextInput, AnimatedButton , ShippingOption} from '../components/ui'
 import { Heading2, Heading1, SubHeading1 } from '../styles/typography'
 import { Divider } from '../styles/ui/basket'
-import { checkoutReducer, LoginForm, EditBilling, ShippingOptions } from './'
+import { checkoutReducer, LoginForm, EditBilling, ShippingOptions, StripePay } from './'
 import styled from 'styled-components'
 import { auth, request, myApi, strapi } from '../helpers/'
 import { FrameHeader , Frame, FrameBody} from '../styles/layout'
@@ -26,13 +26,13 @@ import * as fn from '../helpers/functions'
         authenticated: false,
         guest: false,
         loading: false,
-        postage: 'standard',
+        postage: {},
         fields: {
             register: false,
             identifier: '',
             password: '',
             username: ''
-        }
+        },
     }
     const { user } = useSelector(state => state.user)
     const [cartState, cartDispatch] = useReducer(checkoutReducer, initialState)
@@ -49,7 +49,9 @@ import * as fn from '../helpers/functions'
            console.log("USER SESSION ", userInfo)
 
         }, [,authenticated])
-
+        useEffect(() => {
+            console.log("CART DATA IS ", cartState, user)
+        }, [cartState])
 
         const apiCall = async(query) => {
             try {
@@ -173,9 +175,16 @@ import * as fn from '../helpers/functions'
                                 </SubHeading1>
                             </FrameHeader>
                             <FrameBody>
-                                <ShippingOptions dispatch={cartDispatch}/>
+                                <ShippingOptions dispatch={dispatch} cartDispatch={cartDispatch} />
                             </FrameBody>
                         </Frame>
+                    )
+                }
+                {
+                    step === 3 && (
+                        <>
+                        <StripePay cartDispatch={cartDispatch} />
+                        </>
                     )
                 }
             </>

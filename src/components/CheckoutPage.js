@@ -14,7 +14,7 @@ const CheckoutPage = () => {
 // do logged in check
     const { basket } = useSelector(state => state.basket)
     const [ total, setTotal ] = useState(0)
-    const [ postage, setPostage ] = useState(0)
+    const [ postage, setPostage ] = useState(0.00)
 
     const initialState = {
         step: 1
@@ -24,8 +24,9 @@ const CheckoutPage = () => {
 
     console.log("CART STATE " , cartState)
     useEffect(() => {
-        if (fn.getCartTotal(basket.products) < 25) {
-            setPostage(4.50)
+        if (fn.getCartTotal(basket.products) < 25 || basket.postage > 4 ) {
+            console.log("BASKET POSTAGE ", basket.postage)
+            setPostage(basket.postage || 0.00)
         } else {
             setPostage(0)
         }
@@ -116,7 +117,7 @@ const CheckoutPage = () => {
                             Subtotal: &pound; {fn.getCartTotal(basket.products).toFixed(2) }
                     </ProductRow>
                     <ProductRow narrow>
-                            Postage: &pound;{fn.getCartTotal(basket.products) < 25 ? 4.50.toFixed(2) : 0.00.toFixed(2)}
+                            Postage: &pound;{postage.toFixed(2)}
                     </ProductRow>
                     <ProductRow narrow>
                             Sales Tax: &pound; {0.00.toFixed(2)}

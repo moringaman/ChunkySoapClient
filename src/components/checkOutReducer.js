@@ -35,6 +35,11 @@ const checkoutReducer = (state, action) => {
                 loading: false,
                 fields: {}
             }
+        case "SET_POSTAGE":
+            return {
+                ...state,
+                postage: action.payload
+            }
 
         case 'UPDATE_FIELD':
             console.log("UPDATING IN REDUCER", action.fieldName, action.fieldValue)

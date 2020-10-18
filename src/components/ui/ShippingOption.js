@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import styled, {css} from 'styled-components'
-import { SubHeading1 } from '../../styles/typography'
+import { SubHeading1, Paragraph } from '../../styles/typography'
 
 const ShippingOption = ({option, checked, selected, ...rest}) => {
     
@@ -9,7 +9,6 @@ const ShippingOption = ({option, checked, selected, ...rest}) => {
        checked(_id)
    }
     return (
-            <>
        <Label htmlFor={option.id} selected={selected === option.id}>
        <Option
         type='radio'
@@ -18,10 +17,13 @@ const ShippingOption = ({option, checked, selected, ...rest}) => {
         value={option.id}
         onChange={() => handleSelection(option.id)}
        />
-       {option.shipping_carrier}<br/>
-        {option.shipping_description}
+       <div style={{display: 'flex', flexDirection: 'column'}}>
+        <Paragraph>
+            {option.shipping_carrier} - {option.shipping_description}<br />
+            Price:  &pound; {option.shipping_cost.toFixed(2)}
+        </Paragraph>
+       </div>
        </Label>
-    </>
     )
 }
 
@@ -35,11 +37,12 @@ const Option = styled.input`
 
 const Label = styled.label`
     width: 550px;
-    height: 40px;
-    padding: 30px;
+    height: 80px;
+    padding: 10px 30px;
     border: 3px #F7F2F2 solid;
     border-radius: 10px;
     margin: 10px 0px 0px 0px;
+    cursor: pointer;
     ${props => props.selected && css`
         border: 3px #79CBB7 solid;
     `}
