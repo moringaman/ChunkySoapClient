@@ -1,0 +1,1 @@
+export { default as payment_intents } from './payment_intents'

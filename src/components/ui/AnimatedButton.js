@@ -26,7 +26,7 @@ const AnimatedButton = ({...props}) => {
         <WxButton fixed {...props} onClick={() => props.handleClick()} >
           <div className="button-content">
                 <div>
-                    {props.loading ? renderLoader() : props.text }
+                    {props.loading === true ? renderLoader() : props.text }
                 </div>
                 <div>
                     {props.children || <Check />}

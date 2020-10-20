@@ -3,6 +3,12 @@ import React from 'react';
 import { StaticRouter } from 'react-router-dom';
 import express from 'express';
 import { renderToString } from 'react-dom/server';
+import { payment_intents } from '../src/api'
+
+const stripeCallHandler = (req, res) => {
+  console.log("STRIPE HANDLER ", req.query.data)
+  res.status(200).json(JSON.parse(req.query.data))
+}
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 
@@ -10,6 +16,8 @@ const server = express();
 server
   .disable('x-powered-by')
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
+  .get('/api/stripe-payment', stripeCallHandler)
+  .get('/api/payment_intents', payment_intents)
   .get('/*', (req, res) => {
     const context = {};
     const markup = renderToString(

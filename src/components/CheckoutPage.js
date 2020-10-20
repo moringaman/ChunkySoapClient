@@ -67,12 +67,6 @@ const CheckoutPage = () => {
                 <CheckoutWrapper>
                     <CheckoutActions>
                         <CheckoutSteps />
-                        {/* <Steps>
-                        { steps.map(step => 
-                            <WxStep label={step.label} step={cartState.step} number={step.no} key={step.no}/>
-                        )
-                        }
-                        </Steps> */}
                     </CheckoutActions>
                     <BasketSection style={{borderLeft: '1px solid #D8D8D8'}}>
                 <BasketWrapper style={{transform: 'translateY(-120px)'}}>
@@ -154,7 +148,7 @@ const CheckoutActions = styled.div`
 const BasketSection = styled.div`
     flex: 1.3;
     ${'' /* border: 1px solid gray; */}
-    min-width: 350px;
+    min-width: 450px;
     min-height: 800px;
     padding: 20px 10px;
        &::-webkit-scrollbar {

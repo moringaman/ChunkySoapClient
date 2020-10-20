@@ -62,4 +62,7 @@ export const Paragraph = styled.p`
         font-size: 22px;
         color: ${vars.palette.colorGray2};
     `}
+    ${props => props.danger && css`
+            color: red;
+    `}
 `

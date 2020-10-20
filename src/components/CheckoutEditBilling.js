@@ -8,7 +8,7 @@ import { Edit3, ArrowRight } from 'react-feather'
 import { myApi } from '../helpers/'
 import * as fn from '../helpers/functions'
 
-const EditBilling = ({user, buttonClick}) => {
+const EditBilling = ({user, cartState, buttonClick}) => {
 
     const {views} = forms
     const [ editing, setEditing ] = useState(false)
@@ -32,10 +32,14 @@ const EditBilling = ({user, buttonClick}) => {
     const submitForm = async(e) => {
         setLoading(true)
         e.preventDefault()
+        if(cartState.authenticated) {
             console.log("SUBMITTING FORM")
-        const res = await myApi.send(`/customers/${user._id}`, 'PUT', address)
-        console.log("NEW ADDRESS ", res)
-        dispatch({type: 'SET_USER_SESSION', payload: res})
+            const res = await myApi.send(`/customers/${user._id}`, 'PUT', address)
+            console.log("NEW ADDRESS ", res)
+            dispatch({type: 'SET_USER_SESSION', payload: res})
+        } else {
+            dispatch({type: 'SET_USER_SESSION', payload: address})
+        }
         setEditing(false)
         setLoading(false)
     }
@@ -68,7 +72,7 @@ const EditBilling = ({user, buttonClick}) => {
                             </FrameBody>
                         <FrameFooter >
                         <ButtonRow>
-                            <AnimatedButton big secondary text="change" handleClick={() => setEditing(true)}><Edit3/></AnimatedButton>
+                            <AnimatedButton big secondary text="change"  handleClick={() => setEditing(true)}><Edit3/></AnimatedButton>
                             <AnimatedButton big text="confirm" handleClick={() => buttonClick('NEXT_STEP')}><ArrowRight></ArrowRight></AnimatedButton>
                         </ButtonRow>
                         </FrameFooter>
@@ -102,7 +106,7 @@ const EditBilling = ({user, buttonClick}) => {
                             </div>
                         <ButtonRow>
                             <AnimatedButton big secondary text="Cancel" handleClick={() => setEditing(false)}><Edit3/></AnimatedButton>
-                            <AnimatedButton big text="Save" type="submit" ></AnimatedButton>
+                            <AnimatedButton big text="Save" type="submit" loading={loading} ></AnimatedButton>
                         </ButtonRow>
                         </form>
                     </FrameBody>
