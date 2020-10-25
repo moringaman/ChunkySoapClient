@@ -1,12 +1,10 @@
-import React, {useState, useReducer, useEffect} from 'react'
+import React, {useReducer, useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Check, Edit3, ArrowRight } from 'react-feather'
-import { WxStep, SimpleTextInput, AnimatedButton , ShippingOption} from '../components/ui'
-import { Heading2, Heading1, SubHeading1 } from '../styles/typography'
-import { Divider } from '../styles/ui/basket'
+import { WxStep} from '../components/ui'
+import { SubHeading1 } from '../styles/typography'
 import { checkoutReducer, LoginForm, EditBilling, ShippingOptions, StripePay, CheckoutSuccess } from './'
 import styled from 'styled-components'
-import { auth, request, myApi, strapi } from '../helpers/'
+import { auth, myApi, strapi } from '../helpers/'
 import { FrameHeader , Frame, FrameBody} from '../styles/layout'
 import * as fn from '../helpers/functions'
 
@@ -22,21 +20,22 @@ import * as fn from '../helpers/functions'
     const CheckoutSteps = () => {
 
     const initialState = {
-        step: 4,
+        step: 1,
         authenticated: false,
-        guest: false,
+        guest: null,
         loading: false,
         postage: {},
         fields: {
             register: false,
             identifier: '',
             password: '',
+            password_confirmation: '',
             username: ''
         },
     }
     const { user } = useSelector(state => state.user)
     const [cartState, cartDispatch] = useReducer(checkoutReducer, initialState)
-    const { step, authenticated, guest, postage, loading, fields: { email, password, register, username } } = cartState
+    const { step, authenticated, guest, postage, loading, fields: { email, password, register, username, password_confirmation } } = cartState
     const dispatch = useDispatch()
 
         useEffect(() => {
@@ -80,6 +79,10 @@ import * as fn from '../helpers/functions'
         e.preventDefault()
         cartDispatch({type: 'LOGGING_IN'})
         if(register === true) {
+            if(password !== password_confirmation) {
+                console.log("PASSWORDS MUST MATCH ")
+                return
+            }
             console.log("REGISTERING NEW USER")
         const body = {email: email, password: password, username: username};
            await strapi.register(body, dispatch)
@@ -107,7 +110,7 @@ import * as fn from '../helpers/functions'
                         )
                     }
                 </Steps>
-                { (step === 1 && !authenticated) &&
+                { (step === 1 && !authenticated && guest === null) &&
                     <>
                         <LoginForm 
                             handleChange={handleChange}
@@ -119,11 +122,9 @@ import * as fn from '../helpers/functions'
                     </>
                 }
                 {
-                    (step === 1 && authenticated ) &&
+                    (step === 1 && authenticated || step === 1 && guest === true) &&
                     <>
-                        { user && 
-                        <EditBilling user={user} cartState={cartState} buttonClick={buttonClick} />
-                         }
+                        <EditBilling user={user} cartState={cartState} buttonClick={buttonClick} cartDispatch={cartDispatch} />
                     </>
                 }
                 {

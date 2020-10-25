@@ -1,14 +1,22 @@
-import React from 'react'
+import React, { useEffect} from 'react'
+import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 import { Layers } from 'react-feather'
 import Button from '../styles/components/button'
 import AddToCart from '../components/ui/AddToCartBtn'
 import AnimatedButton from '../components/ui/AnimatedButton'
 import ProductFrame from '../styles/ui/productFrame'
+import { ButtonRow } from '../styles/layout'
 import { Heading1, Heading2, Paragraph } from '../styles/typography'
+import * as fn from '../helpers/functions'
 
 const ProductPreview = (props) => {
 
+    const { basket } = useSelector(state => state.basket)
+
+    useEffect(() => {
+        console.log("PREVEW BASKET", basket.products)
+    }, [basket])
     // const router = useRouter()
     const { id, product_picture_1, product_name, product_short_description, product_long_description, product_price, product_discount } = props.product
     return (
@@ -34,20 +42,21 @@ const ProductPreview = (props) => {
                     <Heading1>&pound;{(product_price - (product_price * product_discount / 100)).toFixed(2)}</Heading1>
                     </div>
                     </InlinePrices>
-                    <AnimatedButton text="More info" med 
-                        style={{position: 'absolute', bottom: 20, right: 230, maxWidth: 30}}
-                        handleClick={() => props.viewProduct(id)}
-                    >
-                        <Layers/>
-                    </AnimatedButton>
-                    {/* <Button med onClick={() => props.viewProduct(id)}
-                        style={{position: 'absolute', bottom: 20, right: 190}}
-                    >
-                       Info 
-                    </Button> */}
-                    <div style={{position: 'absolute', bottom: 20, right: 425}}>
-                    <AddToCart  product={props.product} function="add"/>
-                    </div>
+                    <ButtonRow >
+                        <AddToCart  product={props.product} function="add"/>
+                        {  basket.products.length > 0  &&
+                            <AnimatedButton text="View cart" med 
+                                handleClick={() => props.viewProduct(id)}
+                            >
+                                <Layers/>
+                            </AnimatedButton>
+                        }
+                        <AnimatedButton text="More info" med 
+                            handleClick={() => props.viewProduct(id)}
+                        >
+                            <Layers/>
+                        </AnimatedButton>
+                    </ButtonRow>
                 </ProductText>
             </ProductInfo>
         </>
@@ -60,6 +69,7 @@ const ProductInfo = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    min-height: 400px;
 `
 const ProductText = styled.div`
     display: flex;

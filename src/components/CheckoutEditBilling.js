@@ -8,7 +8,7 @@ import { Edit3, ArrowRight } from 'react-feather'
 import { myApi } from '../helpers/'
 import * as fn from '../helpers/functions'
 
-const EditBilling = ({user, cartState, buttonClick}) => {
+const EditBilling = ({user, cartState, cartDispatch, buttonClick}) => {
 
     const {views} = forms
     const [ editing, setEditing ] = useState(false)
@@ -24,10 +24,10 @@ const EditBilling = ({user, cartState, buttonClick}) => {
 
     useEffect(() => {
         console.log("USER DETAILS", user)
-        if (user.customer_town == "") {
+        if (fn.isEmpty(user) || user.customer_town == "") {
             setEditing(true)
         }
-    }, [user])
+    }, [, user])
 
     const submitForm = async(e) => {
         setLoading(true)
@@ -103,10 +103,24 @@ const EditBilling = ({user, cartState, buttonClick}) => {
                                     />
                                 ))
                             }
+                            {
+                                !cartState.authenticated && 
+                                <SimpleTextInput
+                                    placeholder='example@gmail.com'
+                                    label="Email Address"
+                                    name="email"
+                                    handleChange={(e) => handleInputChange(e)}
+                                    required
+                                    cols='100%'
+                                 />
+                            }
                             </div>
                         <ButtonRow>
-                            <AnimatedButton big secondary text="Cancel" handleClick={() => setEditing(false)}><Edit3/></AnimatedButton>
-                            <AnimatedButton big text="Save" type="submit" loading={loading} ></AnimatedButton>
+                        { cartState.guest ?
+                             <AnimatedButton big secondary text="Back" handleClick={() => cartDispatch({type: 'STANDARD_CHECKOUT'})}><Edit3/></AnimatedButton>
+                            : <AnimatedButton big secondary text="Cancel" handleClick={() => setEditing(false)}><Edit3/></AnimatedButton>
+                        }
+                            <AnimatedButton big text="Save" type="submit" loading={loading.toString()} ></AnimatedButton>
                         </ButtonRow>
                         </form>
                     </FrameBody>
@@ -120,7 +134,7 @@ const EditBilling = ({user, cartState, buttonClick}) => {
             renderAddress()
         }
         {
-            (user && editing) && 
+            (editing) && 
             renderForm()
         }
         </>

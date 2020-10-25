@@ -13,6 +13,7 @@ const StripePay = ({cartDispatch}) => {
     const { user } = useSelector(state => state.user)
     const [ isLoading, setIsLoading ] = useState(false)
     const [ errorMessage, setErrorMessage ] = useState("")
+    const [ cartTotal, setCartTotal ] = useState(0.00)
     const elements = useElements()
     const stripe = useStripe()
 
@@ -21,6 +22,8 @@ const StripePay = ({cartDispatch}) => {
 
     useEffect(() => {
         console.log('PAYMENT BASKET', basket, "USER", user)
+        const totalToPay = fn.getCartTotal(products, postage)
+        setCartTotal(totalToPay.toFixed(2))
     }, [basket])
 
     const createOrder = (completed) => {
@@ -72,7 +75,7 @@ const StripePay = ({cartDispatch}) => {
         redirect: 'follow',
         };
 
-        const result = await fetch(`/api/payment_intents/?amount=${1300}`, requestOptions)
+        const result = await fetch(`/api/payment_intents/?amount=${cartTotal*100}`, requestOptions)
         const clientSecret = await result.text()
         console.log("STRIPE ENDPOINT ", clientSecret) // error handle
         // setErrorMessage(errorHandle(clientSecret))
@@ -102,8 +105,9 @@ const StripePay = ({cartDispatch}) => {
             
                 console.log(confirmedCardPayment)
                 setIsLoading(false)
+                //  Mark order as completed in database
                 // Payment completed step redirect to success step
-                cartDispatch({type: "NEXT_STEP"})
+                cartDispatch({type: "CHECKOUT_SUCCESS"})
         } catch (err) {
             console.log("PAYMENT REQ ERR ", err)
                 setIsLoading(false)
@@ -130,7 +134,7 @@ const StripePay = ({cartDispatch}) => {
             <FrameFooter>
                 <ButtonRow>
                     <AnimatedButton secondary big type="button" big text='Back'></AnimatedButton>
-                    <AnimatedButton loading={isLoading} type="submit" big text={"Pay " + "\u00A3" + fn.getCartTotal(products, postage)} ></AnimatedButton>
+                    <AnimatedButton loading={isLoading} type="submit" big text={"Pay " + "\u00A3" + cartTotal} ></AnimatedButton>
                 </ButtonRow>
             </FrameFooter>
             </form>

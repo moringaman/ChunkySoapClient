@@ -45,7 +45,7 @@ export const Frame = styled.div`
     margin: 130px auto 50px auto;
     max-width: 650px;
     padding: 20px 50px;
-    border: 1px solid #DBDBDB;
+    ${'' /* border: 1px solid #DBDBDB; */}
     border-radius: 25px;
     min-height: 320px;
     display: flex;
@@ -76,7 +76,7 @@ export const ButtonRow = styled.div`
     flex-direction: row;
     justify-content: flex-end;
     float: right;
-    width: 100%;
+    width: 105%;
 `
 export const Divider = styled.div`
     width: 100%;

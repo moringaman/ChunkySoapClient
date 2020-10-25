@@ -116,7 +116,7 @@ const AddToCart = (props) => {
             withIcon={props.icon}
             style={{maxWidth: 200}} 
             handleClick={addToCart} 
-            text={!added ? 'Add to cart' : 'Add another'}
+            text={!added ? 'Add to cart' : 'Add more'}
         >
             {loading &&  renderLoader() }
             {!loading && <ShoppingCart />}
