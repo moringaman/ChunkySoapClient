@@ -75,7 +75,7 @@ const ModalMain = styled.div`
   position: relative;
   margin: 50vh auto;
   border-radius: 3px;
-  max-width: 980px;
+  max-width: 1000px;
   min-height: 400px;
   padding: 3.0rem;
   border-radius: 25px;

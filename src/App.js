@@ -10,6 +10,7 @@ import Basket from '../src/components/Basket';
 import Navbar from '../src/components/Navbar'
 import { loadStripe } from '@stripe/stripe-js'
 import { Elements } from '@stripe/react-stripe-js'
+import { WithNavbar } from '../src/components/layout'
 import { Container } from '../src/styles/layout'
 import './styles/global.css'
 const store = createStore(combineReducers)
@@ -22,12 +23,13 @@ const App = () => (
   <Provider store={store}>
     {/* <Container> */}
     <Elements stripe={stripePromise}>
-      <Navbar />
         <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route path="/basket" component={Basket} />
-          <Route path="/checkout" component={CheckoutPage} />
-          <Route path="/product/:_id" component={ProductPage} />
+          <WithNavbar color="light">
+            <Route exact path="/" component={HomePage} />
+            <Route path="/basket" component={Basket} />
+            <Route path="/checkout" component={CheckoutPage} />
+            <Route path="/product/:_id" exact component={ProductPage} />
+            </WithNavbar>
         </Switch>
     </Elements>
     {/* </Container> */}

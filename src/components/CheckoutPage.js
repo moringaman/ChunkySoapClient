@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useReducer } from 'react'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
-import { Container , Section} from '../styles/layout'
+import { Container , Section, Wrapper} from '../styles/layout'
 import { WxStep, SimpleTextInput } from '../components/ui'
 import { checkoutReducer, CheckoutSteps } from './'
 import { ProductFrame, Bubble, Step } from '../styles/ui'
@@ -63,7 +63,7 @@ const CheckoutPage = () => {
         </Section>
         <Section light height={1900}>
             <Container>
-                <Heading1>Checkout</Heading1>
+                    <Heading1>Checkout</Heading1>
                 <CheckoutWrapper>
                     <CheckoutActions>
                         <CheckoutSteps />
@@ -135,6 +135,8 @@ export default CheckoutPage
 const CheckoutWrapper = styled.div`
     display: flex;
     flex-wrap: wrap;
+    width: 90%;
+    margin: 50px auto;
 `
 
 const CheckoutActions = styled.div`

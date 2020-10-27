@@ -9,3 +9,5 @@ const WithNavbar = (props) => {
         </>
     )
 }
+
+export default WithNavbar

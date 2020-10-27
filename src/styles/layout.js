@@ -3,9 +3,13 @@ import * as vars from './variables'
 
 export const Container = styled.div`
   width: 100%;
-  max-width: 1480px;
   margin-left: auto;
   margin-right: auto;
+  ${props => props.location && (props.location.includes('product') && props.nav === true)  && css`
+        max-width: 100%;
+        background-color: ${vars.palette.primaryColor};
+        `
+}
 `
 export const Section = styled.div`
     max-width: 100%;
@@ -23,6 +27,12 @@ export const Section = styled.div`
     `}
     overflow: hidden;
 `
+
+export const Wrapper = styled.div`
+    max-width: 1294px;
+    margin: 0px auto;
+`
+
 export const Hero = styled.div`
     width: 100%;
     height: 800px;
@@ -32,8 +42,8 @@ export const Hero = styled.div`
 `
 
 export const SlideGrid = styled.div`
-    max-width: 100%;
-    ${'' /* height: 400px; */}
+    max-width: 1294px;
+    margin: 0px auto;
     padding: 140px 100px 50px 100px;
     background-color: white;
     display: flex;
@@ -76,7 +86,7 @@ export const ButtonRow = styled.div`
     flex-direction: row;
     justify-content: flex-end;
     float: right;
-    width: 105%;
+    width: 100%;
 `
 export const Divider = styled.div`
     width: 100%;

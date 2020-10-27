@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import * as vars from '../styles/variables'
 import { BannerHeading, Heading1, Heading2, Paragraph } from '../styles/typography'
 import { ShoppingCart } from 'react-feather'
-import { Container , Section} from '../styles/layout'
+import { Container , Section, Wrapper} from '../styles/layout'
 import { ProductFrame, Bubble } from '../styles/ui'
 import AnimatedButton from '../components/ui/AnimatedButton'
 import AddToCart from '../components/ui/AddToCartBtn'
@@ -60,7 +60,7 @@ const Basket = (props) => {
             <img src="/oversholder.webp" alt="girl-pic" style={{position: 'absolute', top: 31, left: 560, maxHeight: 320}}/>
         </Section>
         <Section light color={'white'} height={1000}>
-            <Container>
+            <Wrapper>
                 <Heading1>Your Basket</Heading1>
                 <BasketWrapper>
                 <ProductRow>
@@ -134,7 +134,7 @@ const Basket = (props) => {
                             </AnimatedButton>
                     </ProductRow>
                 </BasketWrapper>
-            </Container>
+            </Wrapper>
         </Section>
         </>
     )

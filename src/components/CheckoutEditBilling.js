@@ -24,7 +24,7 @@ const EditBilling = ({user, cartState, cartDispatch, buttonClick}) => {
 
     useEffect(() => {
         console.log("USER DETAILS", user)
-        if (fn.isEmpty(user) || user.customer_town == "") {
+        if (!user._id || user.customer_firstname === "") {
             setEditing(true)
         }
     }, [, user])
@@ -130,7 +130,7 @@ const EditBilling = ({user, cartState, cartDispatch, buttonClick}) => {
 
     return (
         <>
-        { (user.customer_firstname && !editing) &&
+        { (!editing) &&
             renderAddress()
         }
         {

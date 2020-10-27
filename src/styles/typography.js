@@ -26,34 +26,43 @@ export const BannerHeading2 = styled.h3`
     line-height: 200%;
 `
 export const Heading1 = styled.h1`
-    font-size: 31.9px;
+    font-size: 48.9px;
     font-weight: 600;
     margin-bottom: 5px;
-    color: ${vars.palette.colorGray2};
+    color: ${vars.palette.colorGray3};
     ${props => props.light && css`
         color: white;
     `}
 `
 export const Heading2 = styled.h2`
-    font-size: 22.6px;
+    font-size: 28.6px;
     ${'' /* line-height: 20px; */}
     font-weight: 400;
     margin-bottom: 5px;
-    color: ${vars.palette.colorGray2};
+    color: ${vars.palette.colorGray4};
     ${props => props.dark && css`
         color: ${vars.palette.colorGray1};
     ` }
 `
 
+export const Heading3 = styled.h1`
+    font-size: 22.9px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: ${vars.palette.colorGray3};
+    ${props => props.light && css`
+        color: white;
+    `}
+`
 export const SubHeading1 = styled.h3`
     font-size: 28px;
     font-weight: 400;
     margin-bottom: 15px;
-    color: ${vars.palette.colorGray6.orGray3};
+    color: ${vars.palette.colorGray6};
 `
 
 export const Paragraph = styled.p`
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 400;
     margin-bottom: 20px;
     margin-top: 20px;

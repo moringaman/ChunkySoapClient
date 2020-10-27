@@ -3,12 +3,16 @@ import * as vars from '../variables'
 import PageLink from '../../components/ui/PageLink'
 
 const TopNav = styled.div`
-    width: 100%;
+    width: 80%;
+    margin: 0px auto;
     height: 70px;
     background-color: white;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    ${props => props.location.includes('product') && css`
+        background-color: ${vars.palette.primaryColor};
+    `}
     
 `
 export const NavList = styled.ul`

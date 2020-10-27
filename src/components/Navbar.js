@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
+import { useHistory } from 'react-router'
 import TopNav, { NavList} from '../styles/components/topnav'
 import * as vars from '../styles/variables'
 import PageLink from './ui/PageLink'
@@ -12,6 +13,8 @@ import styled from 'styled-components'
 
 const Navbar = (props) => {
     const dispatch = useDispatch()
+    const history = useHistory()
+
     useEffect(() => {
         if (process.browser) {
         const cartInStorage = localStorage.getItem('soap-cart')
@@ -20,6 +23,7 @@ const Navbar = (props) => {
             dispatch({type: 'SET_INITIAL_BASKET', payload: JSON.parse(cartInStorage)})
             }
         }
+        console.log("NAV HIST ", history.location.pathname)
     }, [])
 
     const { basket } = useSelector(state => state.basket) 
@@ -46,8 +50,8 @@ const Navbar = (props) => {
 
     return (
         
-        <Container>
-        <TopNav>
+        <Container nav={true} location={history.location.pathname}>
+        <TopNav location={history && history.location.pathname}>
         {/* <CategoryMenu><Pointer /></CategoryMenu>  */}
         <Logo>
             Chunky Soap Co
@@ -61,7 +65,7 @@ const Navbar = (props) => {
                 </PageLink>
                 </li>
             <li>{ !user === {} ?  'Sign In'  : 'Sign Out'}</li>
-            <li><AnimatedButton sml text="New Account"><User /></AnimatedButton></li>
+            <li><AnimatedButton primary sml text="New Account"><User /></AnimatedButton></li>
             <li>
                 <PageLink to="/basket">
                 {/* <PageLink to="/basket" withMenu menuTitle="Cart Items" menuData={basket.products}> */}

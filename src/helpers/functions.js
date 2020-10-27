@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import _, { stubString } from 'lodash'
 
 export const getCartTotal = (cart, postage = 0, tax = 0) => {
   if (cart.length) {
@@ -13,4 +13,8 @@ export const getCartTotal = (cart, postage = 0, tax = 0) => {
 
 export const isEmpty = (data) => {
   return _.isEmpty(data)
+}
+
+export const createExcerpt = (string, length) => {
+  return string.length > length ? string.substring(0, length - 3 ) + '...  ' : string + " "
 }
