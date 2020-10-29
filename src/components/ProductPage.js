@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import {  MinusCircle, PlusCircle, CreditCard, ArrowLeft } from 'react-feather'
 import { Heading1, Heading2, Heading3, Paragraph } from '../styles/typography'
@@ -15,6 +15,7 @@ import AnimatedButton from '../components/ui/AnimatedButton'
     const  { currentProduct } =  useSelector(({ currentProduct:{ currentProduct} }) => ({ currentProduct}))
     const [ quantity, setQuantity ] = useState(1)
     const dispatch = useDispatch()
+    const history = useHistory()
 
     useEffect(() => {
         apiCall()
@@ -45,11 +46,11 @@ import AnimatedButton from '../components/ui/AnimatedButton'
             <img src="/drips-dark.svg" style={{ position: 'absolute', right: 0, top: 70, width: 500, zIndex: 1 }}/>
         <Container>
             <Wrapper>
-                <Section light height={950} >
+                <Section light height={1050} >
                     {
                         currentProduct &&
                         <>
-                            <div style={{padding: '30px 0px 100px 0px', maxWidth: 700, zIndex: 10000, position: 'relative'}}>
+                            <div style={{padding: '30px 0px 100px 0px', maxWidth: 800, zIndex: 1000, position: 'relative'}}>
                                 <Heading1>{product_name}</Heading1>
                                 <Heading2 light>{product_short_description}</Heading2>
                             </div>
@@ -90,7 +91,7 @@ import AnimatedButton from '../components/ui/AnimatedButton'
                                         </div>
                                         <ButtonRow>
                                             <AnimatedButton  big text="Back"><ArrowLeft /></AnimatedButton>
-                                            <AnimatedButton big primary text="Checkout"><CreditCard/></AnimatedButton>
+                                            <AnimatedButton big primary text="View Basket" handleClick={() => history.push('/basket')}><CreditCard/></AnimatedButton>
                                         </ButtonRow>
                                 </div>
                             </div>

@@ -17,7 +17,7 @@ const  WxButton = styled.button`
         font-size: 18px;
     }
     ${props => props.fixed && css`
-        min-width: 180px;
+        min-width: 190px;
         max-height: 42px;
         `}
     ${props => props.big && css`

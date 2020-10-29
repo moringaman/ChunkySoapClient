@@ -2,7 +2,8 @@ const initialState = {
     basket: {
         products: [],
         total: 0,
-        postage: 0
+        postage: 0,
+        carrierId: null
     }
 }
 
@@ -44,7 +45,8 @@ export default function basketReducer(state=initialState, action) {
                 ...state,
                 basket: {
                     ...state.basket,
-                    postage: action.payload
+                    postage: action.payload.shipping_cost,
+                    carrierId: action.payload.id 
                 }
             }
             default:

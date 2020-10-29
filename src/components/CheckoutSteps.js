@@ -65,8 +65,6 @@ import * as fn from '../helpers/functions'
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target
-        console.log("TARGET ", checked)
-        console.log("EVENT ", value, name)
         if (type === 'checkbox') {
             cartDispatch({type: 'UPDATE_FIELD', fieldName: name, fieldValue: checked })
             return

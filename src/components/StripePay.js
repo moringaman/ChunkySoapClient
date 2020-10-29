@@ -7,6 +7,7 @@ import { SubHeading1, Paragraph } from '../styles/typography'
 import { Frame, FrameHeader, FrameBody, FrameFooter, ButtonRow } from '../styles/layout'
 import * as vars from '../styles/variables'
 import * as fn from '../helpers/functions'
+import { myApi } from '../helpers/'
 
 const StripePay = ({cartDispatch}) => {
     const { basket } = useSelector(state => state.basket)
@@ -14,11 +15,12 @@ const StripePay = ({cartDispatch}) => {
     const [ isLoading, setIsLoading ] = useState(false)
     const [ errorMessage, setErrorMessage ] = useState("")
     const [ cartTotal, setCartTotal ] = useState(0.00)
+    const [ orderId, setOrderId ] = useState(null)
     const elements = useElements()
     const stripe = useStripe()
 
     const { customer_title, customer_firstname, customer_lastname, customer_email, customer_address1, customer_address2, customer_postcode, customer_town } = user
-    const { postage, products } = basket
+    const { postage, products, carrierId } = basket
 
     useEffect(() => {
         console.log('PAYMENT BASKET', basket, "USER", user)
@@ -26,8 +28,31 @@ const StripePay = ({cartDispatch}) => {
         setCartTotal(totalToPay.toFixed(2))
     }, [basket])
 
-    const createOrder = (completed) => {
+     useEffect(() => {
+        cartTotal > 0 && createOrder()
+     },[cartTotal])
+
+    const createOrder = async(completed=false) => {
         // create new temporary order before payment created to confirm
+        // TODO: Only do this if cart in local storage
+        if (orderId) return
+        const newOrder = {
+            order_customer: user._id,
+            order_total: cartTotal,
+            order_date: new Date(),
+            order_dispatched: false,
+            order_confirmed: completed,
+            order_items: basket,
+            order_postage: postage,
+            order_carrier: carrierId
+        }
+        try {
+            const { id } = await myApi.send('/orders', 'POST', newOrder)
+            setOrderId(id)
+        } catch (err) {
+            console.log("ERROR CREATING ORDER ", err)
+        }
+        console.log("ORDER OBJECT ", newOrder)
     }
 
     const errorHandle = (response) => {
@@ -75,7 +100,7 @@ const StripePay = ({cartDispatch}) => {
         redirect: 'follow',
         };
 
-        const result = await fetch(`/api/payment_intents/?amount=${cartTotal*100}`, requestOptions)
+        const result = await fetch(`/api/payment_intents/?amount=${(cartTotal*100).toFixed(0)}`, requestOptions)
         const clientSecret = await result.text()
         console.log("STRIPE ENDPOINT ", clientSecret) // error handle
         // setErrorMessage(errorHandle(clientSecret))
@@ -106,6 +131,11 @@ const StripePay = ({cartDispatch}) => {
                 console.log(confirmedCardPayment)
                 setIsLoading(false)
                 //  Mark order as completed in database
+                const data = {
+                    order_confirmed: true
+                }
+                await myApi.send(`/orders/${orderId}`, 'PUT', data)
+                // Remove cart from local storage
                 // Payment completed step redirect to success step
                 cartDispatch({type: "CHECKOUT_SUCCESS"})
         } catch (err) {
@@ -133,8 +163,8 @@ const StripePay = ({cartDispatch}) => {
             </FrameBody>
             <FrameFooter>
                 <ButtonRow>
-                    <AnimatedButton secondary big type="button" big text='Back'></AnimatedButton>
-                    <AnimatedButton loading={isLoading} type="submit" big text={"Pay " + "\u00A3" + cartTotal} ></AnimatedButton>
+                    <AnimatedButton secondary big type="button" big text='Back' handleClick={() => cartDispatch({type: 'PREV_STEP'})}></AnimatedButton>
+                    <AnimatedButton loading={isLoading.toString()} type="submit" big text={"Pay " + "\u00A3" + cartTotal} ></AnimatedButton>
                 </ButtonRow>
             </FrameFooter>
             </form>

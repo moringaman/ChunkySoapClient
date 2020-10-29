@@ -22,7 +22,6 @@ const CheckoutPage = () => {
 
     const [cartState, cartDispatch] = useReducer(checkoutReducer, initialState)
 
-    console.log("CART STATE " , cartState)
     useEffect(() => {
         if (fn.getCartTotal(basket.products) < 25 || basket.postage > 4 ) {
             console.log("BASKET POSTAGE ", basket.postage)
@@ -38,7 +37,6 @@ const CheckoutPage = () => {
     }, [postage])
 
     const handleChange = (e) => {
-        console.log("EVENT ", e.target.value, e.target.name)
     }
 
     const steps = [

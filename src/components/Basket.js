@@ -22,12 +22,12 @@ const Basket = (props) => {
 
 
     useEffect(() => {
-        if (fn.getCartTotal(basket.products) < 25 && basket.postage < 4) {
+        // if (fn.getCartTotal(basket.products) < 25 && basket.postage < 4) {
             console.log("BASKET POSTAGE", basket.postage)
             setPostage(basket.postage || 0.00)
-        } else {
-            setPostage(0)
-        }
+        // } else {
+        //     setPostage(0)
+        // }
         setTotal(fn.getCartTotal(basket.products, postage))
     }, [basket])
 
@@ -107,7 +107,7 @@ const Basket = (props) => {
                         <Divider />
                     </ProductRow>
                     <ProductRow narrow>
-                            Postage: &pound;{fn.getCartTotal(basket.products) < 25 ? postage.toFixed(2) : 0.00.toFixed(2)}
+                            Postage: &pound;{postage.toFixed(2)}
                     </ProductRow>
                     <ProductRow narrow>
                             Sales Tax: &pound; {0.00.toFixed(2)}

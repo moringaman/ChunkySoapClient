@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 import { ShippingOption, AnimatedButton } from '../components/ui'
 import { ButtonRow } from '../styles/layout'
-import { myApi } from '../helpers'
+import * as fn from '../helpers/functions'
 
 const ShippingOptions = ({dispatch, cartDispatch}) => {
-
     const [options, setOptions ] = useState([])
     const [currentOption, setCurrentOption ] = useState()
+    const { basket } = useSelector(state => state.basket)
 
     useEffect(() => {
         apiCall()
@@ -15,9 +16,16 @@ const ShippingOptions = ({dispatch, cartDispatch}) => {
     useEffect(() => {
          const shippingDetails = options.find(el => el._id === currentOption)
          console.log("selected shipping ", shippingDetails)
+         let shippingCost = 0
          if (shippingDetails ) {
-            const shippingCost = shippingDetails.shipping_cost || 0
-            dispatch({type: "SET_POSTAGE", payload: shippingCost})
+             let {shipping_cost, id } = shippingDetails
+             if ((fn.getCartTotal(basket.products) > 25) && (shipping_cost < 4)) {
+                 console.log("CART_TOTAL ", fn.getCartTotal(basket.products))
+                shippingCost = 0
+             } else {
+                shippingCost = shipping_cost 
+             }
+            dispatch({type: "SET_POSTAGE", payload: {shipping_cost:shippingCost, id} })
             cartDispatch({type: "SET_POSTAGE", payload: shippingDetails})
             console.log("COST ", shippingCost)
          }

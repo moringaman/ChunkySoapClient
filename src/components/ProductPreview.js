@@ -50,7 +50,7 @@ const ProductPreview = (props) => {
                     <ButtonRow >
                         <AddToCart  product={props.product} function="add"/>
                         {  basket.products.length > 0  &&
-                            <AnimatedButton tertiary text="View Basket" med 
+                            <AnimatedButton tertiary fixed text="View Basket" med 
                                 handleClick={() => history.push('/basket')}
                             >
                                 <Layers/>
