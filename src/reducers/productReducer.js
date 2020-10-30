@@ -1,5 +1,5 @@
 const initialState = {
-    products: []
+    products: [],
 }
 export default function productReducer(state = initialState, action) {
     console.log("FETCH", action.payload)

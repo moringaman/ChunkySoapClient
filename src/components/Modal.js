@@ -19,8 +19,11 @@ const Modal = ({ isShowing, hide, ...rest }) =>
             // onClick={hide}
           >
             <ModalMain className="modal">
+            <CloseButton
+              onClick={hide}
+            ><Cross/></CloseButton>
               <div className="modal-header">
-                <AnimatedButton
+                {/* <AnimatedButton
                   med
                   secondary
                   type="button"
@@ -31,7 +34,7 @@ const Modal = ({ isShowing, hide, ...rest }) =>
                   text="Close"
                 >
                 <X/>
-                </AnimatedButton>
+                </AnimatedButton> */}
               </div>
               {rest.children}
             </ModalMain>
@@ -72,7 +75,7 @@ const ModalMain = styled.div`
   position: relative;
   margin: 50vh auto;
   border-radius: 3px;
-  max-width: 980px;
+  max-width: 1000px;
   min-height: 400px;
   padding: 3.0rem;
   border-radius: 25px;
@@ -80,3 +83,41 @@ const ModalMain = styled.div`
   overflow: hidden;
 `
 
+const CloseButton = styled.button`
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  background-color: gray;
+  color: white;
+  position: absolute;
+  border-radius: 50%;
+  right: 20px;
+  top: 20px;
+  border: none;
+  z-index: 1000;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+  &:hover {
+    background-color: black;
+  }
+`
+const Cross = styled.div`
+    :after, :before { 
+    width: 15px;
+    height: 3px;
+    background-color: white; 
+    position: relative;
+    left: 8px;
+    top: 13px;
+   }
+  &::after{
+    content: '';
+    transform: rotate(-45deg);
+    position: absolute;
+  }
+  &::before {
+    content: '';
+    transform: rotate(45deg);
+    position: absolute;
+  }
+`

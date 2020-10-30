@@ -7,7 +7,7 @@ import Loader from 'react-loader-spinner'
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import { ShoppingCart, Trash2 } from 'react-feather'
 
-const AddToCart = (props) => {
+const AddToCart = props  => {
     
     const { basket } = useSelector(state => state.basket)
 
@@ -16,7 +16,7 @@ const AddToCart = (props) => {
     const [ loading, setLoading ] = useState(false)
     const [ added, setAdded ] = useState(false)
     const { _id, product_name, product_short_description, product_price, product_picture_1, product_discount } = props.product
-
+    const { quantity = 1} = props
   useEffect(() => {
     if (process.browser) {
       const cartInStorage = localStorage.getItem('soap-cart')
@@ -67,7 +67,7 @@ const AddToCart = (props) => {
 
         setLoading(true)
         setTimeout(() => {
-
+        console.log(quantity)
        
       const adjustedPrice = parseFloat(product_price - (product_price * product_discount) / 100)
 
@@ -77,7 +77,7 @@ const AddToCart = (props) => {
           product_description: product_short_description,
           product_picture_1: product_picture_1.url,
           product_price: adjustedPrice,
-          product_qty: 1,
+          product_qty: quantity,
           total_price: adjustedPrice
         }
 
@@ -91,7 +91,7 @@ const AddToCart = (props) => {
          if (productInCart.length > 0) {
             const itemIndex = newCartArray.findIndex(item => item._id === _id)
             const item = newCartArray[itemIndex]
-            item.product_qty++
+            item.product_qty += quantity 
             item.total_price = parseFloat(item.product_price * item.product_qty)
             setCurrentCart(newCartArray)
             dispatch({type: 'ADD_TO_BASKET', payload: newCartArray})
@@ -112,18 +112,18 @@ const AddToCart = (props) => {
         <>
         {(props.function === 'add' && !props.icon) && 
 
-        <AnimatedButton med fixed 
+        <AnimatedButton primary med fixed 
             withIcon={props.icon}
             style={{maxWidth: 200}} 
             handleClick={addToCart} 
-            text={!added ? 'Add to cart' : 'Add another'}
+            text={!added ? 'Add to cart' : 'Add more'}
         >
             {loading &&  renderLoader() }
             {!loading && <ShoppingCart />}
         </AnimatedButton>
         }
         { (!props.icon && !props.function === 'add') &&
-        <AnimatedButton med fixed 
+        <AnimatedButton primary med fixed 
             withIcon={props.icon}
             style={{maxWidth: 200}} 
             handleClick={removeFromCart} 

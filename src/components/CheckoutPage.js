@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useReducer } from 'react'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
-import { Container , Section} from '../styles/layout'
+import { Container , Section, Wrapper} from '../styles/layout'
 import { WxStep, SimpleTextInput } from '../components/ui'
 import { checkoutReducer, CheckoutSteps } from './'
 import { ProductFrame, Bubble, Step } from '../styles/ui'
@@ -14,7 +14,7 @@ const CheckoutPage = () => {
 // do logged in check
     const { basket } = useSelector(state => state.basket)
     const [ total, setTotal ] = useState(0)
-    const [ postage, setPostage ] = useState(0)
+    const [ postage, setPostage ] = useState(0.00)
 
     const initialState = {
         step: 1
@@ -22,10 +22,10 @@ const CheckoutPage = () => {
 
     const [cartState, cartDispatch] = useReducer(checkoutReducer, initialState)
 
-    console.log("CART STATE " , cartState)
     useEffect(() => {
-        if (fn.getCartTotal(basket.products) < 25) {
-            setPostage(4.50)
+        if (fn.getCartTotal(basket.products) < 25 || basket.postage > 4 ) {
+            console.log("BASKET POSTAGE ", basket.postage)
+            setPostage(basket.postage || 0.00)
         } else {
             setPostage(0)
         }
@@ -36,9 +36,9 @@ const CheckoutPage = () => {
         setTotal(fn.getCartTotal(basket.products, postage))
     }, [postage])
 
-    const handleChange = (e) => {
-        console.log("EVENT ", e.target.value, e.target.name)
-    }
+    // const handleChange = (e) => {
+    //     console.log("EVENT ", e.target.value, e.target.name)
+    // }
 
     const steps = [
         {no: 1, label: 'Account'},   
@@ -62,16 +62,10 @@ const CheckoutPage = () => {
         </Section>
         <Section light height={1900}>
             <Container>
-                <Heading1>Checkout</Heading1>
+                    <Heading1>Checkout</Heading1>
                 <CheckoutWrapper>
                     <CheckoutActions>
                         <CheckoutSteps />
-                        {/* <Steps>
-                        { steps.map(step => 
-                            <WxStep label={step.label} step={cartState.step} number={step.no} key={step.no}/>
-                        )
-                        }
-                        </Steps> */}
                     </CheckoutActions>
                     <BasketSection style={{borderLeft: '1px solid #D8D8D8'}}>
                 <BasketWrapper style={{transform: 'translateY(-120px)'}}>
@@ -113,17 +107,17 @@ const CheckoutPage = () => {
                             <SimpleTextInput withButton buttonText="Apply" label="Redeem Coupon / Discount Code" type="text" placeholder="COUPON CODE" handleChange={() => {}}/>
                     </ProductRow>
                     <ProductRow narrow>
-                            Subtotal: &pound; {fn.getCartTotal(basket.products).toFixed(2) }
+                            Subtotal. &pound; {fn.getCartTotal(basket.products).toFixed(2) }
                     </ProductRow>
                     <ProductRow narrow>
-                            Postage: &pound;{fn.getCartTotal(basket.products) < 25 ? 4.50.toFixed(2) : 0.00.toFixed(2)}
+                            Postage. &pound;{postage.toFixed(2)}
                     </ProductRow>
                     <ProductRow narrow>
-                            Sales Tax: &pound; {0.00.toFixed(2)}
+                            Sales Tax. &pound; {0.00.toFixed(2)}
                     </ProductRow>
-                    <ProductRow narrow>
+                    <ProductRow >
                         <Heading1>
-                            Total: &pound;{total.toFixed(2)}
+                            Total. &pound;{total.toFixed(2)}
                         </Heading1>
                     </ProductRow>
                 </BasketWrapper>
@@ -140,21 +134,23 @@ export default CheckoutPage
 const CheckoutWrapper = styled.div`
     display: flex;
     flex-wrap: wrap;
+    max-width: 1394px;
+    margin: 50px auto;
 `
 
 const CheckoutActions = styled.div`
     width: 50%;
     min-width: 700px;
-    ${'' /* height: 800px; */}
     flex: 2;
-    ${'' /* border: 1px solid gray; */}
-    padding: 20px;
+    padding: 0px;
+    margin: 0px 10px 20px 10px;   
 `
 const BasketSection = styled.div`
     flex: 1.3;
     ${'' /* border: 1px solid gray; */}
-    min-width: 350px;
+    min-width: 450px;
     min-height: 800px;
+    margin-top: 40px;
     padding: 20px 10px;
        &::-webkit-scrollbar {
         display: none;

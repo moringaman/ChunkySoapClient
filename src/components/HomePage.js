@@ -85,7 +85,7 @@ export default function HomePage(props) {
               Natural soap bars & creams for all skin types
           </BannerHeading>
           <BannerHeading2>Because beauty is a fragile gift..</BannerHeading2>
-          <WxButton big>Shop Now</WxButton>
+          <WxButton primary big>Shop Now</WxButton>
         </div>
     {/* </Container> */}
     </Hero>

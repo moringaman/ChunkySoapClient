@@ -4,7 +4,7 @@ import * as vars from '../variables'
 const  WxButton = styled.button`
     padding: 8px 25px;
     border-radius: 50px;
-    background-color: ${vars.palette.secondayColor};
+    background-color: ${vars.palette.primaryColor};
     border: none;
     color: white;
     font-weight: 400;
@@ -17,7 +17,7 @@ const  WxButton = styled.button`
         font-size: 18px;
     }
     ${props => props.fixed && css`
-        min-width: 180px;
+        min-width: 190px;
         max-height: 42px;
         `}
     ${props => props.big && css`
@@ -70,7 +70,7 @@ const  WxButton = styled.button`
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transform: translateY(1px);
+            transform: translateY(3px);
         }
         & .button-content >* {
             font-weight: 400;
@@ -84,8 +84,14 @@ const  WxButton = styled.button`
     ${props => props.disabled && css`
         opacity: 0.3;
         `}
+    ${props => props.primary && css`
+        background-color: ${vars.palette.secondayColor}
+    `}
     ${props => props.secondary && css`
         background-color: ${vars.palette.colorGray5};
+    `}
+    ${props => props.tertiary && css `
+        background-color: ${vars.palette.tertiaryColor}
     `}
     ${'' /* &:hover .button-content {
         transition: all 0.1s ease-in-out;

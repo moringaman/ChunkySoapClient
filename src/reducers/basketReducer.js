@@ -1,7 +1,9 @@
 const initialState = {
     basket: {
         products: [],
-        total: 0
+        total: 0,
+        postage: 0,
+        carrierId: null
     }
 }
 
@@ -38,6 +40,15 @@ export default function basketReducer(state=initialState, action) {
                  ...state,
                  total: action.payload
              }
+        case 'SET_POSTAGE' :
+            return {
+                ...state,
+                basket: {
+                    ...state.basket,
+                    postage: action.payload.shipping_cost,
+                    carrierId: action.payload.id 
+                }
+            }
             default:
                 return state
     } 

@@ -8,7 +8,7 @@ import { Edit3, ArrowRight } from 'react-feather'
 import { myApi } from '../helpers/'
 import * as fn from '../helpers/functions'
 
-const EditBilling = ({user, buttonClick}) => {
+const EditBilling = ({user, cartState, cartDispatch, buttonClick}) => {
 
     const {views} = forms
     const [ editing, setEditing ] = useState(false)
@@ -24,18 +24,22 @@ const EditBilling = ({user, buttonClick}) => {
 
     useEffect(() => {
         console.log("USER DETAILS", user)
-        if (user.customer_town == "") {
+        if (!user._id && !user.customer_firstname) {
             setEditing(true)
         }
-    }, [user])
+    }, [, user])
 
     const submitForm = async(e) => {
         setLoading(true)
         e.preventDefault()
+        if(cartState.authenticated) {
             console.log("SUBMITTING FORM")
-        const res = await myApi.send(`/customers/${user._id}`, 'PUT', address)
-        console.log("NEW ADDRESS ", res)
-        dispatch({type: 'SET_USER_SESSION', payload: res})
+            const res = await myApi.send(`/customers/${user._id}`, 'PUT', address)
+            console.log("NEW ADDRESS ", res)
+            dispatch({type: 'SET_USER_SESSION', payload: res})
+        } else {
+            dispatch({type: 'SET_USER_SESSION', payload: address})
+        }
         setEditing(false)
         setLoading(false)
     }
@@ -68,7 +72,7 @@ const EditBilling = ({user, buttonClick}) => {
                             </FrameBody>
                         <FrameFooter >
                         <ButtonRow>
-                            <AnimatedButton big secondary text="change" handleClick={() => setEditing(true)}><Edit3/></AnimatedButton>
+                            <AnimatedButton big secondary text="change"  handleClick={() => setEditing(true)}><Edit3/></AnimatedButton>
                             <AnimatedButton big text="confirm" handleClick={() => buttonClick('NEXT_STEP')}><ArrowRight></ArrowRight></AnimatedButton>
                         </ButtonRow>
                         </FrameFooter>
@@ -99,10 +103,24 @@ const EditBilling = ({user, buttonClick}) => {
                                     />
                                 ))
                             }
+                            {
+                                !cartState.authenticated && 
+                                <SimpleTextInput
+                                    placeholder='example@gmail.com'
+                                    label="Email Address"
+                                    name="email"
+                                    handleChange={(e) => handleInputChange(e)}
+                                    required
+                                    cols='100%'
+                                 />
+                            }
                             </div>
                         <ButtonRow>
-                            <AnimatedButton big secondary text="Cancel" handleClick={() => setEditing(false)}><Edit3/></AnimatedButton>
-                            <AnimatedButton big text="Save" type="submit" ></AnimatedButton>
+                        { cartState.guest ?
+                             <AnimatedButton big secondary text="Back" handleClick={() => cartDispatch({type: 'STANDARD_CHECKOUT'})}><Edit3/></AnimatedButton>
+                            : <AnimatedButton big secondary text="Cancel" handleClick={() => setEditing(false)}><Edit3/></AnimatedButton>
+                        }
+                            <AnimatedButton big text="Save" type="submit" loading={loading ? 1 : undefined} ></AnimatedButton>
                         </ButtonRow>
                         </form>
                     </FrameBody>
@@ -112,11 +130,11 @@ const EditBilling = ({user, buttonClick}) => {
 
     return (
         <>
-        { (user.customer_firstname && !editing) &&
+        { (!editing) &&
             renderAddress()
         }
         {
-            (user && editing) && 
+            (editing) && 
             renderForm()
         }
         </>

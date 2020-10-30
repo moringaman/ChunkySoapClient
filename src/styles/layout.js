@@ -3,9 +3,13 @@ import * as vars from './variables'
 
 export const Container = styled.div`
   width: 100%;
-  max-width: 1480px;
   margin-left: auto;
   margin-right: auto;
+  ${props => props.location && (props.location.includes('product') && props.nav === true)  && css`
+        max-width: 100%;
+        background-color: ${vars.palette.primaryColor};
+        `
+}
 `
 export const Section = styled.div`
     max-width: 100%;
@@ -23,6 +27,12 @@ export const Section = styled.div`
     `}
     overflow: hidden;
 `
+
+export const Wrapper = styled.div`
+    max-width: 1294px;
+    margin: 0px auto;
+`
+
 export const Hero = styled.div`
     width: 100%;
     height: 800px;
@@ -32,8 +42,8 @@ export const Hero = styled.div`
 `
 
 export const SlideGrid = styled.div`
-    max-width: 100%;
-    ${'' /* height: 400px; */}
+    max-width: 1294px;
+    margin: 0px auto;
     padding: 140px 100px 50px 100px;
     background-color: white;
     display: flex;
@@ -42,10 +52,10 @@ export const SlideGrid = styled.div`
 `
 
 export const Frame = styled.div`
-    margin: 130px auto 50px auto;
+    margin: 80px auto 50px auto;
     max-width: 650px;
     padding: 20px 50px;
-    border: 1px solid #DBDBDB;
+    ${'' /* border: 1px solid #DBDBDB; */}
     border-radius: 25px;
     min-height: 320px;
     display: flex;
@@ -69,6 +79,7 @@ export const FrameFooter = styled.div`
     justify-content: space-between;
     margin-top: 30px;
     padding: 20px 0px;
+    border-top: 1px solid ${vars.palette.colorGray7};
 `
 export const ButtonRow = styled.div`
     margin-top: 20px;

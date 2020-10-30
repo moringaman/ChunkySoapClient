@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import * as vars from '../styles/variables'
 import { BannerHeading, Heading1, Heading2, Paragraph } from '../styles/typography'
 import { ShoppingCart } from 'react-feather'
-import { Container , Section} from '../styles/layout'
+import { Container , Section, Wrapper} from '../styles/layout'
 import { ProductFrame, Bubble } from '../styles/ui'
 import AnimatedButton from '../components/ui/AnimatedButton'
 import AddToCart from '../components/ui/AddToCartBtn'
@@ -22,11 +22,12 @@ const Basket = (props) => {
 
 
     useEffect(() => {
-        if (fn.getCartTotal(basket.products) < 25) {
-            setPostage(4.50)
-        } else {
-            setPostage(0)
-        }
+        // if (fn.getCartTotal(basket.products) < 25 && basket.postage < 4) {
+            console.log("BASKET POSTAGE", basket.postage)
+            setPostage(basket.postage || 0.00)
+        // } else {
+        //     setPostage(0)
+        // }
         setTotal(fn.getCartTotal(basket.products, postage))
     }, [basket])
 
@@ -59,7 +60,7 @@ const Basket = (props) => {
             <img src="/oversholder.webp" alt="girl-pic" style={{position: 'absolute', top: 31, left: 560, maxHeight: 320}}/>
         </Section>
         <Section light color={'white'} height={1000}>
-            <Container>
+            <Wrapper>
                 <Heading1>Your Basket</Heading1>
                 <BasketWrapper>
                 <ProductRow>
@@ -106,7 +107,7 @@ const Basket = (props) => {
                         <Divider />
                     </ProductRow>
                     <ProductRow narrow>
-                            Postage: &pound;{fn.getCartTotal(basket.products) < 25 ? 4.50.toFixed(2) : 0.00.toFixed(2)}
+                            Postage: &pound;{postage.toFixed(2)}
                     </ProductRow>
                     <ProductRow narrow>
                             Sales Tax: &pound; {0.00.toFixed(2)}
@@ -133,7 +134,7 @@ const Basket = (props) => {
                             </AnimatedButton>
                     </ProductRow>
                 </BasketWrapper>
-            </Container>
+            </Wrapper>
         </Section>
         </>
     )
