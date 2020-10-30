@@ -36,8 +36,9 @@ const CheckoutPage = () => {
         setTotal(fn.getCartTotal(basket.products, postage))
     }, [postage])
 
-    const handleChange = (e) => {
-    }
+    // const handleChange = (e) => {
+    //     console.log("EVENT ", e.target.value, e.target.name)
+    // }
 
     const steps = [
         {no: 1, label: 'Account'},   
@@ -133,23 +134,23 @@ export default CheckoutPage
 const CheckoutWrapper = styled.div`
     display: flex;
     flex-wrap: wrap;
-    width: 90%;
+    max-width: 1394px;
     margin: 50px auto;
 `
 
 const CheckoutActions = styled.div`
     width: 50%;
     min-width: 700px;
-    ${'' /* height: 800px; */}
     flex: 2;
-    ${'' /* border: 1px solid gray; */}
-    padding: 20px;
+    padding: 0px;
+    margin: 0px 10px 20px 10px;   
 `
 const BasketSection = styled.div`
     flex: 1.3;
     ${'' /* border: 1px solid gray; */}
     min-width: 450px;
     min-height: 800px;
+    margin-top: 40px;
     padding: 20px 10px;
        &::-webkit-scrollbar {
         display: none;

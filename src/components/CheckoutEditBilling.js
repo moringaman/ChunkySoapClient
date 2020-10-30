@@ -120,7 +120,7 @@ const EditBilling = ({user, cartState, cartDispatch, buttonClick}) => {
                              <AnimatedButton big secondary text="Back" handleClick={() => cartDispatch({type: 'STANDARD_CHECKOUT'})}><Edit3/></AnimatedButton>
                             : <AnimatedButton big secondary text="Cancel" handleClick={() => setEditing(false)}><Edit3/></AnimatedButton>
                         }
-                            <AnimatedButton big text="Save" type="submit" loading={loading.toString()} ></AnimatedButton>
+                            <AnimatedButton big text="Save" type="submit" loading={loading ? 1 : undefined} ></AnimatedButton>
                         </ButtonRow>
                         </form>
                     </FrameBody>

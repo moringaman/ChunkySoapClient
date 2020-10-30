@@ -65,7 +65,7 @@ const Navbar = (props) => {
                 </PageLink>
                 </li>
             <li>{ !user === {} ?  'Sign In'  : 'Sign Out'}</li>
-            <li><AnimatedButton primary sml text="New Account"><User /></AnimatedButton></li>
+            <li><AnimatedButton primary sml text="New Account" loading='false'><User /></AnimatedButton></li>
             <li>
                 <PageLink to="/basket">
                 {/* <PageLink to="/basket" withMenu menuTitle="Cart Items" menuData={basket.products}> */}

@@ -47,8 +47,8 @@ const views = forms.views
                             I Don't have an account create one <input type="checkbox" name="register" checked={props.data.register}  onChange={props.handleChange}/>
                         </div>
                         <ButtonRow>
-                            <AnimatedButton type="submit" text={props.data.register ? "Register" : "Sign In"} med loading={props.loading.toString()}><User /></AnimatedButton><br />
-                            <AnimatedButton type="button" text="Guest Checkout" secondary med handleClick={() => props.dispatch({type: 'GUEST_CHECKOUT'})}><ArrowRight/></AnimatedButton>
+                            <AnimatedButton type="submit" text={props.data.register ? "Register" : "Sign In"} med loading={props.loading ? 1 : undefined}><User /></AnimatedButton><br />
+                            <AnimatedButton type="button" text="Guest Checkout" loading="false" secondary med handleClick={() => props.dispatch({type: 'GUEST_CHECKOUT'})}><ArrowRight/></AnimatedButton>
                         </ButtonRow>
                 </form>
             </div>

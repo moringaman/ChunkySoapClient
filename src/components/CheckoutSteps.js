@@ -5,7 +5,7 @@ import { SubHeading1 } from '../styles/typography'
 import { checkoutReducer, LoginForm, EditBilling, ShippingOptions, StripePay, CheckoutSuccess } from './'
 import styled from 'styled-components'
 import { auth, myApi, strapi } from '../helpers/'
-import { FrameHeader , Frame, FrameBody} from '../styles/layout'
+import { FrameHeader , Frame, FrameBody } from '../styles/layout'
 import * as fn from '../helpers/functions'
 
 
@@ -115,7 +115,7 @@ import * as fn from '../helpers/functions'
                             handleLogin={handleStrapiLogin} 
                             dispatch={cartDispatch} 
                             data={cartState.fields}
-                            loading={cartState.loading}
+                            loading={cartState.loading ? 1 : undefined}
                             />
                     </>
                 }

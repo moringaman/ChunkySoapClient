@@ -164,7 +164,7 @@ const StripePay = ({cartDispatch}) => {
             <FrameFooter>
                 <ButtonRow>
                     <AnimatedButton secondary big type="button" big text='Back' handleClick={() => cartDispatch({type: 'PREV_STEP'})}></AnimatedButton>
-                    <AnimatedButton loading={isLoading.toString()} type="submit" big text={"Pay " + "\u00A3" + cartTotal} ></AnimatedButton>
+                    <AnimatedButton loading={isLoading} type="submit" big text={"Pay " + "\u00A3" + cartTotal} ></AnimatedButton>
                 </ButtonRow>
             </FrameFooter>
             </form>
