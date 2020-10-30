@@ -24,7 +24,7 @@ const EditBilling = ({user, cartState, cartDispatch, buttonClick}) => {
 
     useEffect(() => {
         console.log("USER DETAILS", user)
-        if (!user._id || user.customer_firstname === "") {
+        if (!user._id && !user.customer_firstname) {
             setEditing(true)
         }
     }, [, user])

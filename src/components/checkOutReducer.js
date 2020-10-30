@@ -34,6 +34,12 @@ const checkoutReducer = (state, action) => {
                 guest: false,
                 loading: true,
             }
+        case "LOGIN_FAIL":
+            return {
+                ...state,
+                loading: false,
+                errorMsg: action.payload
+            }
         case "LOGGED_IN":
             return {
                 ...state,

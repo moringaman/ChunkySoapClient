@@ -52,7 +52,7 @@ export const SlideGrid = styled.div`
 `
 
 export const Frame = styled.div`
-    margin: 130px auto 50px auto;
+    margin: 80px auto 50px auto;
     max-width: 650px;
     padding: 20px 50px;
     ${'' /* border: 1px solid #DBDBDB; */}
@@ -79,6 +79,7 @@ export const FrameFooter = styled.div`
     justify-content: space-between;
     margin-top: 30px;
     padding: 20px 0px;
+    border-top: 1px solid ${vars.palette.colorGray7};
 `
 export const ButtonRow = styled.div`
     margin-top: 20px;

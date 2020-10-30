@@ -107,17 +107,17 @@ const CheckoutPage = () => {
                             <SimpleTextInput withButton buttonText="Apply" label="Redeem Coupon / Discount Code" type="text" placeholder="COUPON CODE" handleChange={() => {}}/>
                     </ProductRow>
                     <ProductRow narrow>
-                            Subtotal: &pound; {fn.getCartTotal(basket.products).toFixed(2) }
+                            Subtotal. &pound; {fn.getCartTotal(basket.products).toFixed(2) }
                     </ProductRow>
                     <ProductRow narrow>
-                            Postage: &pound;{postage.toFixed(2)}
+                            Postage. &pound;{postage.toFixed(2)}
                     </ProductRow>
                     <ProductRow narrow>
-                            Sales Tax: &pound; {0.00.toFixed(2)}
+                            Sales Tax. &pound; {0.00.toFixed(2)}
                     </ProductRow>
-                    <ProductRow narrow>
+                    <ProductRow >
                         <Heading1>
-                            Total: &pound;{total.toFixed(2)}
+                            Total. &pound;{total.toFixed(2)}
                         </Heading1>
                     </ProductRow>
                 </BasketWrapper>

@@ -24,6 +24,7 @@ import * as fn from '../helpers/functions'
         authenticated: false,
         guest: null,
         loading: false,
+        errorMsg: '',
         postage: {},
         fields: {
             register: false,
@@ -88,9 +89,14 @@ import * as fn from '../helpers/functions'
 
         } else {
             console.log("LOGGING IN USER with ", email, password)
-            await strapi.login(body, dispatch)
             const body = {identifier: email, password: password, username: username};
-            cartDispatch({type: 'LOGGED_IN'})
+            try {
+                await strapi.login(body, dispatch)
+                cartDispatch({type: 'LOGGED_IN'})
+            } catch (err) {
+                console.log(err)
+                cartDispatch({type: 'LOGIN_FAIL', payload: err})
+            }
         }
     }
 
