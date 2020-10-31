@@ -10,8 +10,7 @@ import { Bubble } from '../styles/ui'
 import { SectionHeading } from '../styles/typography'
 import ProductSlider from '../components/ui/ProductSlider'
 import WxButton from '../styles/components/button'
-import Modal from '../components/Modal'
-import ProductPreview from '../components/ProductPreview'
+import { Modal, OptIn, ProductPreview } from '../components'
 import ProductItem from '../components/ui/ProductItem'
 import useModal from '../hooks/useModal'
 import { useDispatch, useSelector } from 'react-redux'
@@ -120,6 +119,7 @@ export default function HomePage(props) {
       }
       </ProductSlider>
     </Container>
+    <OptIn />
     <Modal isShowing={isShowing} hide={toggle}>
     <ProductPreview product={selectedProduct} viewProduct={viewProduct}/>
     </Modal>

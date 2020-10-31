@@ -3,9 +3,9 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { Route, Switch } from 'react-router-dom';
 import combineReducers from '../src/reducers'
-import HomePage from '../src/components/HomePage';
-import CheckoutPage from '../src/components/CheckoutPage'
-import ProductPage from '../src/components/ProductPage';
+import HomePage from './containers/HomePage';
+import CheckoutPage from './containers/CheckoutPage'
+import ProductPage from './containers/ProductPage';
 import Basket from '../src/components/Basket';
 import Navbar from '../src/components/Navbar'
 import { loadStripe } from '@stripe/stripe-js'

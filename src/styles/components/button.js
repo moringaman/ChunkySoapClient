@@ -22,6 +22,7 @@ const  WxButton = styled.button`
         `}
     ${props => props.big && css`
         font-size: 28px;
+        min-height: 50px;
         font-weight: 600;
         & .button-content {
             height: 70px;
@@ -29,7 +30,7 @@ const  WxButton = styled.button`
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transform: translateY(2px);
+            transform: translateY(5px);
         }
         & .button-content >* {
             font-weight: 600;
