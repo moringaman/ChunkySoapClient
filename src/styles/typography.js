@@ -66,6 +66,7 @@ export const Paragraph = styled.p`
     font-weight: 400;
     margin-bottom: 20px;
     margin-top: 20px;
+    font-style: italic;
     color: ${vars.palette.colorGray3};
     ${props => props.big && css `
         font-size: 22px;

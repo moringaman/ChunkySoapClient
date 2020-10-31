@@ -11,7 +11,7 @@ const TextInput = styled.input`
     padding: 0px 20px;
     margin: 0px 10px 10px 0px;
     ${props => props.withButton && css`
-        height: 42px
+        height: 50px
     `}
 `
 

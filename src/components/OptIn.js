@@ -5,7 +5,7 @@ import { Container, Wrapper, Section} from '../styles/layout'
 const OptIn = () => {
     return (
         <Section light>
-            <Wrapper width={750}>
+            <Wrapper width={850}>
                 <SimpleTextInput 
                     withButton 
                     buttonText="Subscribe"

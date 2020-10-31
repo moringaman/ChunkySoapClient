@@ -10,7 +10,7 @@ const SimpleTextInput = ({handleChange, label, withButton, buttonText, cols, dir
                 {label}
             </Paragraph>
             <TextInput {...rest} withButton={withButton} onChange={(e) => handleChange(e)} onFocus={() => console.log("focussed")} />
-            { withButton && <AnimatedButton big text={buttonText} style={{left: '60%', transform: 'translateY(65px)' , display: 'inline-block', position: 'absolute'}}/> }
+            { withButton && <AnimatedButton big text={buttonText} style={{left: '65%', transform: 'translateY(64px)' , display: 'inline-block', position: 'absolute'}}/> }
         </div>
     )
 }
