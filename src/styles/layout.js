@@ -31,6 +31,9 @@ export const Section = styled.div`
 export const Wrapper = styled.div`
     max-width: 1294px;
     margin: 0px auto;
+    ${props => props.width && css`
+        max-Width: ${props.width}px
+    `}
 `
 
 export const Hero = styled.div`
