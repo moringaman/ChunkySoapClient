@@ -5,13 +5,26 @@ import { AnimatedButton } from '../ui'
 
 const SimpleTextInput = ({handleChange, label, withButton, buttonText, cols, direction,...rest }) => {
     return (
-        <div style={{display: 'flex', flexDirection: 'column',  width: cols }}>
-            <Paragraph style={{marginLeft: 10}}>
+        <>
+        { withButton ?
+        <div style={{display: 'flex', flexDirection: 'column' , width: '100%'}}>
+            <Paragraph  style={{marginLeft: 10}}>
                 {label}
             </Paragraph>
-            <TextInput {...rest} withButton={withButton} onChange={(e) => handleChange(e)} onFocus={() => console.log("focussed")} />
-            { withButton && <AnimatedButton big text={buttonText} style={{left: '65%', transform: 'translateY(64px)' , display: 'inline-block', position: 'absolute'}}/> }
+            <div style={{display: 'flex', flexDirection: 'row'  }}>
+                <TextInput inline {...rest} withButton={withButton} onChange={(e) => handleChange(e)} onFocus={() => console.log("focussed")}  />
+                 <AnimatedButton primary big text={buttonText} style={{ width: 100, display: 'inline-block' , transform: 'translateX(-60px)'}}/> 
+            </div>
         </div>
+            :
+            <div style={{display: 'flex', flexDirection: 'column',  width: cols }}>
+                <Paragraph style={{marginLeft: 10}}>
+                    {label}
+                </Paragraph>
+                <TextInput {...rest} withButton={withButton} onChange={(e) => handleChange(e)} onFocus={() => console.log("focussed")}  />
+            </div>
+        }
+        </>
     )
 }
 

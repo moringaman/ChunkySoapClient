@@ -14,10 +14,10 @@ export const Container = styled.div`
 export const Section = styled.div`
     max-width: 100%;
     background-color: ${vars.palette.primaryColor};
+    min-height: 0px;
     padding: 50px 50px;
-    max-height: 250px;
     ${props => props.height && css`
-      max-height: ${props.height}px;
+      height: ${props.height}px;
     `}
     ${props => props.dark && css`
       background-color: ${vars.palette.primaryColor};
@@ -32,7 +32,10 @@ export const Wrapper = styled.div`
     max-width: 1294px;
     margin: 0px auto;
     ${props => props.width && css`
-        max-Width: ${props.width}px
+        max-Width: ${props.width}px;
+    `}
+    ${props => props.mt && css`
+    margin-top: ${props.mt}px;
     `}
 `
 

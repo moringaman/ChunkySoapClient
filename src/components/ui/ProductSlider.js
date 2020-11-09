@@ -1,11 +1,11 @@
 import React from 'react'
 import { SlideGrid } from '../../styles/layout'
 
-const ProductSlider = (props) => {
+const ProductSlider = ({ children , ...rest}) => {
     return (
         <>
-        <SlideGrid>
-            {props.children}
+        <SlideGrid {...rest} >
+            {children}
         </SlideGrid>
         </>
     )

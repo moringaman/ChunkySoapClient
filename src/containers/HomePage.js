@@ -10,7 +10,7 @@ import { Bubble } from '../styles/ui'
 import { SectionHeading } from '../styles/typography'
 import ProductSlider from '../components/ui/ProductSlider'
 import WxButton from '../styles/components/button'
-import { Modal, OptIn, ProductPreview } from '../components'
+import { Modal, OptIn, ProductPreview, Footer } from '../components'
 import ProductItem from '../components/ui/ProductItem'
 import useModal from '../hooks/useModal'
 import { useDispatch, useSelector } from 'react-redux'
@@ -21,6 +21,7 @@ import { myApi } from '../helpers'
 export default function HomePage(props) {
 
  const products = useSelector(state => state.products)
+ const featured = products.products.filter(el => el.product_featured === true)
  const dispatch = useDispatch()
  const history = useHistory()
   const { isShowing, toggle } = useModal()
@@ -95,7 +96,7 @@ export default function HomePage(props) {
       <SectionHeading>Featured Products</SectionHeading>
       <ProductSlider>
       {
-        products && products.products.map(product => 
+        featured && featured.map(product => 
           <ProductItem
             product={product}
             info="New" 
@@ -108,18 +109,20 @@ export default function HomePage(props) {
       <SectionHeading>Most Popular Products</SectionHeading>
       <ProductSlider>
       {
-        products && products.products.map(product => 
-          <ProductItem
-            product={product}
-            info="New" 
-            key={product._id}
-            clickEvent={handleClick}
-          />
+        products && products.products.sort((a, b) => a.product_sold_quantity > b.product_sold_quantity)
+          .map(product => 
+            <ProductItem
+              product={product}
+              info="New" 
+              key={product._id}
+              clickEvent={handleClick}
+            />
         )
       }
       </ProductSlider>
     </Container>
-    <OptIn />
+    <OptIn cols='100%'/>
+    <Footer height={800} />
     <Modal isShowing={isShowing} hide={toggle}>
     <ProductPreview product={selectedProduct} viewProduct={viewProduct}/>
     </Modal>
