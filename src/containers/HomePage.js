@@ -11,17 +11,15 @@ import { SectionHeading } from '../styles/typography'
 import ProductSlider from '../components/ui/ProductSlider'
 import WxButton from '../styles/components/button'
 import { Modal, OptIn, ProductPreview, Footer } from '../components'
-import ProductItem from '../components/ui/ProductItem'
 import useModal from '../hooks/useModal'
 import { useDispatch, useSelector } from 'react-redux'
-import * as fn from '../helpers/functions'
 import * as vars from '../styles/variables'
-import { myApi } from '../helpers'
 
 export default function HomePage(props) {
 
  const products = useSelector(state => state.products)
  const featured = products.products.filter(el => el.product_featured === true)
+ const popular = products.products.sort((a,b) => (a.product_sold_quantity > b.product_sold_quantity) ? 1 : -1)
  const dispatch = useDispatch()
  const history = useHistory()
   const { isShowing, toggle } = useModal()
@@ -56,9 +54,7 @@ export default function HomePage(props) {
 
 
     const handleClick = (id) => {
-        // e.preventDefault()
         console.log('event')
-        // router.push(`/product?productId=${id}`)
         const selected = products.products.filter(product => product.id === id)
         setSelectedProduct(selected[0])
         console.log("SELECTED", selectedProduct)
@@ -73,7 +69,6 @@ export default function HomePage(props) {
   return (
     <>
     <Hero>
-    {/* <Container> */}
         <img src="/drips.png" alt="drips" style={{float: 'right', width: '500px', transform: 'translateY(-30px)'}}/>
         <img src="/logo-big.svg" alt="chunky soap" style={{float: 'left', width: '450px', transform: 'translateX(-40px)'}}/>
         <img className="girl-pic" src="/girl.webp" alt="chunky soap girl" style={{position: 'absolute', width: '480px', transform: 'translateX(-120px)', top: 158 }}/>
@@ -87,44 +82,20 @@ export default function HomePage(props) {
           <BannerHeading2>Because beauty is a fragile gift..</BannerHeading2>
           <WxButton primary big>Shop Now</WxButton>
         </div>
-    {/* </Container> */}
     </Hero>
     <Container>
         {vars.bodyBubbles.map((b, i) => (
         <Bubble {...b} key={i} />
         ))}
       <SectionHeading>Featured Products</SectionHeading>
-      <ProductSlider>
-      {
-        featured && featured.map(product => 
-          <ProductItem
-            product={product}
-            info="New" 
-            key={product.id}
-            clickEvent={handleClick}
-          />
-        )
-      }
-      </ProductSlider>
+        <ProductSlider data={featured} handleClick={handleClick} />
       <SectionHeading>Most Popular Products</SectionHeading>
-      <ProductSlider>
-      {
-        products && products.products.sort((a, b) => a.product_sold_quantity > b.product_sold_quantity)
-          .map(product => 
-            <ProductItem
-              product={product}
-              info="New" 
-              key={product._id}
-              clickEvent={handleClick}
-            />
-        )
-      }
-      </ProductSlider>
+        <ProductSlider data={popular} handleClick={handleClick} />
     </Container>
-    <OptIn cols='100%'/>
+      <OptIn cols='100%'/>
     <Footer height={800} />
     <Modal isShowing={isShowing} hide={toggle}>
-    <ProductPreview product={selectedProduct} viewProduct={viewProduct}/>
+      <ProductPreview product={selectedProduct} viewProduct={viewProduct}/>
     </Modal>
     </>
   )
