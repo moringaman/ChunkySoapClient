@@ -4,12 +4,12 @@ import { Container, Wrapper, Section} from '../styles/layout'
 
 const OptIn = () => {
     return (
-        <Section light>
-            <Wrapper width={850}>
+        <Section light height={350}>
+            <Wrapper width={850} mt={80}>
                 <SimpleTextInput 
                     withButton 
                     buttonText="Subscribe"
-                    label="Subscribe to our news letter to receive emails about our latest news and offers"
+                    label="Subscribe to our newsletter to get chunky soaps' latest news and offers"
                     type="text"
                     placeholder="example@gmail.com"
                 />
