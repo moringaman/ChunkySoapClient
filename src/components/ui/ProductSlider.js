@@ -34,7 +34,7 @@ const ProductSlider = ({ data, handleClick, ...rest }) => {
             }
         </SlideGrid>
             <Dots>
-                { data && sliceArray.map((el, i) => 
+                { data.length > 3 && sliceArray.map((el, i) => 
                     <Dot 
                         page={currentPage} 
                         value={i + 1}
