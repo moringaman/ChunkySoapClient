@@ -6,11 +6,12 @@ import combineReducers from '../src/reducers'
 import HomePage from './containers/HomePage';
 import CheckoutPage from './containers/CheckoutPage'
 import ProductPage from './containers/ProductPage';
+import CategoriesPage from './containers/CategoriesPage'
 import Basket from '../src/components/Basket';
 import Navbar from '../src/components/Navbar'
 import { loadStripe } from '@stripe/stripe-js'
 import { Elements } from '@stripe/react-stripe-js'
-import { WithNavbar } from '../src/components/layout'
+import { WithNavbar, WithHero } from '../src/components/layout'
 import { Container } from '../src/styles/layout'
 import './styles/global.css'
 const store = createStore(combineReducers)
@@ -29,7 +30,8 @@ const App = () => (
             <Route path="/basket" component={Basket} />
             <Route path="/checkout" component={CheckoutPage} />
             <Route path="/product/:_id" exact component={ProductPage} />
-            </WithNavbar>
+            <Route path="/category/:_id" component={CategoriesPage} />
+          </WithNavbar>
         </Switch>
     </Elements>
     {/* </Container> */}
