@@ -50,7 +50,6 @@ const CategoriesPage = (props) => {
   return (
     <>
       <Container>
-        <h1>Categories, {_id}</h1>
         {
           filteredProducts &&
           <ProductSlider perPage={3} data={filteredProducts} handleClick={handleClick} />

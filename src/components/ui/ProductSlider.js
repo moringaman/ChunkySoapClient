@@ -30,19 +30,19 @@ const ProductSlider = ({ data, handleClick, perPage, ...rest }) => {
               currentPage === 1 ? 0 : currentPage * productsPerPage,
               productsPerPage
             )
-            .map((product) => (
+            .map((product, i) => (
               <ProductItem
                 product={product}
                 info="New"
-                key={product.id}
+                key={i}
                 clickEvent={handleClick}
               />
-            )) : [data].map(product => (
+            )) : [data].map((product, i) => (
 
               <ProductItem
                 product={product}
                 info="New"
-                key={product.id}
+                key={i}
                 clickEvent={handleClick}
                 />
             ))}

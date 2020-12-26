@@ -1,19 +1,15 @@
-// import Modal from 'react-modal'
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-import fetch from "isomorphic-unfetch";
 import { myApi } from "../helpers";
-import { Hero } from "../styles/layout";
-import { Container } from "../styles/layout";
-import { BannerHeading, BannerHeading2 } from "../styles/typography";
+import { Hero, Container } from "../styles/layout";
+import { BannerHeading, BannerHeading2, SectionHeading } from "../styles/typography";
 import { Bubble } from "../styles/ui";
-import { SectionHeading } from "../styles/typography";
 import ProductSlider from "../components/ui/ProductSlider";
 import WxButton from "../styles/components/button";
 import { Modal, OptIn, ProductPreview, Footer } from "../components";
 import useModal from "../hooks/useModal";
-import { useDispatch, useSelector } from "react-redux";
 import * as vars from "../styles/variables";
 
 export default function HomePage(props) {
@@ -29,8 +25,10 @@ export default function HomePage(props) {
   const { isShowing, toggle } = useModal({selectedProduct, products})
   const [selectedProduct, setSelectedProduct] = useState({});
   const [currentCart, setCurrentCart] = useState([]);
+  const envVar = process.env.RAZZLE_STRIPE_PRIVATE_KEY
 
   useEffect(() => {
+    console.log("KEYS: ", envVar)
     if (process.browser) {
       const cartInStorage = localStorage.getItem("soap-cart");
       if (cartInStorage) {
@@ -133,7 +131,7 @@ export default function HomePage(props) {
   );
 }
 
-const Title = styled.h1`
-  color: white;
-  margin: auto auto;
-`;
+// const Title = styled.h1`
+//   color: white;
+//   margin: auto auto;
+// `;

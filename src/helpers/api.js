@@ -10,12 +10,12 @@ export default {
    * @returns
    */
   async send(url, method, data, type = "protected") {
-    const apiAddress = "localhost";
+    const apiAddress = process.env.NODE_ENV === 'production' ? process.env.RAZZLE_API_URI : "localhost:1337";
     // fn.getApiAddress()
     const token = await JSON.parse(sessionStorage.getItem("jwtToken"));
     // await fn.getTokenFromStorage('sessionToken')
     console.log("TOKEN ", token);
-    const baseURL = `http://${apiAddress}:1337`;
+    const baseURL = `http://${apiAddress}`;
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     if (token !== "" && type !== "public") {
