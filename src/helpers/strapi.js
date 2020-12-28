@@ -3,9 +3,9 @@ import { auth, request, myApi } from './'
 
  export default {
 
-
     async login(body, dispatch) {
-    const API_URI = process.env.API_URI || 'http://localhost:1337'
+    const API_URI = process.env.NODE_ENV === 'production' ? process.env.RAZZLE_API_URI :'http://localhost:1337'
+    // const API_URI = 'http://localhost:1337'
         try {
             console.log("STRAPI LOGIN ", body)
             const response = await request(`${API_URI}/auth/local/`, { method: 'POST', body})
@@ -20,7 +20,8 @@ import { auth, request, myApi } from './'
     },
 
     async register(body, dispatch) {
-            const API_URI = process.env.API_URI || 'http://localhost:1337'
+    const API_URI = process.env.NODE_ENV === 'production' ? process.env.RAZZLE_API_URI :'http://localhost:1337'
+    // const API_URI = 'http://localhost:1337'
         try {
             const response = await request(`${API_URI}/auth/local/register/`, { method: 'POST', body})
             auth.setToken(response.jwt, body.rememberMe);

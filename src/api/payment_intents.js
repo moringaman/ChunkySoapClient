@@ -1,6 +1,6 @@
 import Stripe from 'stripe'
 
-const stripe = new Stripe('sk_test_rvboOk0S3wSR1tPGYuzzcjpV')
+const stripe = new Stripe(process.env.RAZZLE_STRIPE_PRIVATE_KEY)
 
 export default async(req, res) => {
     try {

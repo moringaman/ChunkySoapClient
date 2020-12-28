@@ -1,7 +1,16 @@
 import { useState } from 'react'
 
-const useModal = () => {
+const useModal = ({ products }) => {
     const [ isShowing, setIsShowing ] = useState(false)
+    const [ selectedProduct, setSelectedProduct ] = useState(null)
+
+  const handleClick = (id) => {
+    console.log("event", id);
+    const selected = products.products.filter((product) => product.id === id);
+    setSelectedProduct(selected[0]);
+    console.log("SELECTED", selectedProduct);
+    toggle();
+  };
 
     const toggle = () => {
         setIsShowing(!isShowing)
@@ -9,7 +18,9 @@ const useModal = () => {
 
     return {
         isShowing,
-        toggle
+        toggle,
+        handleClick,
+        selectedProduct
     }
 }
 
