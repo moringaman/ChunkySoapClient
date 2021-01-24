@@ -4,12 +4,12 @@ import * as vars from '../variables'
 const  WxButton = styled.button`
     padding: 8px 25px;
     border-radius: 50px;
-    background-color: ${vars.palette.primaryColor};
+    background-color: ${vars.palette.secondaryColor};
     border: none;
     color: white;
     font-weight: 400;
     cursor: pointer;
-    z-index: 200;
+    z-index: 14000;
     overflow: hidden;
     margin: 0px 10px;
     & .button-content >* {
@@ -24,6 +24,7 @@ const  WxButton = styled.button`
         font-size: 28px;
         min-height: 50px;
         font-weight: 600;
+        padding: 8px 50px;
         & .button-content {
             height: 70px;
             transition: all 0.1s ease-in;
@@ -41,6 +42,19 @@ const  WxButton = styled.button`
             transform: translateY(-37px);
         }
 
+        `}
+        ${props => props.xl && css`
+            min-height: 62px;
+            min-width: 240px;
+            border-radius: 0px 50px 50px 0px;
+            padding: 5px 20px;
+            transition: all 0.5s ease-in;
+            &:hover {
+                background-color: ${vars.palette.secondaryColor1};
+            }
+            &:hover .button-content {
+                transform: translateY(5px);
+            }
         `}
     ${props => props.med && css`
         font-size: 24px;

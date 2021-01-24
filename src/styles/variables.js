@@ -17,6 +17,7 @@
         colorGray7: '#DBDBDB',
         colorGray8: '#F7F2F2',
         colorGray9: '#FBFAFA',
+        colorGray10: '#C4C4C4',
         gray1: '#F6F2F2'
 }
 
@@ -28,7 +29,7 @@
 
 export const heroBubbles = [{size: 230, opac: 0.6, x: 10, t: 500},
                    {size: 170, opac: 0.4, x: 200, t:680},
-                   {size: 190, opac: 0.2, x:1300, t:560},
+                   {size: 190, opac: 0.2, x:1160, t:530},
                    {size: 120, opac: 0.3, x:800, t: 690},
                    {size: 60, opac: 0.2, x:920, t: 790},
                    {size: 50, opac: 0.7, x: 80, t: 900, dark: 'yes'},

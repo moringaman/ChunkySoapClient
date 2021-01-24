@@ -8,7 +8,7 @@ import { BannerHeading, BannerHeading2, SectionHeading } from "../styles/typogra
 import { Bubble } from "../styles/ui";
 import ProductSlider from "../components/ui/ProductSlider";
 import WxButton from "../styles/components/button";
-import { Modal, OptIn, ProductPreview, Footer } from "../components";
+import { Modal, OptIn, ProductPreview, Footer, ProductSearch } from "../components";
 import useModal from "../hooks/useModal";
 import * as vars from "../styles/variables";
 
@@ -26,6 +26,10 @@ export default function HomePage(props) {
   const [selectedProduct, setSelectedProduct] = useState({});
   const [currentCart, setCurrentCart] = useState([]);
   const envVar = process.env.RAZZLE_STRIPE_PRIVATE_KEY
+
+  // Optin State - later add to custom optin hook
+
+  const [optinMail, setOptinMail ] = useState({'email': ''})
 
   useEffect(() => {
     console.log("KEYS: ", envVar)
@@ -102,27 +106,53 @@ export default function HomePage(props) {
           <Bubble {...b} key={i} />
         ))}
         <div
-          style={{ top: 260, left: "51%", width: 550, position: "absolute" }}
+          style={{ top: 260, left: "800px", width: 550, position: "absolute" }}
         >
           <BannerHeading>
             Natural soap bars & creams for all skin types
           </BannerHeading>
           <BannerHeading2>Because beauty is a fragile gift..</BannerHeading2>
-          <WxButton primary big>
-            Shop Now
+          <WxButton primary big style={{marginLeft: '70px', marginTop: '50px'}}>
+            <div className="script-font">
+             Visit Shop
+            </div>
           </WxButton>
         </div>
       </Hero>
       <Container>
-        {vars.bodyBubbles.map((b, i) => (
-          <Bubble {...b} key={i} />
-        ))}
+        <Bubbles>
+          {vars.bodyBubbles.map((b, i) => (
+            <Bubble {...b} key={i} />
+          ))}
+        </Bubbles>
+        <ProductSearch />
+          {/* <OptIn 
+            height={180}
+            cols="100%" 
+            valid={false}
+            placeholder="type product name here"
+            btnText="Search" 
+            label="Search our catalogue for your favorite products"
+            handleChange={(e) => {setOptinMail({...optinMail, ['email']: e.target.value})}}
+            handleSubmit={() => { console.log('submitting: ', optinMail)}}
+            /> */}
         <SectionHeading>Featured Products</SectionHeading>
         <ProductSlider perPage={3} data={featured} handleClick={handleClick} />
         <SectionHeading>Most Popular Products</SectionHeading>
         <ProductSlider perPage={3} data={popular} handleClick={handleClick} />
       </Container>
-      <OptIn cols="100%" />
+      <div style={{ marginTop: '-100px'}}>
+      <OptIn 
+        cols="100%" 
+        height={200}
+        valid={false}
+        btnText="Subscribe"
+        placeholder="your email address" 
+        label="Subscribe to our newsletter to get special deals"
+        handleChange={(e) => {setOptinMail({...optinMail, ['email']: e.target.value})}}
+        handleSubmit={() => { console.log('submitting: ', optinMail)}}
+        />
+      </div>
       <Footer height={800} />
       <Modal isShowing={isShowing} hide={toggle}>
         <ProductPreview product={selectedProduct} viewProduct={viewProduct} />
@@ -131,7 +161,6 @@ export default function HomePage(props) {
   );
 }
 
-// const Title = styled.h1`
-//   color: white;
-//   margin: auto auto;
-// `;
+const Bubbles = styled.div`
+  overflow: hidden;
+`

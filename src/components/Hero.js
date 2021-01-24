@@ -12,13 +12,13 @@ const Hero = props => {
     console.log("Location", pathname)
 
     return (
-        <Section dark height={180}>
+        <Section dark height={280}>
             {vars.headerBubbles.map((b, i) => (
             <Bubble {...b} key={i} />
             ))}
                 <img src="/drips.png" alt="drips" style={{float: 'right', width: '500px', transform: 'translate(50px, -70px)', zIndex: '5'}}/>
             <Container>
-                <BannerHeading style={{maxWidth: 550, transform: 'translateY(-50px)' }}>
+                <BannerHeading style={{maxWidth: 550, transform: 'translateY(-50px)'}}>
                     We offer FREE delivery on all orders over &pound;25
                 </BannerHeading>
             </Container>

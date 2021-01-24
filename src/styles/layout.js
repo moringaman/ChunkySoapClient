@@ -5,6 +5,8 @@ export const Container = styled.div`
   width: 100%;
   margin-left: auto;
   margin-right: auto;
+  overflowX: hidden;
+  position: relative;
   ${props => props.location && (props.location.includes('product') && props.nav === true)  && css`
         max-width: 100%;
         background-color: ${vars.palette.primaryColor};
@@ -15,7 +17,11 @@ export const Section = styled.div`
     max-width: 100%;
     background-color: ${vars.palette.primaryColor};
     min-height: 0px;
-    padding: 50px 50px;
+    padding: 50px 50px 50px 50px;
+    overflow: hidden;
+    ${props => props.narrow && css`
+        padding: 0px 50px 50px 50px;
+        `}
     ${props => props.height && css`
       height: ${props.height}px;
     `}
@@ -31,6 +37,7 @@ export const Section = styled.div`
 export const Wrapper = styled.div`
     max-width: 1294px;
     margin: 0px auto;
+    overflow: hidden;
     ${props => props.width && css`
         max-Width: ${props.width}px;
     `}
@@ -55,6 +62,7 @@ export const SlideGrid = styled.div`
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
+    overflow: hidden;
 `
 
 export const Frame = styled.div`

@@ -8,7 +8,7 @@ const Bubble = styled.div`
     background-color: white;
     opacity: 0.5;
     position: absolute;
-    z-index: 6;
+    z-index: 1;
     ${props => props.dark && css`
         background-color: ${vars.palette.primaryColor1};
         ${'' /* background-color: red; */}
@@ -20,7 +20,7 @@ const Bubble = styled.div`
         transform: translateY(${props.y});
     `}
     ${props => props.x && css`
-        transform: translateX(${props.x}px);
+         transform: translateX(${props.x}px);
     `}
     ${props => props.opac && css`
         opacity: ${props.opac};

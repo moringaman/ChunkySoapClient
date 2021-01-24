@@ -7,16 +7,28 @@ const TextInput = styled.input`
     display: inline-block;
     border: none;
     border-radius: 50px;
+    z-index: 1000;
     background-color: ${vars.palette.colorGray8};
     color: ${vars.palette.colorGray4};
-    padding: 0px 20px;
-    margin: 0px 10px 10px 0px;
+    padding: 0px 50px;
+    margin: 0px 5px 10px 0px;
     ${props => props.inline && css`
-        width: 100%;
+        width: 100%; 
     `}
     ${props => props.withButton && css`
-        height: 50px
+        height: 50px;
     `}
+    ${props => props.valid === false && css`
+        height: 48px;
+        color: orange;
+    `}
+    ${props => props.big && css `
+        height: 62px;
+        font-size: 28px;
+        ::placeholder {
+            color: ${vars.palette.colorGray10};
+        }
+    `} 
 `
 
 export default TextInput

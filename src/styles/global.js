@@ -15,6 +15,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     ${'' /* background-color: #E5E5E5; */}
     background-color: #FFFFFF;
+    overlow: hidden;
   }
 `
 

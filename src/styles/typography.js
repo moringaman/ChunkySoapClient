@@ -3,18 +3,18 @@ import * as vars from './variables'
 
 export const SectionHeading = styled.h1`
     text-align: center;
-    padding-top: 80px;
+    padding-top: 40px;
     height: 45.2px;
-    font-size: 36px;
+    font-size: 48px;
     font-weight: 600;
-    color: ${vars.palette.primaryColor1};
+    color: ${vars.palette.colorGray4};
     background-color: white;
 `
 
 export const BannerHeading = styled.h1`
     margin-top: 50px;
     text-align: left;
-    font-size: 57.9px;
+    font-size: 68px;
     font-weight: 600;
     color: white;
     line-height: 100%;
@@ -72,8 +72,8 @@ export const Paragraph = styled.p`
     `}
     color: ${vars.palette.colorGray3};
     ${props => props.big && css `
-        font-size: 22px;
-        color: ${vars.palette.colorGray2};
+        font-size: 32px;
+        color: ${vars.palette.colorGray4};
     `}
     ${props => props.danger && css`
             color: red;

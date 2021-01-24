@@ -1,4 +1,5 @@
 @import './ui/images.css' ;
+@import 'https://fonts.googleapis.com/css2?family=Shrikhand&display=swap';
 
 * {
   margin: 0px;
@@ -13,4 +14,9 @@
     padding: 0px;
     box-sizing: border-box;
     background-color: #FFFFFF;
+  }
+
+  .script-font {
+    font-family: 'Shrikhand', cursive;
+    font-size: 32px;
   }
