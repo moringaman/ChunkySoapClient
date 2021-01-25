@@ -1,5 +1,6 @@
 import React, { useState, useEffect} from 'react'
-import {useDispatch } from 'redux'
+import {useDispatch } from 'react-redux'
+import Fuse from 'fuse.js'
 import { OptIn } from '.'
 import { myApi } from "../helpers";
 
@@ -7,16 +8,34 @@ import { myApi } from "../helpers";
 const ProductSearch = props => {
 
     const [ searchTerm, setSearchTerm ] = useState({})
+    const dispatch = useDispatch()
+
+    const searchFilter = (products) => {
+        const fuse = new Fuse(products, {
+            keys: [
+                'product_name',
+                'product_long_description',
+                'product_short_description'
+            ],
+            includeScore: true
+        })
+        const result = fuse.search(searchTerm.term)
+        return result.filter(el => el.score < 0.6)
+    }
 
     useEffect(() => {
+        // if on search page run everytimr chenges and don't redirect
         console.log("Search for: ", searchTerm)
     }, [searchTerm])
 
     const getData = async() => {
         console.log('pulling data from server ', searchTerm)
-        let results = await myApi.send("/products", "GET", undefined, "public")
+        let products = await myApi.send("/products", "GET", undefined, "public")
         // filter result accoring to search term
+        const filtered = searchFilter(products)
+        console.log("filtered results: ", filtered)
         // add result to search results state object
+        dispatch({type: 'UPDATE_SEARCH', payload: filtered})
         // redirect to search results page
         setSearchTerm({})
     }

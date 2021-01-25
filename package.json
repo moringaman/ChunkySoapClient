@@ -12,6 +12,7 @@
     "@stripe/react-stripe-js": "^1.1.2",
     "@stripe/stripe-js": "^1.10.0",
     "express": "^4.17.1",
+    "fuse.js": "^6.4.6",
     "isomorphic-unfetch": "^3.0.0",
     "lodash": "^4.17.20",
     "path": "^0.12.7",

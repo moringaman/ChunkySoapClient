@@ -95,6 +95,7 @@ const Navbar = (props) => {
               <div style={{ marginLeft: 10 }}>
                 <ShoppingCart color={vars.palette.secondaryColor1} size={28} />
               </div>
+                {basket.products.length}
             </PageLink>
           </li>
         </NavList>

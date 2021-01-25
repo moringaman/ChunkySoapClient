@@ -103,7 +103,7 @@ const  WxButton = styled.button`
         background-color: ${vars.palette.secondayColor}
     `}
     ${props => props.secondary && css`
-        background-color: ${vars.palette.colorGray5};
+        background-color: ${vars.palette.primaryColor};
     `}
     ${props => props.tertiary && css `
         background-color: ${vars.palette.tertiaryColor}
