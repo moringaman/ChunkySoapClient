@@ -126,16 +126,6 @@ export default function HomePage(props) {
           ))}
         </Bubbles>
         <ProductSearch />
-          {/* <OptIn 
-            height={180}
-            cols="100%" 
-            valid={false}
-            placeholder="type product name here"
-            btnText="Search" 
-            label="Search our catalogue for your favorite products"
-            handleChange={(e) => {setOptinMail({...optinMail, ['email']: e.target.value})}}
-            handleSubmit={() => { console.log('submitting: ', optinMail)}}
-            /> */}
         <SectionHeading>Featured Products</SectionHeading>
         <ProductSlider perPage={3} data={featured} handleClick={handleClick} />
         <SectionHeading>Most Popular Products</SectionHeading>

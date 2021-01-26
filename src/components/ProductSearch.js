@@ -1,4 +1,5 @@
 import React, { useState, useEffect} from 'react'
+import { useHistory } from 'react-router-dom'
 import {useDispatch } from 'react-redux'
 import Fuse from 'fuse.js'
 import { OptIn } from '.'
@@ -9,6 +10,9 @@ const ProductSearch = props => {
 
     const [ searchTerm, setSearchTerm ] = useState({})
     const dispatch = useDispatch()
+    const history = useHistory()
+
+    console.log("PROD SEARCH LOC :", history)
 
     const searchFilter = (products) => {
         const fuse = new Fuse(products, {
@@ -20,7 +24,10 @@ const ProductSearch = props => {
             includeScore: true
         })
         const result = fuse.search(searchTerm.term)
-        return result.filter(el => el.score < 0.6)
+        const filtered = result.filter(el => el.score < 0.6)
+         .map(i => i.item)
+        console.log("FILTERED: ", filtered)
+        return filtered
     }
 
     useEffect(() => {
@@ -38,6 +45,7 @@ const ProductSearch = props => {
         dispatch({type: 'UPDATE_SEARCH', payload: filtered})
         // redirect to search results page
         setSearchTerm({})
+        history.push('/search-results')
     }
 
     return (

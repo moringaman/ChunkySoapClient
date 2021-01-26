@@ -13,7 +13,7 @@ const OptIn = (props) => {
                     withBigButton 
                     value={props.searchValue}
                     valid={props.valid}
-                    buttonText= {props.btnText}
+                    buttonText={props.btnText}
                     label={props.label}
                     type="text"
                     placeholder={props.placeholder}

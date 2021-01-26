@@ -24,12 +24,18 @@ const SimpleTextInput = ({withBigButton, submitHandler, handleChange, label, wit
             <Paragraph  big style={{marginRight: 10, textAlign: 'center'}}>
                 {label}
             </Paragraph>
-            <div style={{display: 'flex', flexDirection: 'row'  }}>
-                <TextInput inline {...rest} valid={valid} value={value} withButton={withButton} onChange={(e) => handleChange(e)} onFocus={() => console.log("focussed")}  />
-                 <AnimatedButton primary big xl styled handleClick={submitHandler} style={{ width: 100, display: 'inline-block' , transform: 'translateX(-60px)'}}> 
-                 <div className="script-font"> {buttonText}</div>
-                 </AnimatedButton>
-            </div>
+                <form onSubmit={(e) => {
+                    e.preventDefault()
+                    submitHandler()
+                }}>
+                    <div style={{display: 'flex', flexDirection: 'row'  }}>
+
+                        <TextInput inline {...rest} valid={valid} value={value} withButton={withButton} onChange={(e) => handleChange(e)} onFocus={() => console.log("focussed")}  />
+                        <AnimatedButton primary big xl styled type="submit" style={{ width: 100, display: 'inline-block' , transform: 'translateX(-60px)'}}> 
+                        <div className="script-font"> {buttonText}</div>
+                        </AnimatedButton>
+                    </div>
+                </form>
         </div>
         }
         {
