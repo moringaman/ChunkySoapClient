@@ -62,7 +62,7 @@ const Navbar = (props) => {
     <Container nav={true} location={history.location.pathname}>
       <TopNav location={history && history.location.pathname}>
         {/* <CategoryMenu><Pointer /></CategoryMenu>  */}
-        <Logo>Chunky Soap Co</Logo>
+          <Logo>Chunky Soap Co</Logo>
         <NavList>
           <li>
             <PageLink id="a" to="/">
@@ -74,10 +74,11 @@ const Navbar = (props) => {
           </li>
           <li>
             <PageLink
-              to="#"
+              to="/category"
               withMenu
               menuData={categories}
               menuTitle="Categories"
+              display={true}
             >
               Categories
             </PageLink>
@@ -92,10 +93,15 @@ const Navbar = (props) => {
             <PageLink to="/basket">
               {/* <PageLink to="/basket" withMenu menuTitle="Cart Items" menuData={basket.products}> */}
               &pound;{basket && basketTotal}
-              <div style={{ marginLeft: 10 }}>
+              <div style={{ marginLeft: 10, display: 'flex' }}>
                 <ShoppingCart color={vars.palette.secondaryColor1} size={28} />
+              {
+                basket.products.length > 0 &&
+              <ItemCountCircle>
+                  {basket.products.length}
+              </ItemCountCircle>
+              }
               </div>
-                {basket.products.length}
             </PageLink>
           </li>
         </NavList>
@@ -124,4 +130,19 @@ const Pointer = styled.div`
   margin-top: -5px;
   transform: rotate(45deg);
 `;
+
+const ItemCountCircle = styled.div`
+    position: relative;
+    background-color: ${vars.palette.primaryColor1};
+    color: white;
+    height: 17px;
+    width: 17px;
+    border: 3px solid white;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 17px;
+    transform: translate(-10px, -10px);
+`
 

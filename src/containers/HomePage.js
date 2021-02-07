@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { myApi } from "../helpers";
-import { Hero, Container } from "../styles/layout";
+import { Hero, Container, Section } from "../styles/layout";
 import { BannerHeading, BannerHeading2, SectionHeading } from "../styles/typography";
 import { Bubble } from "../styles/ui";
 import ProductSlider from "../components/ui/ProductSlider";
 import WxButton from "../styles/components/button";
-import { Modal, OptIn, ProductPreview, Footer, ProductSearch } from "../components";
+import { Modal, OptIn, ProductPreview, Footer, ProductSearch, CategoryRow } from "../components";
 import useModal from "../hooks/useModal";
 import * as vars from "../styles/variables";
 
@@ -128,6 +128,7 @@ export default function HomePage(props) {
         <ProductSearch />
         <SectionHeading>Featured Products</SectionHeading>
         <ProductSlider perPage={3} data={featured} handleClick={handleClick} />
+        <CategoryRow/>
         <SectionHeading>Most Popular Products</SectionHeading>
         <ProductSlider perPage={3} data={popular} handleClick={handleClick} />
       </Container>

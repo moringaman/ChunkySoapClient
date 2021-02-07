@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components'
 import * as vars from '../variables'
 
 const  WxButton = styled.button`
+    position: relative;
     padding: 8px 25px;
     border-radius: 50px;
     background-color: ${vars.palette.secondaryColor};
@@ -9,7 +10,7 @@ const  WxButton = styled.button`
     color: white;
     font-weight: 400;
     cursor: pointer;
-    z-index: 14000;
+    z-index: 1000;
     overflow: hidden;
     margin: 0px 10px;
     & .button-content >* {

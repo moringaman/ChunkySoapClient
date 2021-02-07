@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from'react-router-dom'
 import { withHero } from  '../components/layout'
 import { ProductSlider } from '../components/ui'
-import { Container } from '../styles/layout'
+import { Container, Section } from '../styles/layout'
 import { SectionHeading } from '../styles/typography'
 import { Modal, Optin, ProductSearch, ProductPreview, Footer } from '../components'
 import useModal from '../hooks/useModal'
@@ -30,12 +30,14 @@ const SearchResults = props => {
             <ProductSearch />
                 { searchResults ?
                     <Container>
-                        <SectionHeading>Search Results</SectionHeading>
+                        <SectionHeading>Your in luck!, here a your matches</SectionHeading>
                         <ProductSlider perPage={3} data={searchResults} handleClick={handleClick} />
                     </Container>
                     :
                     <Container>
-                        <SectionHeading>Ooops! We don't have that</SectionHeading>
+                        <Section light height={400}>
+                            <SectionHeading>Ooops! We don't have that</SectionHeading>
+                        </Section>
                     </Container>
                 }
             <Footer />

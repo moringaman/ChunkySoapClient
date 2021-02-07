@@ -20,3 +20,9 @@
     font-family: 'Shrikhand', cursive;
     font-size: 32px;
   }
+
+  a {
+    text-decoration: none;
+    color: black;
+    display: block;
+  }

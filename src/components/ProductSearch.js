@@ -9,6 +9,7 @@ import { myApi } from "../helpers";
 const ProductSearch = props => {
 
     const [ searchTerm, setSearchTerm ] = useState({})
+    const [ loading, setLoading ] = useState(false)
     const dispatch = useDispatch()
     const history = useHistory()
 
@@ -36,6 +37,7 @@ const ProductSearch = props => {
     }, [searchTerm])
 
     const getData = async() => {
+        setLoading(true)
         console.log('pulling data from server ', searchTerm)
         let products = await myApi.send("/products", "GET", undefined, "public")
         // filter result accoring to search term
@@ -45,6 +47,7 @@ const ProductSearch = props => {
         dispatch({type: 'UPDATE_SEARCH', payload: filtered})
         // redirect to search results page
         setSearchTerm({})
+        setLoading(false)
         history.push('/search-results')
     }
 
@@ -53,6 +56,7 @@ const ProductSearch = props => {
             height={180}
             cols="100%" 
             valid={false}
+            loading={loading}
             placeholder="type product name here"
             btnText="Search" 
             searchValue={searchTerm.term}

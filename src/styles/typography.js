@@ -6,9 +6,16 @@ export const SectionHeading = styled.h1`
     padding-top: 40px;
     height: 45.2px;
     font-size: 48px;
-    font-weight: 600;
+    font-weight: 400;
     color: ${vars.palette.colorGray4};
     background-color: white;
+    z-index: 21000;
+    ${props => props.light && css`
+        color: white;
+        background-color: ${vars.palette.primaryColor};
+        padding-top: 0px;
+        height: 19px;
+    `}
 `
 
 export const BannerHeading = styled.h1`
@@ -72,8 +79,9 @@ export const Paragraph = styled.p`
     `}
     color: ${vars.palette.colorGray3};
     ${props => props.big && css `
-        font-size: 32px;
+        font-size: 24px;
         color: ${vars.palette.colorGray4};
+        font-weight: 600;
     `}
     ${props => props.danger && css`
             color: red;
