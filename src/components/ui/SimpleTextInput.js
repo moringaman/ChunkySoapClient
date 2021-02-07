@@ -2,9 +2,22 @@ import React from 'react'
 import { Paragraph } from '../../styles/typography'
 import { TextInput } from '../../styles/ui'
 import { AnimatedButton } from '../ui'
+import Loader from 'react-loader-spinner'
 // import WxButton from "../styles/components/button";
 
-const SimpleTextInput = ({withBigButton, submitHandler, handleChange, label, withButton, buttonText, cols, direction, value, valid,...rest }) => {
+const SimpleTextInput = ({withBigButton, submitHandler, handleChange, label, withButton, buttonText, cols, direction, value, valid, loading,...rest }) => {
+  const renderLoader = () => {
+      return (
+        <Loader
+            type="ThreeDots"
+            color="#FFFFFF"
+            height={49}
+            width={29}
+            timeout={30000} //3 secs
+        />
+      )
+  }
+
     return (
         <>
         { withButton && 
@@ -24,12 +37,22 @@ const SimpleTextInput = ({withBigButton, submitHandler, handleChange, label, wit
             <Paragraph  big style={{marginRight: 10, textAlign: 'center'}}>
                 {label}
             </Paragraph>
-            <div style={{display: 'flex', flexDirection: 'row'  }}>
-                <TextInput inline {...rest} valid={valid} value={value} withButton={withButton} onChange={(e) => handleChange(e)} onFocus={() => console.log("focussed")}  />
-                 <AnimatedButton primary big xl styled handleClick={submitHandler} style={{ width: 100, display: 'inline-block' , transform: 'translateX(-60px)'}}> 
-                 <div className="script-font"> {buttonText}</div>
-                 </AnimatedButton>
-            </div>
+                <form onSubmit={(e) => {
+                    e.preventDefault()
+                    submitHandler()
+                }}>
+                    <div style={{display: 'flex', flexDirection: 'row'  }}>
+
+                        <TextInput inline {...rest} valid={valid} value={value} withButton={withButton} onChange={(e) => handleChange(e)} onFocus={() => console.log("focussed")}  />
+                        <AnimatedButton primary big xl styled type="submit" style={{ width: 100, display: 'inline-block' , transform: 'translateX(-60px)'}}> 
+                        { loading === false ?
+                             <div className="script-font"> {buttonText}</div>
+                            : 
+                                renderLoader()
+                         } 
+                        </AnimatedButton>
+                    </div>
+                </form>
         </div>
         }
         {
@@ -48,7 +71,8 @@ const SimpleTextInput = ({withBigButton, submitHandler, handleChange, label, wit
 SimpleTextInput.defaultProps = {
     withButton: false,
     withBigButton: false,
-    value: ''
+    value: '',
+    loading: false
 }
 
 

@@ -23,7 +23,7 @@ const ProductSlider = ({ data, handleClick, perPage, ...rest }) => {
 
   return (
     <>
-      <SlideGrid {...rest}>
+      <SlideGrid {...rest} mb={'100px'}>
         {data.length > 1 ? 
           data
             .slice(
@@ -46,7 +46,7 @@ const ProductSlider = ({ data, handleClick, perPage, ...rest }) => {
                 clickEvent={handleClick}
                 />
             ))}
-      </SlideGrid>
+      </SlideGrid >
       <Dots>
         {data.length > 3 &&
           sliceArray.map((el, i) => (

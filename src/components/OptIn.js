@@ -11,9 +11,10 @@ const OptIn = (props) => {
                     handleChange={props.handleChange}
                     submitHandler={props.handleSubmit}
                     withBigButton 
+                    loading={props.loading}
                     value={props.searchValue}
                     valid={props.valid}
-                    buttonText= {props.btnText}
+                    buttonText={props.btnText}
                     label={props.label}
                     type="text"
                     placeholder={props.placeholder}

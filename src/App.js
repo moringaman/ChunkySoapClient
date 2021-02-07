@@ -7,6 +7,7 @@ import HomePage from './containers/HomePage';
 import CheckoutPage from './containers/CheckoutPage'
 import ProductPage from './containers/ProductPage';
 import CategoriesPage from './containers/CategoriesPage'
+import SearchResults from './containers/SearchResults'
 import Basket from '../src/components/Basket';
 import Navbar from '../src/components/Navbar'
 import { loadStripe } from '@stripe/stripe-js'
@@ -27,6 +28,7 @@ const App = () => (
         <Switch>
           <WithNavbar color="light">
             <Route exact path="/" component={HomePage} />
+            <Route path="/search-results" component={SearchResults} />
             <Route path="/basket" component={Basket} />
             <Route path="/checkout" component={CheckoutPage} />
             <Route path="/product/:_id" exact component={ProductPage} />

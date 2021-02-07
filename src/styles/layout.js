@@ -18,7 +18,8 @@ export const Section = styled.div`
     background-color: ${vars.palette.primaryColor};
     min-height: 0px;
     padding: 50px 50px 50px 50px;
-    overflow: hidden;
+    overflowX: hidden;
+    z-index: -1;
     ${props => props.narrow && css`
         padding: 0px 50px 50px 50px;
         `}
@@ -55,14 +56,23 @@ export const Hero = styled.div`
 `
 
 export const SlideGrid = styled.div`
+    position: relative;
     max-width: 1294px;
     margin: 0px auto;
-    padding: 140px 100px 50px 100px;
+    padding: 140px 100px 90px 100px;
     background-color: white;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
-    overflow: hidden;
+    overflowX: hidden;
+    z-index: 2;
+    background-color: transparent;
+    ${props => props.dark && `
+        background-color: ${vars.palette.primaryColor};
+    `}
+    ${props => props.mb && `
+        margin-bottom: ${props.mb};
+    `}
 `
 
 export const Frame = styled.div`

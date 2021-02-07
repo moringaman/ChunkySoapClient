@@ -26,6 +26,7 @@ const CategoriesPage = (props) => {
         await _apiCall()
         filterProductsById()
     })()
+    console.log("GAT PAGE PRODS ", products)
   }, [products, _id]);
 
 

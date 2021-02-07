@@ -5,7 +5,7 @@ import { useHistory, useLocation } from 'react-router-dom'
 import DropDownMenu from '../ui/DropDownMenu'
 import * as vars from '../../styles/variables'
 
-const PageLink = ({children, to, withMenu, menuData, menuTitle , color }) => {
+const PageLink = ({children, to, withMenu, menuData, menuTitle , color, display }) => {
     const [hovered, setHovered ] = useState(false)
     const [showMenu, setShowMenu ] = useState(false)
     const history = useHistory()
@@ -19,14 +19,14 @@ const PageLink = ({children, to, withMenu, menuData, menuTitle , color }) => {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        color: (location.pathname === to && location.pathname !== '/basket') || hovered === true 
+        color: (location.pathname.includes(to) && location.pathname !== '/basket') || hovered === true 
         ? `${vars.palette.secondayColor}` 
         : 'black',
     }
 
 
     const altStyle = {
-        color: (location.pathname === to && location.pathname !== '/basket') || hovered === true 
+        color: (location.pathname.includes(to) && location.pathname !== '/basket') || hovered === true 
         ? `white` 
         : 'black',
     }
@@ -40,7 +40,7 @@ const PageLink = ({children, to, withMenu, menuData, menuTitle , color }) => {
 
     const handleClick = (e) => {
         e.preventDefault()
-         history.push(to)
+        !display && history.push(to)
     }
 
     const closeMenu = () => {
