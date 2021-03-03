@@ -99,7 +99,7 @@ export default function HomePage(props) {
             position: "absolute",
             width: "480px",
             transform: "translateX(-120px)",
-            top: 158,
+            top: 188,
           }}
         />
         {vars.heroBubbles.map((b, i) => (

@@ -1,4 +1,8 @@
 import { isEmpty } from 'lodash';
+import Cookies from 'universal-cookie'
+
+const cookies = new Cookies()
+
 
 const TOKEN_KEY = 'jwtToken';
 const USER_INFO = 'userInfo';
@@ -80,10 +84,12 @@ const auth = {
       return null;
     }
 
+    cookies.set(key, stringify(value))
+
     if (isLocalStorage && localStorage) {
       return localStorage.setItem(key, stringify(value));
     }
-
+    
     if (sessionStorage) {
       return sessionStorage.setItem(key, stringify(value));
     }

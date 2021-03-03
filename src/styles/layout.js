@@ -76,10 +76,10 @@ export const SlideGrid = styled.div`
 `
 
 export const Frame = styled.div`
-    margin: 80px auto 50px auto;
+    margin: 150px auto 50px auto;
     max-width: 650px;
-    padding: 20px 50px;
-    ${'' /* border: 1px solid #DBDBDB; */}
+    padding: 40px 50px;
+    border: 1px solid #DBDBDB;
     border-radius: 25px;
     min-height: 320px;
     display: flex;

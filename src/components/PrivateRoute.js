@@ -1,19 +1,35 @@
-import React from 'react';  
-import { Redirect, Route } from 'react-router-dom';
+import React, {useEffect, useState } from "react";
+import { Redirect, Route } from "react-router-dom";
+import { useIsAuthenticated } from '../hooks'
+// Helpers
+import auth from "../helpers/auth";
 
-// Utils
-import auth from '../../utils/auth';
+function PrivateRoute({ component: Component, ...rest }) {
 
-const PrivateRoute = ({ component: Component, ...rest }) => {  
-  <Route {...rest} render={props => (
-    auth.getToken() !== null ? (
+  // const [ isAuthenticated, setIsAuthenticated ] = useState(false)
+  // useEffect(() => {
+  //     const authenticated = auth.getToken() !== null
+  //     setIsAuthenticated(authenticated)
+  //     console.log("Athenticated ", authenticated)
+  // }, [])
+
+  const { isAuthenticated } = useIsAuthenticated()
+
+  console.log("PROTECTED ", {...rest})
+  return (
+    <Route {...rest}
+     render={(props) => 
+      isAuthenticated
+       ? (
       <Component {...props} />
     ) : (
-      <Redirect to={{
-        pathname: 'auth/login',
-        state: { from: props.location }
-        }}
-      />
-    )
-  )} />
-};
+        <Redirect
+          to={{
+            pathname: "/authenticate",
+            state: { from: props.location },
+          }} />
+      )} />);
+}
+
+
+export default PrivateRoute

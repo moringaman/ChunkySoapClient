@@ -22,7 +22,7 @@ const Hero = props => {
                     We offer FREE delivery on all orders over &pound;25
                 </BannerHeading>
             </Container>
-            <img src="/oversholder.webp" alt="girl-pic" style={{position: 'absolute', top: 31, left: 560, maxHeight: 320}}/>
+            <img src="/oversholder.webp" alt="girl-pic" style={{position: 'absolute', top: 50, left: 560, maxHeight: 320}}/>
         </Section>
     )
 }

@@ -45,7 +45,7 @@ const AnimatedButton = ({...props}) => {
 
   AnimatedButton.defaultProps = {
     handleClick: () => {},
-    loading: false
+    loading: 'false'
 }
 
 export default AnimatedButton

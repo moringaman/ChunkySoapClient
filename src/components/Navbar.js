@@ -11,11 +11,13 @@ import { Container } from "../styles/layout";
 import AnimatedButton from "../components/ui/AnimatedButton";
 import { User } from "react-feather";
 import styled from "styled-components";
+import { useIsAuthenticated } from '../hooks'
 
 const Navbar = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
-
+  const {isAuthenticated} = useIsAuthenticated()
+console.log("AUTHED ", isAuthenticated)
   useEffect(() => {
     if (process.browser) {
       const cartInStorage = localStorage.getItem("soap-cart");
@@ -65,7 +67,7 @@ const Navbar = (props) => {
           <Logo>Chunky Soap Co</Logo>
         <NavList>
           <li>
-            <PageLink id="a" to="/">
+            <PageLink to="/">
               About
             </PageLink>
           </li>
@@ -83,9 +85,9 @@ const Navbar = (props) => {
               Categories
             </PageLink>
           </li>
-          <li>{!user === {} ? "Sign In" : "Sign Out"}</li>
+          <li>{isAuthenticated === false ? <PageLink to="/authenticate">Sign In</PageLink> : "Sign Out"}</li>
           <li>
-            <AnimatedButton primary sml text="New Account" loading="false">
+            <AnimatedButton primary sml text="New Account" loading="false" handleClick={() => history.push('/admin')}>
               <User />
             </AnimatedButton>
           </li>

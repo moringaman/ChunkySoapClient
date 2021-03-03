@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { SimpleTextInput, AnimatedButton } from '../components/ui'
-import { ButtonRow } from '../styles/layout'
+import { ButtonRow, Frame, FrameHeader, FrameBody} from '../styles/layout'
 import { Heading2 } from '../styles/typography'
 import forms from '../containers/forms.json'
 import { ArrowRight, User }from 'react-feather'
@@ -22,7 +22,8 @@ const views = forms.views
     }, [props.data.register])
 
     return (
-            <div style={{ marginTop: 130, marginLeft: 'auto', marginRight: 'auto', maxWidth: 550, padding: 70, border: '1px solid #DBDBDB', borderRadius: 25, minHeight: 320}}>
+        <Frame>
+
                 <Heading2>Sign in to Continue</Heading2>
                 <form 
                     onSubmit={(e) => props.handleLogin(e)}
@@ -47,11 +48,11 @@ const views = forms.views
                             I Don't have an account create one <input type="checkbox" name="register" checked={props.data.register}  onChange={props.handleChange}/>
                         </div>
                         <ButtonRow>
-                            <AnimatedButton fixed type="submit" text={props.data.register ? "Register" : "Sign In"} med loading={props.loading ? 1 : undefined}><User /></AnimatedButton><br />
+                            <AnimatedButton primary fixed type="submit" text={props.data.register ? "Register" : "Sign In"} med loading={props.loading ? 1 : undefined}><User /></AnimatedButton><br />
                             <AnimatedButton fixed type="button" text="Guest Checkout" loading="false" secondary med handleClick={() => props.dispatch({type: 'GUEST_CHECKOUT'})}><ArrowRight/></AnimatedButton>
                         </ButtonRow>
                 </form>
-            </div>
+        </Frame>
     )   
 }
 

@@ -10,6 +10,7 @@ import { auth, request, myApi } from './'
             console.log("STRAPI LOGIN ", body)
             const response = await request(`${API_URI}/auth/local/`, { method: 'POST', body})
             console.log("STRAPI RESPONSE ", response)
+            // TODO: use cookies to avoid serverside issues
             auth.setToken(response.jwt, body.rememberMe);
             auth.setUserInfo(response.user, body.rememberMe);
             dispatch({type: "SET_USER_SESSION", payload: response})

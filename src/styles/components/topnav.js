@@ -5,7 +5,7 @@ import PageLink from '../../components/ui/PageLink'
 const TopNav = styled.div`
     width: 80%;
     margin: 0px auto;
-    height: 70px;
+    height: 90px;
     background-color: white;
     display: flex;
     justify-content: space-around;

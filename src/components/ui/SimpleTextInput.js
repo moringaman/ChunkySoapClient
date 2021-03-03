@@ -61,7 +61,7 @@ const SimpleTextInput = ({withBigButton, submitHandler, handleChange, label, wit
                 <Paragraph style={{marginLeft: 10}}>
                     {label}
                 </Paragraph>
-                <TextInput {...rest} value={value} withButton={withButton} onChange={(e) => handleChange(e)} onFocus={() => console.log("focussed")}  />
+                <TextInput {...rest} withButton={withButton} onChange={(e) => handleChange(e)} onFocus={() => console.log("focussed")}  />
             </div>
         }
         </>
