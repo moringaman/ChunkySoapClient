@@ -3,6 +3,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 import DropDownMenu from '../ui/DropDownMenu'
+import  * as fn  from '../../helpers/functions'
 import * as vars from '../../styles/variables'
 
 const PageLink = ({children, to, withMenu, menuData, menuTitle , color, display }) => {
@@ -19,7 +20,7 @@ const PageLink = ({children, to, withMenu, menuData, menuTitle , color, display 
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        color: (location.pathname.includes(to) && location.pathname !== '/basket') || hovered === true 
+        color: (fn.pathMatches(location.pathname) === to && location.pathname !== '/basket') || hovered === true 
         ? `${vars.palette.secondayColor}` 
         : 'black',
     }

@@ -18,3 +18,13 @@ export const isEmpty = (data) => {
 export const createExcerpt = (string, length) => {
   return string.length > length ? string.substring(0, length - 3 ) + '...  ' : string + " "
 }
+
+export const pathMatches = (str) => {
+  console.log("PATH " , str)
+    const regex = /^\/([^?\/]+)/;
+    if (str === '/') {
+      return "/" // str.match(regex)
+    }
+    console.log("PATH MATCH ", str.match(regex)[0])
+    return str.match(regex)[0];
+}

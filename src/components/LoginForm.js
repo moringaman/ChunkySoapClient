@@ -4,33 +4,29 @@ import { ButtonRow, Frame, FrameHeader, FrameBody} from '../styles/layout'
 import { Heading2 } from '../styles/typography'
 import forms from '../containers/forms.json'
 import { ArrowRight, User }from 'react-feather'
+import { usePrevious } from '../hooks'
 
 
 const LoginForm = (props) => {
 
 const views = forms.views
 
-    const [ currentView, setCurrentView ] = useState('login')
+ const [ currentView, setCurrentView ] = useState(null)
 
     useEffect(() => {
-        console.log("FORM PROPS ", props)
-    })
-
-    useEffect(() => {
-        let current = props.data.register === true ? 'register' : 'login' 
+        let current = props.data.register ? 'register' : 'login' 
         setCurrentView(current)
-    }, [props.data.register])
+    }, [, props.data.register])
 
     return (
         <Frame>
-
                 <Heading2>Sign in to Continue</Heading2>
                 <form 
                     onSubmit={(e) => props.handleLogin(e)}
                     style={{ marginTop: 30, display: 'flex', width: '100%',flexDirection: 'column'}}
                 >
                     {
-                        views[currentView].map((el, i) => (
+                        currentView && views[currentView].map((el, i) => (
                             <SimpleTextInput 
                                 placeholder = {el.placeholder}
                                 label={el.label}

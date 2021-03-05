@@ -87,7 +87,7 @@ console.log("AUTHED ", isAuthenticated)
           </li>
           <li>{isAuthenticated === false ? <PageLink to="/authenticate">Sign In</PageLink> : "Sign Out"}</li>
           <li>
-            <AnimatedButton primary sml text="New Account" loading="false" handleClick={() => history.push('/admin')}>
+            <AnimatedButton primary sml text="New Account" loading="false" handleClick={() => history.push('/authenticate?register=true')}>
               <User />
             </AnimatedButton>
           </li>

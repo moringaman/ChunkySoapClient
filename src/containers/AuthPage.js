@@ -1,12 +1,18 @@
-import React, { useEffect, useReducer } from 'react'
+import React, { useEffect, useReducer, useState} from 'react'
 import { useDispatch } from 'react-redux'
 import { FrameHeader, Frame, FrameBody, Container } from '../styles/layout'
 import { Heading2 } from '../styles/typography'
 import { LoginForm } from '../components'
-import  useStrapiLogin  from '../hooks/useStrapiLogin'
+// import  useStrapiLogin  from '../hooks/useStrapiLogin'
+import { useStrapiLogin } from '../hooks'
 
-const AuthPage = () => {
+const AuthPage = (props) => {
 
+    useEffect(() => {
+        const query = new URLSearchParams(props.location.search)
+        const isRegistration = query.get('register') // || false
+        loginDispatch({type: 'UPDATE_FIELD', fieldName: 'register', fieldValue: isRegistration}) 
+    }, [])
 
     const loginReducer = (state, action) => {
         switch(action.type) {
@@ -28,7 +34,7 @@ const AuthPage = () => {
         errorMsg: '',
         authenticated: false,
         fields: {
-            register: false,
+            register: register,
             identifier: '',
             password: '',
             password_confirmation: '',
@@ -40,6 +46,7 @@ const AuthPage = () => {
     const { authenticated, guest, loading, fields: { email, password, register, username, password_confirmation } } = loginState
 
     const { handleStrapiLogin, errorMsg, isLoggedIn } = useStrapiLogin({loginDispatch, loginState})
+
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target
