@@ -46,6 +46,7 @@ const AdminPage = () => {
             <div>Amount</div>
             <div>Customer</div>
             <div>Shipping</div>
+            <div></div>
         </div>
             {
                 orders && renderOrderList(orders)

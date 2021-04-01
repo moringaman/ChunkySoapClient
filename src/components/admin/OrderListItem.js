@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import * as fn from '../../helpers/functions'
 import { OrderItemDetail } from './'
+import * as vars from '../../styles/variables'
 
 
 
@@ -15,7 +16,7 @@ import { OrderItemDetail } from './'
 
         console.log("ORDER_ITEM ", order_total)
             return  <div>
-                <div  style={{padding: '10px 90px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10, justifyItems: 'left', borderBottom: '1px #666 solid'}}>
+                <div  style={{padding: '5px 90px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: "1px", justifyItems: 'left', backgroundColor: `${vars.palette.colorGray10}`}}>
                         <div>
                             {fn.convertDate(createdAt)}
                         </div>
