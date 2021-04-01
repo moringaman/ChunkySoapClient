@@ -1,4 +1,5 @@
 import _, { stubString } from 'lodash'
+import moment from 'moment'
 
 export const getCartTotal = (cart, postage = 0, tax = 0) => {
   if (cart.length) {
@@ -27,4 +28,10 @@ export const pathMatches = (str) => {
     }
     console.log("PATH MATCH ", str.match(regex)[0])
     return str.match(regex)[0];
+}
+
+export const convertDate = (date) => {
+  console.log('FN DATE', date)
+  console.log(moment(Date(date)).format('dd MMM Do'))
+  return moment(Date(date)).format('ddd MMM Do')
 }

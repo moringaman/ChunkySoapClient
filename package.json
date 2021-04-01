@@ -15,6 +15,7 @@
     "fuse.js": "^6.4.6",
     "isomorphic-unfetch": "^3.0.0",
     "lodash": "^4.17.20",
+    "moment": "^2.29.1",
     "path": "^0.12.7",
     "razzle": "^3.1.8",
     "razzle-plugin-pwa": "^2.2.3",

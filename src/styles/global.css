@@ -21,6 +21,15 @@
     font-size: 32px;
   }
 
+  .hidden {
+    height: 0px;
+    visibility: hidden;
+  }
+
+  .visible {
+    height: 100%;
+  }
+
   a {
     text-decoration: none;
     color: black;

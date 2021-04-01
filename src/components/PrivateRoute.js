@@ -6,20 +6,13 @@ import auth from "../helpers/auth";
 
 function PrivateRoute({ component: Component, ...rest }) {
 
-  // const [ isAuthenticated, setIsAuthenticated ] = useState(false)
-  // useEffect(() => {
-  //     const authenticated = auth.getToken() !== null
-  //     setIsAuthenticated(authenticated)
-  //     console.log("Athenticated ", authenticated)
-  // }, [])
-
   const { isAuthenticated } = useIsAuthenticated()
 
   console.log("PROTECTED ", {...rest})
   return (
     <Route {...rest}
      render={(props) => 
-      isAuthenticated
+      !isAuthenticated // remove ! to make private
        ? (
       <Component {...props} />
     ) : (

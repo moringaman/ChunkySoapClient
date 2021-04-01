@@ -5,6 +5,7 @@ import basketReducer from './basketReducer'
 import categoryReducer from './categoryReducer'
 import currentProductReducer from './currentProductReducer';
 import searchReducer from './searchReducer'
+import ordersReducer from './ordersReducer'
 
 export default combineReducers({
     currentProduct:currentProductReducer,
@@ -12,5 +13,6 @@ export default combineReducers({
     basket: basketReducer,
     categories: categoryReducer,
     user: userReducer,
-    searchResults: searchReducer
+    searchResults: searchReducer,
+    orders: ordersReducer
 })
