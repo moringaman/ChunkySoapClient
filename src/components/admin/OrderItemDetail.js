@@ -47,7 +47,7 @@ const OrderItemDetail = (props) => {
                 <div style={{width: '100%'}}></div>
                 <div style={{width: '100%'}}></div>
                 <div style={{width: '100%'}}></div>
-                <div style={{width: '100%', }}><Link to={`/admin/invoice?=${id}`}>
+                <div style={{width: '100%', }}><Link to={`/admin/invoices/${id}`}>
                 View Invoice: <FileText />
                 </Link>
                 </div>

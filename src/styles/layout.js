@@ -121,3 +121,39 @@ export const Divider = styled.div`
         margin-bottom: ${props.mb};
     `}
 `
+
+export const Invoice = styled.div`
+     width: 591px;
+     height: 538px;
+     padding: 4px;
+     display: grid;
+     grid-template-columns: 1fr 1fr 1fr 1fr;
+     grid-template-rows: 0.3fr 1.6fr 0.6fr 1fr;
+     gap: 0px 0px;
+     grid-template-areas:
+    "Logo Logo Address Address"
+    "Product_name Product_name product_qty product_total"
+    "footer footer footer footer";
+`
+
+export const Logo = styled.div`
+                    grid-area: Logo;
+                    display: flex;
+                    flex-direction: row;
+                    padding: 0px 20px;
+                    border-bottom: 1px solid #333;
+                    `
+export const Address = styled.div`
+                grid-area: Address;
+                padding: 20px;
+                border-bottom: 1px solid #333;
+                `
+
+export const ProductName = styled.div` padding: 50px 20px; grid-area: Product_name`
+export const ProductQty = styled.div`grid-area: product_qty; padding: 50px 20px;`
+export const ProductTotal = styled.div` grid-area: product_total; padding: 50px 20px;`
+export const Footer = styled.div` grid-area: footer;
+                border-top: 1px solid #333;
+                padding: 20px;
+`
+export const FooterTotal = styled.div` grid-area: 3 / 4 / 4 / 5; padding: 20px 20px; `

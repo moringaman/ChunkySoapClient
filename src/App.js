@@ -3,7 +3,7 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { Route, Switch } from 'react-router-dom';
 import combineReducers from '../src/reducers'
-import { HomePage, CheckoutPage, ProductPage, CategoriesPage, AdminPage, SearchResults, AuthPage } from './containers'
+import { HomePage, CheckoutPage, ProductPage, CategoriesPage, AdminPage, SearchResults, AuthPage, InvoicePage} from './containers'
 import Basket from '../src/components/Basket';
 import PrivateRoute from './components/PrivateRoute'
 import { loadStripe } from '@stripe/stripe-js'
@@ -30,6 +30,7 @@ const App = () => (
             <Route path="/category/:_id" component={CategoriesPage} />
             <Route path="/authenticate" component={AuthPage} />
             <PrivateRoute path="/admin" store component={AdminPage} />
+            <PrivateRoute path="/admin/invoices/:_id" component={InvoicePage} />
           </WithNavbar>
         </Switch>
     </Elements>

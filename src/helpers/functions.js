@@ -33,5 +33,5 @@ export const pathMatches = (str) => {
 export const convertDate = (date) => {
   console.log('FN DATE', date)
   console.log(moment(Date(date)).format('dd MMM Do'))
-  return moment(Date(date)).format('ddd MMM Do')
+  return moment(date).format('ddd MMM Do')
 }

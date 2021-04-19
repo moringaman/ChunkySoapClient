@@ -5,7 +5,7 @@ const  WxButton = styled.button`
     position: relative;
     padding: 8px 25px;
     border-radius: 50px;
-    background-color: ${vars.palette.secondaryColor};
+    background-color: ${vars.palette.colorGray10};
     border: none;
     color: white;
     font-weight: 400;

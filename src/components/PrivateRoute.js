@@ -10,7 +10,7 @@ function PrivateRoute({ component: Component, ...rest }) {
 
   console.log("PROTECTED ", {...rest})
   return (
-    <Route {...rest}
+    <Route exact {...rest}
      render={(props) => 
       !isAuthenticated // remove ! to make private
        ? (

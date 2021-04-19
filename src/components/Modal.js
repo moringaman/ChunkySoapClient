@@ -16,7 +16,7 @@ const Modal = ({ isShowing, hide, ...rest }) =>
             aria-hidden
             tabIndex={-1}
             role="dialog"
-            // onClick={hide}
+            onClick={hide}
           >
             <ModalMain className="modal">
             <CloseButton

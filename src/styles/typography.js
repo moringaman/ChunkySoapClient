@@ -74,6 +74,11 @@ export const Paragraph = styled.p`
     margin-bottom: 20px;
     margin-top: 20px;
     font-style: italic;
+    ${props => props.sml && `
+        font-size: 16px;
+        margin-bottom: 5px;
+        margin-top: 5px;
+    `}
     ${props => props.centered &&`
         text-align: center;
     `}
@@ -85,5 +90,9 @@ export const Paragraph = styled.p`
     `}
     ${props => props.danger && css`
             color: red;
+    `}
+    ${props => props.heavy&& css`
+            font-weight: 600;
+            margin-bottom: 10px;
     `}
 `
