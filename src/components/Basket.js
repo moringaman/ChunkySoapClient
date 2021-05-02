@@ -1,10 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { useHistory } from 'react-router'
-import  styled  from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
-import * as vars from '../styles/variables'
 import { BannerHeading, Heading1, Heading2, Paragraph } from '../styles/typography'
-import { ShoppingCart } from 'react-feather'
 import { Container , Section, Wrapper} from '../styles/layout'
 import { ProductFrame, Bubble } from '../styles/ui'
 import AnimatedButton from '../components/ui/AnimatedButton'
@@ -12,6 +9,7 @@ import AddToCart from '../components/ui/AddToCartBtn'
 import { Trash2, MinusCircle, PlusCircle, CreditCard, ArrowLeft } from 'react-feather'
 import * as fn from '../helpers/functions'
 import { BasketWrapper, ProductRow, Divider } from '../styles/ui/basket'
+import { withHero } from '../components/layout'
 
 const Basket = (props) => {
 
@@ -47,18 +45,6 @@ const Basket = (props) => {
 
     return (
         <>
-        <Section dark height={180}>
-            {vars.headerBubbles.map((b, i) => (
-            <Bubble {...b} key={i} />
-            ))}
-                <img src="/drips.png" alt="drips" style={{float: 'right', width: '500px', transform: 'translate(50px, -70px)', zIndex: '5'}}/>
-            <Container>
-                <BannerHeading style={{maxWidth: 550, transform: 'translateY(-50px)' }}>
-                    We offer FREE delivery on all orders over &pound;25
-                </BannerHeading>
-            </Container>
-            <img src="/oversholder.webp" alt="girl-pic" style={{position: 'absolute', top: 31, left: 560, maxHeight: 320}}/>
-        </Section>
         <Section light color={'white'} height={1000}>
             <Wrapper>
                 <Heading1>Your Basket</Heading1>
@@ -140,4 +126,4 @@ const Basket = (props) => {
     )
 }
 
-export default Basket
+export default withHero({component: Basket})

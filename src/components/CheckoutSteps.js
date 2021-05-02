@@ -67,6 +67,7 @@ import * as fn from '../helpers/functions'
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target
         if (type === 'checkbox') {
+            cartDispatch({type: 'CLEAR_FIELDS'})
             cartDispatch({type: 'UPDATE_FIELD', fieldName: name, fieldValue: checked })
             return
         }
@@ -84,17 +85,27 @@ import * as fn from '../helpers/functions'
             }
             console.log("REGISTERING NEW USER")
         const body = {email: email, password: password, username: username};
-           await strapi.register(body, dispatch)
-            cartDispatch({type: 'LOGGED_IN'})
+            try {
+                await strapi.register(body, dispatch)
+                cartDispatch({type: 'LOGGED_IN'})
+            }catch(err) {
+                console.log(err)
+                cartDispatch({type: 'LOGIN_FAIL', payload: err})
+            }
 
         } else {
             console.log("LOGGING IN USER with ", email, password)
             const body = {identifier: email, password: password, username: username};
             try {
-                await strapi.login(body, dispatch)
+               const response = await strapi.login(body, dispatch)
+               if (response.status === 400 ) {
+                cartDispatch({type: 'LOGIN_FAIL', payload: response.message})
+               } else {
                 cartDispatch({type: 'LOGGED_IN'})
+               }
+                console.log('LOGIN RESPONSE ', response)
             } catch (err) {
-                console.log(err)
+                console.log('LOGIN ERROR ', err)
                 cartDispatch({type: 'LOGIN_FAIL', payload: err})
             }
         }

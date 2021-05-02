@@ -48,19 +48,8 @@ const CheckoutPage = () => {
     ]
     return (
         <>
-        <Section dark height={180}>
-            {vars.headerBubbles.map((b, i) => (
-            <Bubble {...b} key={i} />
-            ))}
-                <img src="/drips.png" alt="drips" style={{float: 'right', width: '500px', transform: 'translate(50px, -70px)', zIndex: '5'}}/>
-            <Container>
-                <BannerHeading style={{maxWidth: 550, transform: 'translateY(-50px)' }}>
-                    We offer FREE delivery on all orders over &pound;25
-                </BannerHeading>
-            </Container>
-            <img src="/oversholder.webp" alt="girl-pic" style={{position: 'absolute', top: 31, left: 560, maxHeight: 320}}/>
-        </Section>
-        <Section light height={900}>
+            <img src="/drips-dark.svg" style={{ position: 'absolute', right: 0, top: 0, width: 500, zIndex: 0 }}/>
+        <Section light height={1500}>
             <Container>
                     <Heading1>Checkout</Heading1>
                 <CheckoutWrapper>
@@ -81,9 +70,12 @@ const CheckoutPage = () => {
                             {el.product_qty} x
                         </Paragraph>
                             <ProductFrame sml style={{flex: 1, marginRight: 20}} >
-                                <img src={`http://localhost:1337${el.product_picture_1}`} 
+                                <img src={`${process.env.RAZZLE_API_URI}${el.product_picture_1}`} 
                                 style={{display: 'block', maxHeight: '70px', maxWidth: '70px', width: 'auto', height: 'auto'}}
                                 />
+                                {/* <img src={`http://localhost:1337${el.product_picture_1}`} 
+                                style={{display: 'block', maxHeight: '70px', maxWidth: '70px', width: 'auto', height: 'auto'}}
+                                /> */}
                             </ProductFrame>
                             <div style={{flex: 3, paddingRight: 20}}>
                             <Paragraph>

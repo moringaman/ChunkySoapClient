@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import {  MinusCircle, PlusCircle, CreditCard, ArrowLeft } from 'react-feather'
 import { Heading1, Heading2, Heading3, Paragraph } from '../styles/typography'
 import { Container, Section, Wrapper, ButtonRow} from '../styles/layout'
+import { myApi } from '../helpers'
 import ProductFrame from '../styles/ui/productFrame'
 import AddToCart from '../components/ui/AddToCartBtn'
 import AnimatedButton from '../components/ui/AnimatedButton'
@@ -22,23 +23,22 @@ import AnimatedButton from '../components/ui/AnimatedButton'
     }, [_id])
 
     const apiCall = async() => {
-        const res = await fetch(`http://localhost:1337/products?id=${_id}`)
-        const data = await res.json()
-        dispatch({type: 'FETCH_PRODUCT', payload: data[0]})
+        const res = await myApi.send(`/products?id=${_id}`, 'GET', undefined, 'public')
+        dispatch({type: 'FETCH_PRODUCT', payload: res[0]})
     }
 
-    const decreaseQuantity = () => {
+    const decreaseQuantity = useCallback(() => {
          const newQuantity = quantity >= 2 ? quantity - 1 : quantity
          console.log(newQuantity)
          setQuantity(newQuantity)
-    }
+    })
 
-    const increaseQuantity = () => {
+    const increaseQuantity = useCallback(() => {
         console.log("triggered")
         const newQuantity = quantity < 100 ? quantity + 1 : quantity
          console.log(newQuantity)
         setQuantity(newQuantity)
-    }
+    })
 
     const { product_name, product_short_description, product_picture_1, product_long_description, product_price, product_discount } = currentProduct
     return (

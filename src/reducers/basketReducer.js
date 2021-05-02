@@ -10,11 +10,11 @@ const initialState = {
 export default function basketReducer(state=initialState, action) {
     console.log("ADDING", action.payload)
     // console.log("BASKET SHOULD CONTAIN ", [...state.basket.concat(action.payload)])
-    console.log("STATE FROM REDUCER ", {
-                ...state,
-                basket: {
-                    products: state.basket.products.filter(item => item._id != action.payload._id)
-                }})
+    // console.log("STATE FROM REDUCER ", {
+    //             ...state,
+    //             basket: {
+    //                 products: state.basket.products.filter(item => item._id != action.payload._id)
+    //             }})
     switch(action.type) {
         case 'SET_INITIAL_BASKET':
             return {

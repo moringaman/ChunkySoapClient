@@ -5,6 +5,7 @@ import { withHero } from "../components/layout";
 import { ProductSlider } from "../components/ui";
 import { Container } from "../styles/layout";
 import { Modal, OptIn, ProductPreview, Footer } from "../components";
+import { myApi } from '../helpers'
 import useModal from "../hooks/useModal";
 
 const CategoriesPage = (props) => {
@@ -36,8 +37,7 @@ const CategoriesPage = (props) => {
 
   const _apiCall = async () => {
     if (products.products.length > 1) return
-    const res = await fetch(`http://localhost:1337/products`);
-    const data = await res.json();
+    const data = await myApi.send(`/products`, 'GET', undefined, 'public');
     dispatch({ type: "FETCH_PRODUCTS", payload: data });
   };
 

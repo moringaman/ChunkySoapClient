@@ -32,12 +32,24 @@ const auth = {
    */
   clearAppStorage() {
     if (localStorage) {
-      localStorage.clear();
+      return localStorage.clear();
     }
 
     if (sessionStorage) {
-      sessionStorage.clear();
+     return sessionStorage.clear();
     }
+  },
+
+  /**
+   * Clear all user info
+   * @param {*} tokenKey 
+   * @returns 
+   */
+
+  clearUser() {
+      console.log("TOKEN CLEARER ")
+      this.clearUserInfo()
+      this.clearToken()
   },
 
   clearToken(tokenKey = TOKEN_KEY) {

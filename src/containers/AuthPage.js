@@ -1,5 +1,6 @@
 import React, { useEffect, useReducer, useState} from 'react'
 import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router'
 import { FrameHeader, Frame, FrameBody, Container } from '../styles/layout'
 import { Heading2 } from '../styles/typography'
 import { LoginForm } from '../components'
@@ -8,11 +9,14 @@ import { useStrapiLogin } from '../hooks'
 
 const AuthPage = (props) => {
 
+    const dispatch = useDispatch()
+    const history = useHistory()
+
     useEffect(() => {
         const query = new URLSearchParams(props.location.search)
         const isRegistration = query.get('register') // || false
         loginDispatch({type: 'UPDATE_FIELD', fieldName: 'register', fieldValue: isRegistration}) 
-    }, [])
+    }, [props.location.search])
 
     const loginReducer = (state, action) => {
         switch(action.type) {
@@ -23,6 +27,16 @@ const AuthPage = (props) => {
                      ...state.fields,
                         [action.fieldName] : action.fieldValue 
                  }
+                }
+            case 'LOGGING_IN':
+                return {
+                    ...state,
+                    loading: true
+                }
+            case 'LOGGED_IN':
+                return {
+                    ...state,
+                    loading: false
                 }
             default:
                 return state
@@ -45,7 +59,7 @@ const AuthPage = (props) => {
     const [ loginState, loginDispatch ] = useReducer(loginReducer, initialState)
     const { authenticated, guest, loading, fields: { email, password, register, username, password_confirmation } } = loginState
 
-    const { handleStrapiLogin, errorMsg, isLoggedIn } = useStrapiLogin({loginDispatch, loginState})
+    const { handleStrapiLogin, errorMsg, isLoggedIn } = useStrapiLogin({dispatch, loginState})
 
 
     const handleChange = (e) => {
@@ -60,7 +74,10 @@ const AuthPage = (props) => {
 
     const handleLogin = async (e) => {
         e.preventDefault()
-       await handleStrapiLogin()
+        loginDispatch({type: 'LOGGING_IN'})
+       await handleStrapiLogin(loginState.fields, dispatch)
+        loginDispatch({type: 'LOGGED_IN'})
+        history.push('/basket')
     }
 
     
@@ -68,10 +85,11 @@ const AuthPage = (props) => {
         <>
         <Container>
             <LoginForm 
+            type='standalone'
             data={loginState.fields} 
             handleChange={handleChange}
             handleLogin={handleLogin}
-            loading={loginState.loading ? 1 : undefined}
+            loading={loading ? 1 : undefined}
              />
         </Container>
         </>

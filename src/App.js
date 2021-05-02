@@ -8,14 +8,15 @@ import Basket from '../src/components/Basket';
 import PrivateRoute from './components/PrivateRoute'
 import { loadStripe } from '@stripe/stripe-js'
 import { Elements } from '@stripe/react-stripe-js'
-import { WithNavbar, WithHero } from '../src/components/layout'
-import { Container } from '../src/styles/layout'
+import { WithNavbar } from '../src/components/layout'
 import './styles/global.css'
 const store = createStore(combineReducers)
 
-const stripePromise = loadStripe('pk_test_3o7rovRbtC8Fmec24VShO7pU')
+// const stripePromise = loadStripe('pk_test_3o7rovRbtC8Fmec24VShO7pU')
+const stripePromise = loadStripe(process.env.RAZZLE_STRIPE_PUBLIC_KEY)
  // ADD PUBLISHABLE KEY
  // sk_test_rvboOk0S3wSR1tPGYuzzcjpV
+ console.log("DEV: ", process.env.RAZZLE_API_URI)
 
 const App = () => (
   <Provider store={store}>
@@ -25,7 +26,7 @@ const App = () => (
             <Route exact path="/" component={HomePage} />
             <Route path="/search-results" component={SearchResults} />
             <Route path="/basket" component={Basket} />
-            <Route path="/checkout" component={CheckoutPage} />
+            <Route exact path="/checkout" component={CheckoutPage} />
             <Route path="/product/:_id" exact component={ProductPage} />
             <Route path="/category/:_id" component={CategoriesPage} />
             <Route path="/authenticate" component={AuthPage} />

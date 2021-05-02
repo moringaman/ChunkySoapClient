@@ -4,6 +4,7 @@ import { useHistory } from "react-router";
 import { myApi } from '../helpers'
 import TopNav, { NavList } from "../styles/components/topnav";
 import * as vars from "../styles/variables";
+import * as fn from '../helpers/functions'
 import PageLink from "./ui/PageLink";
 import { Logo } from "../styles/logos";
 import { ShoppingCart } from "react-feather";
@@ -12,12 +13,25 @@ import AnimatedButton from "../components/ui/AnimatedButton";
 import { User } from "react-feather";
 import styled from "styled-components";
 import { useIsAuthenticated } from '../hooks'
+import { auth, strapi} from '../helpers'
 
 const Navbar = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const {isAuthenticated} = useIsAuthenticated()
-console.log("AUTHED ", isAuthenticated)
+
+  console.log('AUTH FROM HOOK', isAuthenticated)
+
+  const [ loggedIn, setLoggedIn ] = useState(false)
+
+  useEffect(() => {
+    setLoggedIn(isAuthenticated)
+      console.log("AUTHENTICATED", loggedIn)
+  }, [isAuthenticated])
+
+
+// console.log("AUTHED ", isAuthenticated)
+
   useEffect(() => {
     if (process.browser) {
       const cartInStorage = localStorage.getItem("soap-cart");
@@ -29,7 +43,7 @@ console.log("AUTHED ", isAuthenticated)
         });
       }
     }
-    console.log("NAV HIST ", history.location.pathname);
+    // console.log("NAV HIST ", history.location.pathname);
 // fetch categories to pass to dropdown
     (async () => {
       if(categories && categories.length) return
@@ -42,7 +56,8 @@ console.log("AUTHED ", isAuthenticated)
   const { basket } = useSelector((state) => state.basket);
   const { categories } = useSelector((state) => state.categories || []);
   const { user } = useSelector((state) => state.user || {});
-  console.log("CATS ", basket);
+  const [ key, setKey ] = useState(0)
+  console.log("CATS ", basket, user);
   const [basketTotal, setBasketTotal] = useState(0);
   // const [basketValue] = useSelector(state => state.basket[products])
   // .reduce((item, total) => item.total_price + total))
@@ -61,7 +76,7 @@ console.log("AUTHED ", isAuthenticated)
   }, [basket]);
 
   return (
-    <Container nav={true} location={history.location.pathname}>
+    <Container nav={true} location={history.location.pathname} key={key}>
       <TopNav location={history && history.location.pathname}>
         {/* <CategoryMenu><Pointer /></CategoryMenu>  */}
           <Logo>Chunky Soap Co</Logo>
@@ -85,7 +100,12 @@ console.log("AUTHED ", isAuthenticated)
               Categories
             </PageLink>
           </li>
-          <li>{isAuthenticated === false ? <PageLink to="/authenticate">Sign In</PageLink> : "Sign Out"}</li>
+           {/* call auth.clear() to remove auth key to logout */}
+          <li>{fn.isEmpty(user) ? <PageLink to="/authenticate">Sign In</PageLink> : <button onClick={() => {
+            history.push('/authenticate')
+            strapi.logout(dispatch)
+          }
+            }>Sign Out</button>}</li>
           <li>
             <AnimatedButton primary sml text="New Account" loading="false" handleClick={() => history.push('/authenticate?register=true')}>
               <User />

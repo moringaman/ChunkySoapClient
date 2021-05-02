@@ -16,25 +16,13 @@ const Modal = ({ isShowing, hide, ...rest }) =>
             aria-hidden
             tabIndex={-1}
             role="dialog"
-            onClick={hide}
+            // onClick={hide}
           >
             <ModalMain className="modal">
             <CloseButton
               onClick={hide}
             ><Cross/></CloseButton>
               <div className="modal-header">
-                {/* <AnimatedButton
-                  med
-                  secondary
-                  type="button"
-                  style={{position: 'absolute', right: 35, bottom: 20 }}
-                  data-dismiss="modal"
-                  aria-label="Close"
-                  handleClick={hide}
-                  text="Close"
-                >
-                <X/>
-                </AnimatedButton> */}
               </div>
               {rest.children}
             </ModalMain>

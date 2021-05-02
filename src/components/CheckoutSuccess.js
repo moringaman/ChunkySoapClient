@@ -5,7 +5,10 @@ import { SubHeading1, Paragraph } from '../styles/typography'
 
 const CheckoutSuccess = ({cartState}) => {
 
-    // const {  }
+    //TODO:
+    // Delete cart State
+    // remove cart data from local storage
+    // Send confirmation email with cart details
 
     return (
         <Frame>

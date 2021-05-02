@@ -8,7 +8,7 @@ import { auth, request, myApi } from './'
     // const API_URI = 'http://localhost:1337'
         try {
             console.log("STRAPI LOGIN ", body)
-            const response = await request(`${API_URI}/auth/local/`, { method: 'POST', body})
+            const response = await request(`${process.env.RAZZLE_API_URI}/auth/local/`, { method: 'POST', body})
             console.log("STRAPI RESPONSE ", response)
             // TODO: use cookies to avoid serverside issues
             auth.setToken(response.jwt, body.rememberMe);
@@ -16,7 +16,7 @@ import { auth, request, myApi } from './'
             dispatch({type: "SET_USER_SESSION", payload: response})
             return response
         }catch(err) {
-            return err
+            return {status: 400, message: err}
         }
     },
 
@@ -53,5 +53,11 @@ import { auth, request, myApi } from './'
         } catch (err) {
             return(err)
         }
+    },
+
+    logout(dispatch) {
+        console.log('LOGGING_OUT')
+        auth.clearUser()
+        dispatch({type: 'END_USER_SESSION'})
     }
 }

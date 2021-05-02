@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components'
 import * as vars from '../variables'
-import PageLink from '../../components/ui/PageLink'
 
 const TopNav = styled.div`
     width: 80%;
@@ -10,9 +9,13 @@ const TopNav = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
-    ${props => props.location.includes('product') && css`
+    ${props => /product|checkout/.test(props.location) && ` 
         background-color: ${vars.palette.primaryColor};
     `}
+    ${props => /checkout/.test(props.location) && ` 
+        margin-top: -100px;
+    `}
+    
     
 `
 export const NavList = styled.ul`

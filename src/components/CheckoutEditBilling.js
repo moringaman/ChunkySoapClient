@@ -4,9 +4,10 @@ import { Frame, FrameBody, FrameHeader, FrameFooter, ButtonRow, Divider } from '
 import { SubHeading1, Heading2 } from '../styles/typography'
 import { AnimatedButton, SimpleTextInput } from '../components/ui'
 import forms from '../containers/forms.json'
-import { Edit3, ArrowRight } from 'react-feather'
+import { Edit3, ArrowRight, ArrowLeft } from 'react-feather'
 import { myApi } from '../helpers/'
 import * as fn from '../helpers/functions'
+import { useHistory } from 'react-router'
 
 const EditBilling = ({user, cartState, cartDispatch, buttonClick}) => {
 
@@ -14,19 +15,27 @@ const EditBilling = ({user, cartState, cartDispatch, buttonClick}) => {
     const [ editing, setEditing ] = useState(false)
     const [ address , setAddress ] = useState({})
     const [ loading, setLoading ] = useState(false)
+    const { customer_title, customer_firstname, customer_lastname, customer_address1, customer_address2, customer_town, customer_postcode } = user
     const dispatch = useDispatch()
-    console.log("USER_ID", user._id)
+    const history = useHistory()
+    console.log("USER_ID", user)
 
     const handleInputChange = (e) => {
         const { name, value } = e.target
         setAddress(values => ({...values, [name]: value}))
     }
 
+    const goBack = () => {
+        history.goBack()
+    }
+
     useEffect(() => {
-        console.log("USER DETAILS", user)
-        if (!user._id && !user.customer_firstname) {
+        console.log("USER DETAILS", user.customer_firstname)
+        if (user._id == '' && user.customer_firstname == '') {
             setEditing(true)
         }
+        // populate address state with address 
+        setAddress(user)
     }, [, user])
 
     const submitForm = async(e) => {
@@ -39,6 +48,7 @@ const EditBilling = ({user, cartState, cartDispatch, buttonClick}) => {
             dispatch({type: 'SET_USER_SESSION', payload: res})
         } else {
             dispatch({type: 'SET_USER_SESSION', payload: address})
+            console.log('ADDRESS ', address)
         }
         setEditing(false)
         setLoading(false)
@@ -54,25 +64,31 @@ const EditBilling = ({user, cartState, cartDispatch, buttonClick}) => {
                                 <Divider mb='10px'/>
                             </FrameHeader>
                             <FrameBody>
+                                { user.customer_firstname ? 
+                                <>
                                 <Heading2>
-                                { user.customer_title } {user.customer_firstname} {user.customer_lastname}
+                                { customer_title } {customer_firstname} {customer_lastname}
                                 </Heading2>
                                 <Heading2>
-                                { user.customer_address1 }
+                                { customer_address1 }
                                 </Heading2>
                                 <Heading2>
-                                { user.customer_address2 }
+                                { customer_address2 }
                                 </Heading2>
                                 <Heading2>
-                                { user.customer_town }
+                                { customer_town }
                                 </Heading2>
                                 <Heading2>
-                                { user.customer_postcode }
+                                { customer_postcode }
                                 </Heading2>
+                                </>
+                                : <Heading2>Please provide a billing address</Heading2> 
+                                }
                             </FrameBody>
                         <FrameFooter >
                         <ButtonRow>
-                            <AnimatedButton big secondary text="change"  handleClick={() => setEditing(true)}><Edit3/></AnimatedButton>
+                            <AnimatedButton big secondary text='Back' handleClick={() => goBack()}><ArrowLeft/></AnimatedButton>
+                            <AnimatedButton big secondary text='change' handleClick={() => setEditing(true)}><Edit3/></AnimatedButton>
                             <AnimatedButton big text="confirm" handleClick={() => buttonClick('NEXT_STEP')}><ArrowRight></ArrowRight></AnimatedButton>
                         </ButtonRow>
                         </FrameFooter>
@@ -100,6 +116,7 @@ const EditBilling = ({user, cartState, cartDispatch, buttonClick}) => {
                                         handleChange={(e) => handleInputChange(e)}
                                         required
                                         cols={el.width}
+                                        value={address[el.value]}
                                     />
                                 ))
                             }
@@ -130,11 +147,11 @@ const EditBilling = ({user, cartState, cartDispatch, buttonClick}) => {
 
     return (
         <>
-        { (!editing) &&
+        { (editing === false && user.customer_firstname) &&
             renderAddress()
         }
         {
-            (editing) && 
+            (editing === true || !user.customer_firstname) && 
             renderForm()
         }
         </>

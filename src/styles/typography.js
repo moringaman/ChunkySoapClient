@@ -21,7 +21,7 @@ export const SectionHeading = styled.h1`
 export const BannerHeading = styled.h1`
     margin-top: 50px;
     text-align: left;
-    font-size: 68px;
+    font-size: 58px;
     font-weight: 600;
     color: white;
     line-height: 100%;

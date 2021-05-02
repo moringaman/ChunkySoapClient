@@ -137,6 +137,7 @@ export default function HomePage(props) {
         cols="100%" 
         height={200}
         valid={false}
+        loading={false}
         btnText="Subscribe"
         placeholder="your email address" 
         label="Subscribe to our newsletter to get special deals"

@@ -21,12 +21,12 @@ export const createExcerpt = (string, length) => {
 }
 
 export const pathMatches = (str) => {
-  console.log("PATH " , str)
+  // console.log("PATH " , str)
     const regex = /^\/([^?\/]+)/;
     if (str === '/') {
       return "/" // str.match(regex)
     }
-    console.log("PATH MATCH ", str.match(regex)[0])
+    // console.log("PATH MATCH ", str.match(regex)[0])
     return str.match(regex)[0];
 }
 

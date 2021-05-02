@@ -8,7 +8,8 @@
                 "type": "text",
                 "name": "customer_title",
                 "width": "20%",
-                "required": true
+                "required": true,
+                "value": "customer_title"
             },
             {
                 "placeholder": "",
@@ -16,7 +17,8 @@
                 "type": "text",
                 "name": "customer_firstname",
                 "width": "40%",
-                "required": true
+                "required": true,
+                "value": "customer_firstname"
             },
             {
                 "placeholder": "",
@@ -24,7 +26,8 @@
                 "type": "text",
                 "name": "customer_lastname",
                 "width": "40%",
-                "required": true
+                "required": true,
+                "value": "customer_lastname"
             },
             {
                 "placeholder": "",
@@ -32,14 +35,16 @@
                 "type": "text",
                 "name": "customer_address1",
                 "width": "50%",
-                "require": true
+                "require": true,
+                "value": "customer_address1"
             },
             {
                 "placeholder": "",
                 "label": "Address 2",
                 "type": "text",
                 "name": "customer_address2",
-                "width": "50%"
+                "width": "50%",
+                "value": "customer_address2"
             },
             {
                 "placeholder": "",
@@ -47,7 +52,8 @@
                 "type": "text",
                 "name": "customer_town",
                 "width": "50%",
-                "required": true
+                "required": true,
+                "value": "customer_town"
             },
             {
                 "placeholder": "",
@@ -55,7 +61,8 @@
                 "type": "text",
                 "name": "customer_postcode",
                 "width": "30%",
-                "required": true
+                "required": true,
+                "value": "customer_postcode"
             }
         ],
         "login": [

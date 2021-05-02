@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { ShippingOption, AnimatedButton } from '../components/ui'
 import { ButtonRow } from '../styles/layout'
+import { ArrowLeft } from 'react-feather'
+import { myApi } from '../helpers'
 import * as fn from '../helpers/functions'
 
 const ShippingOptions = ({dispatch, cartDispatch}) => {
@@ -32,9 +34,10 @@ const ShippingOptions = ({dispatch, cartDispatch}) => {
     }, [currentOption])
 
     const apiCall = async() => {
-        const response = await fetch('http://localhost:1337/shippings')
-        const result = await response.json()
-        console.log("SHIIPING ", result)
+        // const response = await fetch('http://localhost:1337/shippings')
+        const result = await myApi.send('/shippings', 'GET', undefined, 'public')
+        // const result = await response.json()
+        console.log("SHIPPING ", result)
         setOptions(result)
         //TODO: If value is over 25 make standard Royal mail default
         setCurrentOption(result[0]._id)
@@ -55,6 +58,7 @@ const ShippingOptions = ({dispatch, cartDispatch}) => {
                 }
             </div>
             <ButtonRow>
+                <AnimatedButton big secondary text="Back" handleClick={() => cartDispatch({type: 'PREV_STEP'})}><ArrowLeft/></AnimatedButton>
                 <AnimatedButton big text="Continue" handleClick={() => cartDispatch({type: 'NEXT_STEP'})}/>
             </ButtonRow>
         </>

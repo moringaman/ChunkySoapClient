@@ -31,14 +31,17 @@ const checkoutReducer = (state, action) => {
             return {
                 ...state,
                 authenticated: false,
-                guest: false,
+                // guest: false,
                 loading: true,
             }
         case "LOGIN_FAIL":
             return {
                 ...state,
                 loading: false,
-                errorMsg: action.payload
+                step: 1,
+                guest: null,
+                errorMsg: action.payload,
+                authenticated: false
             }
         case "LOGGED_IN":
             return {
@@ -68,6 +71,16 @@ const checkoutReducer = (state, action) => {
                          ...state.fields,
                          [action.fieldName] : action.fieldValue
                    }
+                }
+        case 'CLEAR_FIELDS': 
+                return {
+                    ...state,
+                    fields: {
+                    ...state.fields,
+                        password: '',
+                        username: '',
+                        identifier: ''
+                    }
                 }
         default:
             return state

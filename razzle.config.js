@@ -13,9 +13,9 @@ const pwaConfig = {
 
 const manifestConfig = {
   filename: 'manifest.json',
-  name: 'Razzle App',
-  short_name: 'Razzle',
-  description: 'Another Razzle App',
+  name: 'Chunky Soap',
+  short_name: 'Chunky',
+  description: 'The Chunky Soap Company Website',
   orientation: 'portrait',
   display: 'fullscreen',
   start_url: '.',
