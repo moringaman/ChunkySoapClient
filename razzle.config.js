@@ -119,5 +119,6 @@ const manifestConfig = {
 const modify = modifyBuilder({ pwaConfig, manifestConfig })
 
 module.exports = {
-  plugins: [{ func: modify }]
+  //plugins: [{ func: modify }]
+  modify: require("razzle-heroku"),
 }
