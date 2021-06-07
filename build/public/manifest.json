@@ -1,0 +1,103 @@
+{
+  "icons": [
+    {
+      "src": "/icon_180x180.8e34bc6d815173fe01ec33c77c5f660f.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_152x152.ca9cd38e55fddd88570518e8c0299f23.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_144x144.1643b60b2714dd369e453ca884897666.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_120x120.715eb318ff340e017ccca08c2db15cb8.png",
+      "sizes": "120x120",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_114x114.dd54050e25b8bb58d0e2433dc2995cad.png",
+      "sizes": "114x114",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_76x76.22d7b8a972a188f00270debd7f411358.png",
+      "sizes": "76x76",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_72x72.f2d5307ca029e33b222a21552a08a109.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_60x60.754cd5221c4be7447b6f4d2d4a5b5e18.png",
+      "sizes": "60x60",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_57x57.0d199f525995ac794fa2af8b5ff15366.png",
+      "sizes": "57x57",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_192x192.1dec1dd565712cd97bd9fa828bcb356c.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_144x144.1643b60b2714dd369e453ca884897666.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_96x96.d79ec2402bdb8483fb8fe9415dbf9d1e.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_72x72.f2d5307ca029e33b222a21552a08a109.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_48x48.ee7db214ca94e210a7b9df96b9175c7a.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_36x36.597833536f5dbb41bee82cd6d5e738cc.png",
+      "sizes": "36x36",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_96x96.d79ec2402bdb8483fb8fe9415dbf9d1e.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_32x32.ed670ba65ef48bbcfbd0d9792d944fb5.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_16x16.7c16fadb7ec472d485127634f14a015e.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    }
+  ],
+  "name": "Chunky Soap",
+  "short_name": "Chunky",
+  "orientation": "portrait",
+  "display": "fullscreen",
+  "start_url": ".",
+  "description": "The Chunky Soap Company Website",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "related_applications": []
+}
