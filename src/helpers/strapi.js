@@ -8,7 +8,7 @@ import { auth, request, myApi } from './'
     // const API_URI = 'http://localhost:1337'
         try {
             console.log("STRAPI LOGIN ", body)
-            const response = await request(`${process.env.RAZZLE_API_URI}/auth/local/`, { method: 'POST', body})
+            const response = await request(`${API_URI}/auth/local/`, { method: 'POST', body})
             console.log("STRAPI RESPONSE ", response)
             // TODO: use cookies to avoid serverside issues
             auth.setToken(response.jwt, body.rememberMe);

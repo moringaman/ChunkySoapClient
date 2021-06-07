@@ -1,5 +1,5 @@
 {
-  "name": "my-razzle-app",
+  "name": "chunkysoapui",
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
@@ -31,7 +31,7 @@
     "react-router-dom": "^5.2.0",
     "redux": "^4.0.5",
     "stripe": "^8.114.0",
-    "styled-components": "^5.2.0",
+    "styled-components": "4.2.0",
     "universal-cookie": "^4.0.4"
   }
 }

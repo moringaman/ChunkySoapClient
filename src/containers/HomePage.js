@@ -14,10 +14,10 @@ import * as vars from "../styles/variables";
 
 export default function HomePage(props) {
   const products = useSelector((state) => state.products);
-  const featured = products.products.filter(
+  const featured = products?.products.filter(
     (el) => el.product_featured === true
   );
-  const popular = products.products.sort((a, b) =>
+  const popular = products?.products.sort((a, b) =>
     a.product_sold_quantity > b.product_sold_quantity ? 1 : -1
   );
   const dispatch = useDispatch();
