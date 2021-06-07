@@ -19,7 +19,6 @@ export default {
     const baseURL = `${apiAddress}`;
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-    // myHeaders.append('Access-Control-Allow-Origin', '*');
     if (token !== "" && type !== "public") {
       myHeaders.append("Authorization", `Bearer ${token}`);
     }
