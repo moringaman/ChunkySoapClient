@@ -12,8 +12,7 @@ const stripeCallHandler = (req, res) => {
 }
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
-const publicFolder = process.env.NODE_ENV === 'production' ? path.join(__dirname, '../build/public') : 'public'
-// process.env.RAZZLE_PUBLIC_DIR;
+const publicFolder = process.env.NODE_ENV === 'production' ? path.join(__dirname, '../build/public') : process.env.RAZZLE_PUBLIC_DIR;
 
 
 const server = express();
