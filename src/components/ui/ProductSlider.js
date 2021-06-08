@@ -11,7 +11,7 @@ const ProductSlider = ({ data, handleClick, perPage, ...rest }) => {
   const productsPerPage = perPage;
 
   useEffect(() => {
-    if (data.length > 0) {
+    if (data && data.length > 0) {
       const slices = data.length / productsPerPage;
       setSliceArray([...Array(slices)]);
     }
@@ -23,6 +23,7 @@ const ProductSlider = ({ data, handleClick, perPage, ...rest }) => {
 
   return (
     <>
+     { data &&
       <SlideGrid {...rest} mb={'100px'}>
         {data.length > 1 ? 
           data
@@ -47,6 +48,9 @@ const ProductSlider = ({ data, handleClick, perPage, ...rest }) => {
                 />
             ))}
       </SlideGrid >
+}
+{ data && 
+
       <Dots>
         {data.length > 3 &&
           sliceArray.map((el, i) => (
@@ -58,6 +62,7 @@ const ProductSlider = ({ data, handleClick, perPage, ...rest }) => {
             />
           ))}
       </Dots>
+}
     </>
   );
 };

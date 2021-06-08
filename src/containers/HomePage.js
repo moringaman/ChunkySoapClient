@@ -11,15 +11,23 @@ import WxButton from "../styles/components/button";
 import { Modal, OptIn, ProductPreview, Footer, ProductSearch, CategoryRow } from "../components";
 import useModal from "../hooks/useModal";
 import * as vars from "../styles/variables";
+import { isEmpty } from '../helpers/functions'
 
 export default function HomePage(props) {
+  let featured, popular
   const products = useSelector((state) => state.products);
-  const featured = products?.products.filter(
-    (el) => el.product_featured === true
-  );
-  const popular = products?.products.sort((a, b) =>
+  console.log('PRODUCTS ', products) 
+
+  if (products.products) { 
+     featured = products.products.filter(
+      (el) => el.product_featured === true
+    ) 
+
+   popular = products?.products.sort((a, b) =>
     a.product_sold_quantity > b.product_sold_quantity ? 1 : -1
-  );
+  )
+  }
+
   const dispatch = useDispatch();
   const history = useHistory();
   const { isShowing, toggle } = useModal({selectedProduct, products})
