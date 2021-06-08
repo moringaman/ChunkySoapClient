@@ -29,6 +29,8 @@ export default {
     var requestOptions = {
       method: method,
       headers: myHeaders,
+      mode: 'cors',
+      credentials: 'omit',
       body: raw,
       redirect: "follow",
     };
@@ -68,7 +70,7 @@ export default {
    */
 
       const retryFetch = (url, options, retries = 4) => {
-        const retryCodes = [401, 408, 500, 502, 503, 504, 522, 524]
+        const retryCodes = [404, 401, 408, 500, 502, 503, 504, 522, 524]
         return fetch(url,  options)
         .then(response => {
           console.log('STATUS', response.status)
