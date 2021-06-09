@@ -1,0 +1,571 @@
+{
+  "decisions": {
+    "565|razzle>webpack>terser-webpack-plugin>cacache>ssri": {
+      "decision": "ignore",
+      "madeAt": 1623241606775,
+      "expiresAt": 1623845696153
+    },
+    "1500|razzle>razzle-dev-utils>webpack-dev-server>yargs>yargs-parser": {
+      "decision": "ignore",
+      "madeAt": 1623241606775,
+      "expiresAt": 1623845696153
+    },
+    "1500|razzle>webpack-dev-server>yargs>yargs-parser": {
+      "decision": "ignore",
+      "madeAt": 1623241606775,
+      "expiresAt": 1623845696153
+    },
+    "1523|razzle>assets-webpack-plugin>lodash": {
+      "decision": "ignore",
+      "madeAt": 1623241606775,
+      "expiresAt": 1623845696153
+    },
+    "1603|razzle>razzle-dev-utils>react-dev-utils>immer": {
+      "decision": "ignore",
+      "madeAt": 1623241606775,
+      "expiresAt": 1623845696153
+    },
+    "1603|razzle>react-dev-utils>immer": {
+      "decision": "ignore",
+      "madeAt": 1623241606775,
+      "expiresAt": 1623845696153
+    },
+    "1673|razzle>assets-webpack-plugin>lodash": {
+      "decision": "ignore",
+      "madeAt": 1623241606775,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>css-loader>icss-utils>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606775,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>css-loader>postcss-modules-local-by-default>icss-utils>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606775,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>css-loader>postcss-modules-values>icss-utils>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606775,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>css-loader>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606775,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>css-loader>postcss-modules-extract-imports>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606775,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>css-loader>postcss-modules-local-by-default>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606775,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>css-loader>postcss-modules-scope>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606775,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>css-loader>postcss-modules-values>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606775,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>optimize-css-assets-webpack-plugin>cssnano>cssnano-preset-default>css-declaration-sorter>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606775,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>optimize-css-assets-webpack-plugin>cssnano>cssnano-preset-default>cssnano-util-raw-cache>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606775,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>optimize-css-assets-webpack-plugin>cssnano>cssnano-preset-default>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606775,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>optimize-css-assets-webpack-plugin>cssnano>cssnano-preset-default>postcss-calc>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606775,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>optimize-css-assets-webpack-plugin>cssnano>cssnano-preset-default>postcss-colormin>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606775,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>optimize-css-assets-webpack-plugin>cssnano>cssnano-preset-default>postcss-convert-values>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606775,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>optimize-css-assets-webpack-plugin>cssnano>cssnano-preset-default>postcss-discard-comments>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>optimize-css-assets-webpack-plugin>cssnano>cssnano-preset-default>postcss-discard-duplicates>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>optimize-css-assets-webpack-plugin>cssnano>cssnano-preset-default>postcss-discard-empty>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>optimize-css-assets-webpack-plugin>cssnano>cssnano-preset-default>postcss-discard-overridden>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>optimize-css-assets-webpack-plugin>cssnano>cssnano-preset-default>postcss-merge-longhand>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>optimize-css-assets-webpack-plugin>cssnano>cssnano-preset-default>postcss-merge-longhand>stylehacks>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>optimize-css-assets-webpack-plugin>cssnano>cssnano-preset-default>postcss-merge-rules>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>optimize-css-assets-webpack-plugin>cssnano>cssnano-preset-default>postcss-minify-font-values>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>optimize-css-assets-webpack-plugin>cssnano>cssnano-preset-default>postcss-minify-gradients>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>optimize-css-assets-webpack-plugin>cssnano>cssnano-preset-default>postcss-minify-params>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>optimize-css-assets-webpack-plugin>cssnano>cssnano-preset-default>postcss-minify-selectors>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>optimize-css-assets-webpack-plugin>cssnano>cssnano-preset-default>postcss-normalize-charset>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>optimize-css-assets-webpack-plugin>cssnano>cssnano-preset-default>postcss-normalize-display-values>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>optimize-css-assets-webpack-plugin>cssnano>cssnano-preset-default>postcss-normalize-positions>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>optimize-css-assets-webpack-plugin>cssnano>cssnano-preset-default>postcss-normalize-repeat-style>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>optimize-css-assets-webpack-plugin>cssnano>cssnano-preset-default>postcss-normalize-string>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>optimize-css-assets-webpack-plugin>cssnano>cssnano-preset-default>postcss-normalize-timing-functions>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>optimize-css-assets-webpack-plugin>cssnano>cssnano-preset-default>postcss-normalize-unicode>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>optimize-css-assets-webpack-plugin>cssnano>cssnano-preset-default>postcss-normalize-url>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>optimize-css-assets-webpack-plugin>cssnano>cssnano-preset-default>postcss-normalize-whitespace>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>optimize-css-assets-webpack-plugin>cssnano>cssnano-preset-default>postcss-ordered-values>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>optimize-css-assets-webpack-plugin>cssnano>cssnano-preset-default>postcss-reduce-initial>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>optimize-css-assets-webpack-plugin>cssnano>cssnano-preset-default>postcss-reduce-transforms>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>optimize-css-assets-webpack-plugin>cssnano>cssnano-preset-default>postcss-svgo>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>optimize-css-assets-webpack-plugin>cssnano>cssnano-preset-default>postcss-unique-selectors>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>optimize-css-assets-webpack-plugin>cssnano>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>postcss-flexbugs-fixes>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>postcss-loader>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>postcss-preset-env>autoprefixer>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>postcss-preset-env>css-blank-pseudo>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>postcss-preset-env>css-has-pseudo>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>postcss-preset-env>css-prefers-color-scheme>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>postcss-preset-env>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>postcss-preset-env>postcss-attribute-case-insensitive>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>postcss-preset-env>postcss-color-functional-notation>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>postcss-preset-env>postcss-color-gray>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>postcss-preset-env>postcss-color-hex-alpha>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>postcss-preset-env>postcss-color-mod-function>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>postcss-preset-env>postcss-color-rebeccapurple>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>postcss-preset-env>postcss-custom-media>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>postcss-preset-env>postcss-custom-properties>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>postcss-preset-env>postcss-custom-selectors>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>postcss-preset-env>postcss-dir-pseudo-class>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>postcss-preset-env>postcss-double-position-gradients>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>postcss-preset-env>postcss-env-function>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>postcss-preset-env>postcss-focus-visible>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>postcss-preset-env>postcss-focus-within>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>postcss-preset-env>postcss-font-variant>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>postcss-preset-env>postcss-gap-properties>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>postcss-preset-env>postcss-image-set-function>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>postcss-preset-env>postcss-initial>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>postcss-preset-env>postcss-lab-function>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>postcss-preset-env>postcss-logical>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>postcss-preset-env>postcss-media-minmax>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>postcss-preset-env>postcss-nesting>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>postcss-preset-env>postcss-overflow-shorthand>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>postcss-preset-env>postcss-page-break>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>postcss-preset-env>postcss-place>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>postcss-preset-env>postcss-pseudo-class-any-link>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606776,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>postcss-preset-env>postcss-replace-overflow-wrap>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606777,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>postcss-preset-env>postcss-selector-matches>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606777,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>postcss-preset-env>postcss-selector-not>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606777,
+      "expiresAt": 1623845696153
+    },
+    "1693|razzle>postcss-safe-parser>postcss": {
+      "decision": "ignore",
+      "madeAt": 1623241606777,
+      "expiresAt": 1623845696153
+    },
+    "1747|razzle>razzle-dev-utils>react-dev-utils>browserslist": {
+      "decision": "ignore",
+      "madeAt": 1623241606777,
+      "expiresAt": 1623845696153
+    },
+    "1748|razzle>jest>jest-cli>@jest/core>@jest/reporters>jest-runtime>jest-config>jest-environment-jsdom>jsdom>ws": {
+      "decision": "ignore",
+      "madeAt": 1623241606777,
+      "expiresAt": 1623845696153
+    },
+    "1748|razzle>jest>jest-cli>@jest/core>jest-runner>jest-jasmine2>jest-runtime>jest-config>jest-environment-jsdom>jsdom>ws": {
+      "decision": "ignore",
+      "madeAt": 1623241606777,
+      "expiresAt": 1623845696153
+    },
+    "1748|razzle>jest>jest-cli>@jest/core>jest-runner>jest-runtime>jest-config>jest-environment-jsdom>jsdom>ws": {
+      "decision": "ignore",
+      "madeAt": 1623241606777,
+      "expiresAt": 1623845696153
+    },
+    "1748|razzle>jest>jest-cli>@jest/core>jest-runtime>jest-config>jest-environment-jsdom>jsdom>ws": {
+      "decision": "ignore",
+      "madeAt": 1623241606777,
+      "expiresAt": 1623845696153
+    },
+    "1748|razzle>jest>jest-cli>@jest/core>jest-runner>jest-config>jest-environment-jsdom>jsdom>ws": {
+      "decision": "ignore",
+      "madeAt": 1623241606777,
+      "expiresAt": 1623845696153
+    },
+    "1748|razzle>jest>jest-cli>@jest/core>jest-config>jest-environment-jsdom>jsdom>ws": {
+      "decision": "ignore",
+      "madeAt": 1623241606777,
+      "expiresAt": 1623845696153
+    },
+    "1748|razzle>jest>jest-cli>jest-config>jest-environment-jsdom>jsdom>ws": {
+      "decision": "ignore",
+      "madeAt": 1623241606777,
+      "expiresAt": 1623845696153
+    },
+    "1751|razzle>razzle-dev-utils>react-dev-utils>globby>fast-glob>glob-parent": {
+      "decision": "ignore",
+      "madeAt": 1623241606777,
+      "expiresAt": 1623845696153
+    },
+    "1751|razzle>react-dev-utils>globby>fast-glob>glob-parent": {
+      "decision": "ignore",
+      "madeAt": 1623241606777,
+      "expiresAt": 1623845696153
+    },
+    "1751|razzle>razzle-dev-utils>webpack-dev-server>chokidar>glob-parent": {
+      "decision": "ignore",
+      "madeAt": 1623241606777,
+      "expiresAt": 1623845696153
+    },
+    "1751|razzle>webpack-dev-server>chokidar>glob-parent": {
+      "decision": "ignore",
+      "madeAt": 1623241606777,
+      "expiresAt": 1623845696153
+    },
+    "1751|razzle>webpack>watchpack>watchpack-chokidar2>chokidar>glob-parent": {
+      "decision": "ignore",
+      "madeAt": 1623241606777,
+      "expiresAt": 1623845696153
+    },
+    "1754|razzle>optimize-css-assets-webpack-plugin>cssnano>cssnano-preset-default>postcss-svgo>svgo>css-select>css-what": {
+      "decision": "ignore",
+      "madeAt": 1623241606777,
+      "expiresAt": 1623845696153
+    },
+    "1755|razzle>mini-css-extract-plugin>normalize-url": {
+      "decision": "ignore",
+      "madeAt": 1623241606777,
+      "expiresAt": 1623845696153
+    },
+    "1755|razzle>optimize-css-assets-webpack-plugin>cssnano>cssnano-preset-default>postcss-normalize-url>normalize-url": {
+      "decision": "ignore",
+      "madeAt": 1623241606777,
+      "expiresAt": 1623845696153
+    },
+    "565|razzle>terser-webpack-plugin>cacache>ssri": {
+      "decision": "ignore",
+      "madeAt": 1623241621085,
+      "expiresAt": 1623845696153
+    },
+    "1589|razzle>razzle-dev-utils>react-dev-utils>global-modules>global-prefix>ini": {
+      "decision": "ignore",
+      "madeAt": 1623241981860,
+      "expiresAt": 1623845696153
+    },
+    "1589|razzle>react-dev-utils>global-modules>global-prefix>ini": {
+      "decision": "ignore",
+      "madeAt": 1623241981860,
+      "expiresAt": 1623845696153
+    },
+    "1589|razzle-plugin-pwa>razzle>razzle-dev-utils>react-dev-utils>global-modules>global-prefix>ini": {
+      "decision": "ignore",
+      "madeAt": 1623241981860,
+      "expiresAt": 1623845696153
+    },
+    "1589|razzle-plugin-pwa>razzle>react-dev-utils>global-modules>global-prefix>ini": {
+      "decision": "ignore",
+      "madeAt": 1623241981860,
+      "expiresAt": 1623845696153
+    },
+    "1589|razzle-plugin-pwa>razzle>razzle-dev-utils>react-dev-utils>global-modules>resolve-dir>global-modules>global-prefix>ini": {
+      "decision": "ignore",
+      "madeAt": 1623241981860,
+      "expiresAt": 1623845696153
+    },
+    "1589|razzle-plugin-pwa>razzle>react-dev-utils>global-modules>resolve-dir>global-modules>global-prefix>ini": {
+      "decision": "ignore",
+      "madeAt": 1623241981860,
+      "expiresAt": 1623845696153
+    },
+    "1648|razzle>webpack>node-libs-browser>crypto-browserify>browserify-sign>elliptic": {
+      "decision": "ignore",
+      "madeAt": 1623241996708,
+      "expiresAt": 1623845696153
+    },
+    "1648|razzle-plugin-pwa>razzle>webpack>node-libs-browser>crypto-browserify>browserify-sign>elliptic": {
+      "decision": "ignore",
+      "madeAt": 1623241996708,
+      "expiresAt": 1623845696153
+    },
+    "1648|razzle-plugin-pwa>webpack>node-libs-browser>crypto-browserify>browserify-sign>elliptic": {
+      "decision": "ignore",
+      "madeAt": 1623241996708,
+      "expiresAt": 1623845696153
+    },
+    "1648|razzle>webpack>node-libs-browser>crypto-browserify>create-ecdh>elliptic": {
+      "decision": "ignore",
+      "madeAt": 1623241996708,
+      "expiresAt": 1623845696153
+    },
+    "1648|razzle-plugin-pwa>razzle>webpack>node-libs-browser>crypto-browserify>create-ecdh>elliptic": {
+      "decision": "ignore",
+      "madeAt": 1623241996708,
+      "expiresAt": 1623845696153
+    },
+    "1648|razzle-plugin-pwa>webpack>node-libs-browser>crypto-browserify>create-ecdh>elliptic": {
+      "decision": "ignore",
+      "madeAt": 1623241996708,
+      "expiresAt": 1623845696153
+    }
+  },
+  "rules": {},
+  "version": 1
+}

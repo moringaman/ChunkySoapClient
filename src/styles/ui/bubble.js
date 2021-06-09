@@ -1,5 +1,6 @@
-import styled, { css } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 import * as vars from '../../styles/variables'
+
 
 const Bubble = styled.div`
     height: 100px;
@@ -30,5 +31,6 @@ const Bubble = styled.div`
         height: ${props.size}px;
     `}
 `
+
 
 export default Bubble

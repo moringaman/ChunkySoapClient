@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components'
 import * as vars from '../variables'
 
 const  WxButton = styled.button`
+    transition: all 0.3s ease-out;
     position: relative;
     padding: 8px 25px;
     border-radius: 50px;
@@ -38,6 +39,9 @@ const  WxButton = styled.button`
             font-weight: 600;
             font-size: 20px;
         }
+            &:hover {
+                background-color: ${vars.palette.secondaryColor1};
+            }
 
         &:hover .button-content {
             transform: translateY(-37px);

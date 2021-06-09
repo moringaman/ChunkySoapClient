@@ -82,7 +82,12 @@ export default {
             throw new Error(response)
           }
         })
-        .catch(console.error)
+        .catch(err => {
+          console.log(err)
+          if (retries !== 0) {
+            return retryFetch(url, options, retries - 1)
+          }
+        })
       } 
 
        return retryFetch(`${baseURL}${url}`, requestOptions)
