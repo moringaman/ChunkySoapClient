@@ -15,7 +15,7 @@ const Category = ({name, id, image })=> {
     return (
         <>
         <CategoryFrame onClick={() => navigate(id)}>
-            <img src={`http://localhost:1337${image}`} style={{height: 250, transform: 'rotate(10deg) translateY(20px)'}} />
+            <img src={image} style={{height: 250, transform: 'rotate(10deg) translateY(20px)'}} />
             <div style={{transform: 'translateY(150px) rotate(10deg)', display: 'flex', alignItems: 'center'}}>
             <Dot name={name} />
             <Heading2>

@@ -19,7 +19,7 @@ const ShippingOption = ({option, checked, selected, ...rest}) => {
        />
        <CarrierOption>
             <img 
-                src={`http://localhost:1337${option.shipping_image.formats.thumbnail.url}`}
+                src={`${option.shipping_image.formats.thumbnail.url}`}
                 style={{maxHeight: 60, maxWidth: 120, marginRight: 20}}
             />
             <Paragraph>

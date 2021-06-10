@@ -35,30 +35,6 @@ export default {
       redirect: "follow",
     };
 
-    
-    // return fetch(`${baseURL}${url}`, requestOptions)
-    //   .then((response) => {
-    //     console.log("fetch response ", response);
-    //     if(response.status === 200) return response.json();
-
-    //     if (retries > 0) {
-    //       return fetch(`${baseURL}${url}`, requestOptions, retries - 1)
-    //       console.log("error", error)
-    //     }
-    //   })
-    //   .then((result) => {
-    //     console.log("reftch result ", result);
-    //     return result;
-    //   })
-    //   .catch(error => {
-    //     console.log(error)
-    //     if (retries > 0) {
-    //       retries - 1
-    //       return fetch(`${baseURL}${url}`, requestOptions)
-    //     }
-    //   }
-    //   );
-
 
   /**
    * (retryFetch returns fetch which recursively calls itself if the request fails)

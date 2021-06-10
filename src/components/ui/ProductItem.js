@@ -24,7 +24,7 @@ const ProductItem = (props) => {
             <ProductFrame onClick={() => props.clickEvent(_id)} onMouseOver={()=> setHovered(true)} onMouseLeave={() => setHovered(false)}>
                 <img 
                     // src={props.image ? `http://localhost:1337${props.image.url}` : '/noimage.png'} 
-                    src={product_picture_1 ? `${process.env.RAZZLE_API_URI}${product_picture_1.url}` : '/noimage.png'} 
+                    src={product_picture_1 ? `${product_picture_1.url}` : '/noimage.png'} 
                     alt="product-image" 
                     style={{maxHeight: 250}}    
                     />
