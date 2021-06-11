@@ -27,7 +27,7 @@ const ProductPreview = (props) => {
             <ProductInfo>
                 <img src="/drips-dark.svg" style={{position: 'absolute', width: 500, top: 0, right: 0, opacity: 0.8, zIndex: 1}}/>
                 <ProductFrame style={{marginTop: 30}}>
-                    <img src={product_picture_1 && `${process.env.RAZZLE_API_URI}${product_picture_1.url}`}/>
+                    <img src={product_picture_1 && product_picture_1.url}/>
                 </ProductFrame>
                 <ProductText>
                     <Heading1 style={{flex: 1}}>{product_name}</Heading1>
