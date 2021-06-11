@@ -20,12 +20,8 @@ const Basket = (props) => {
 
 
     useEffect(() => {
-        // if (fn.getCartTotal(basket.products) < 25 && basket.postage < 4) {
             console.log("BASKET POSTAGE", basket.postage)
             setPostage(basket.postage || 0.00)
-        // } else {
-        //     setPostage(0)
-        // }
         setTotal(fn.getCartTotal(basket.products, postage))
     }, [basket])
 
