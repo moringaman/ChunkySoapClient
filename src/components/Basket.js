@@ -62,7 +62,7 @@ const Basket = (props) => {
                         
                         <ProductRow key={el._id}>
                             <ProductFrame sml style={{flex: 1, marginRight: 70}} >
-                                <img src={`http://localhost:1337${el.product_picture_1}`} 
+                                <img src={el.product_picture_1} 
                                 style={{display: 'block', maxHeight: '70px', maxWidth: '70px', width: 'auto', height: 'auto'}}
                                 />
                             </ProductFrame>
