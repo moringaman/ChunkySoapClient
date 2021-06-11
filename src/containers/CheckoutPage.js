@@ -70,7 +70,7 @@ const CheckoutPage = () => {
                             {el.product_qty} x
                         </Paragraph>
                             <ProductFrame sml style={{flex: 1, marginRight: 20}} >
-                                <img src={`${process.env.RAZZLE_API_URI}${el.product_picture_1}`} 
+                                <img src={el.product_picture_1} 
                                 style={{display: 'block', maxHeight: '70px', maxWidth: '70px', width: 'auto', height: 'auto'}}
                                 />
                                 {/* <img src={`http://localhost:1337${el.product_picture_1}`} 
