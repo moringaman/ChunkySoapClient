@@ -11,7 +11,7 @@ import WxButton from "../styles/components/button";
 import { Modal, OptIn, ProductPreview, Footer, ProductSearch, CategoryRow } from "../components";
 import useModal from "../hooks/useModal";
 import * as vars from "../styles/variables";
-import { isEmpty } from '../helpers/functions'
+import { PageLoader } from '../components/ui'
 
 export default function HomePage(props) {
   let featured, popular
@@ -33,6 +33,8 @@ export default function HomePage(props) {
   const { isShowing, toggle } = useModal({selectedProduct, products})
   const [selectedProduct, setSelectedProduct] = useState({});
   const [currentCart, setCurrentCart] = useState([]);
+  const [ isLoading, setIsLoading ] = useState(true)
+
   const envVar = process.env.RAZZLE_STRIPE_PRIVATE_KEY
 
   // Optin State - later add to custom optin hook
@@ -59,6 +61,7 @@ export default function HomePage(props) {
     const res = await myApi.send("/products", "GET", undefined, "public");
     console.log("MYAPI PRODUCTS ", res);
     dispatch({ type: "FETCH_PRODUCTS", payload: res });
+    setIsLoading(false)
     console.log("HOME PROPS ", props);
   };
 
@@ -79,6 +82,10 @@ export default function HomePage(props) {
   };
 
   return (
+    <>
+    { 
+      isLoading ? <PageLoader /> 
+    : 
     <>
       <Hero>
         <img
@@ -157,6 +164,8 @@ export default function HomePage(props) {
       <Modal isShowing={isShowing} hide={toggle}>
         <ProductPreview product={selectedProduct} viewProduct={viewProduct} />
       </Modal>
+      </>
+    }
     </>
   );
 }
