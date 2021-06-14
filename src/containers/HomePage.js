@@ -62,11 +62,12 @@ export default function HomePage(props) {
 
   const _apiCall = async () => {
     const res = await myApi.send("/products", "GET", undefined, "public");
-    console.log("MYAPI PRODUCTS ", res);
-    if(res) {
+    if (res) {
       dispatch({ type: "FETCH_PRODUCTS", payload: res });
       setIsLoading(false)
     }
+    console.log("MYAPI PRODUCTS ", res);
+
     console.log("HOME PROPS ", props);
   };
 
