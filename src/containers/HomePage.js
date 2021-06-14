@@ -53,15 +53,20 @@ export default function HomePage(props) {
         });
       }
     }
-    if (products.products.length) return;
+    if (products.products.length) {
+      setIsLoading(false)
+      return;
+    } 
     _apiCall();
   }, []);
 
   const _apiCall = async () => {
     const res = await myApi.send("/products", "GET", undefined, "public");
     console.log("MYAPI PRODUCTS ", res);
-    dispatch({ type: "FETCH_PRODUCTS", payload: res });
-    setIsLoading(false)
+    if(res) {
+      dispatch({ type: "FETCH_PRODUCTS", payload: res });
+      setIsLoading(false)
+    }
     console.log("HOME PROPS ", props);
   };
 

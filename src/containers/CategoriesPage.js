@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { withHero } from "../components/layout";
-import { ProductSlider } from "../components/ui";
+import { ProductSlider, PageLoader } from "../components/ui";
 import { Container } from "../styles/layout";
 import { Modal, OptIn, ProductPreview, Footer } from "../components";
 import { myApi } from '../helpers'
@@ -21,11 +21,13 @@ const CategoriesPage = (props) => {
   const products = useSelector(state => state.products);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const { isShowing, toggle, handleClick, selectedProduct } = useModal({products})
+  const [ isLoading, setIsLoading ] = useState(true)
 
   useEffect(() => {
     (async() => {
         await _apiCall()
         filterProductsById()
+     setIsLoading(false)
     })()
     console.log("GAT PAGE PRODS ", products)
   }, [products, _id]);
@@ -47,7 +49,7 @@ const CategoriesPage = (props) => {
     console.log("FILTERED ", filtered, _id )
   }
 
-
+const renderContent = () => {
   return (
     <>
       <Container>
@@ -62,6 +64,21 @@ const CategoriesPage = (props) => {
       </Modal>
     </>
   );
+}
+
+const renderLoadingScreen = () => {
+  return (
+    <PageLoader />
+  )
+}
+
+return (
+  <>
+  {
+  !isLoading ? renderContent() : renderLoadingScreen() 
+    }
+  </>
+)
 };
 
 export default withHero({ component: CategoriesPage });
