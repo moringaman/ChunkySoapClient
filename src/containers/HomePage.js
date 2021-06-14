@@ -53,7 +53,10 @@ export default function HomePage(props) {
         });
       }
     }
-    if (products.products.length) return;
+    if (products.products.length) {
+      setIsLoading(false)
+      return;
+    } 
     _apiCall();
   }, []);
 
@@ -64,6 +67,7 @@ export default function HomePage(props) {
       setIsLoading(false)
     }
     console.log("MYAPI PRODUCTS ", res);
+
     console.log("HOME PROPS ", props);
   };
 
