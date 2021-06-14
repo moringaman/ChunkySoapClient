@@ -30,6 +30,7 @@ export default function HomePage(props) {
 
   const dispatch = useDispatch();
   const history = useHistory();
+
   const { isShowing, toggle } = useModal({selectedProduct, products})
   const [selectedProduct, setSelectedProduct] = useState({});
   const [currentCart, setCurrentCart] = useState([]);
@@ -42,7 +43,7 @@ export default function HomePage(props) {
   const [optinMail, setOptinMail ] = useState({'email': ''})
 
   useEffect(() => {
-    console.log("KEYS: ", envVar)
+    console.log("KEYS: ", envVar, history)
     if (process.browser) {
       const cartInStorage = localStorage.getItem("soap-cart");
       if (cartInStorage) {
@@ -53,7 +54,7 @@ export default function HomePage(props) {
         });
       }
     }
-    if (products.products.length) {
+    if (products.products.length || history.action === 'PUSH') {
       setIsLoading(false)
       return;
     } 
@@ -61,6 +62,7 @@ export default function HomePage(props) {
   }, []);
 
   const _apiCall = async () => {
+    setIsLoading(true)
     const res = await myApi.send("/products", "GET", undefined, "public");
     if (res) {
       dispatch({ type: "FETCH_PRODUCTS", payload: res });
