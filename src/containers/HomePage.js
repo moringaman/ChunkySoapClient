@@ -34,7 +34,7 @@ export default function HomePage(props) {
   const { isShowing, toggle } = useModal({selectedProduct, products})
   const [selectedProduct, setSelectedProduct] = useState({});
   const [currentCart, setCurrentCart] = useState([]);
-  const [ isLoading, setIsLoading ] = useState(true)
+  const [ isLoading, setIsLoading ] = useState(history.action === 'POP')
 
   const envVar = process.env.RAZZLE_STRIPE_PRIVATE_KEY
 

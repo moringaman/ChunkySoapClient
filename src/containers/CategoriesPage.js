@@ -21,7 +21,7 @@ const CategoriesPage = (props) => {
   const products = useSelector(state => state.products);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const { isShowing, toggle, handleClick, selectedProduct } = useModal({products})
-  const [ isLoading, setIsLoading ] = useState(true)
+  const [ isLoading, setIsLoading ] = useState(history.action === 'POP')
 
   useEffect(() => {
     (async() => {
@@ -30,7 +30,7 @@ const CategoriesPage = (props) => {
      setIsLoading(false)
     })()
     console.log("GAT PAGE PRODS ", products)
-  }, [products, _id]);
+  }, [products, _id, history.action]);
 
 
   const viewProduct = (id) => {
