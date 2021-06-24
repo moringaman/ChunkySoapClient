@@ -59,7 +59,7 @@ export default function HomePage(props) {
       return;
     } 
     _apiCall();
-  }, []);
+  }, [, history.action]);
 
   const _apiCall = async () => {
     setIsLoading(true)
