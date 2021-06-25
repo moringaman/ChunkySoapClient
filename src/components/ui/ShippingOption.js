@@ -21,7 +21,7 @@ const ShippingOption = ({option, checked, selected, ...rest}) => {
            { option.shipping_image &&
 
             <img 
-                src={`${option.shipping_image.url}`}
+                src={option.shipping_image.url}
                 style={{maxHeight: 60, maxWidth: 120, marginRight: 20}}
             />
            }
