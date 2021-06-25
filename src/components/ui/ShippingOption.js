@@ -18,10 +18,13 @@ const ShippingOption = ({option, checked, selected, ...rest}) => {
         onChange={() => handleSelection(option.id)}
        />
        <CarrierOption>
+           { option.shipping_image &&
+
             <img 
-                src={`${option?.shipping && option.shipping_image.url}`}
+                src={`${option.shipping_image.url}`}
                 style={{maxHeight: 60, maxWidth: 120, marginRight: 20}}
             />
+           }
             <Paragraph>
                 {option.shipping_carrier} - {option.shipping_description}<br />
                 Price:  &pound; {option.shipping_cost.toFixed(2)}
