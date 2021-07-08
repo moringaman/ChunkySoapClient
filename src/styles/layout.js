@@ -87,7 +87,7 @@ export const Frame = styled.div`
     flex-direction: column;
 `
 export const FrameHeader = styled.div`
-        padding: 40px 0px;
+        padding: 30px 0px;
         flex: 1;
 `
 
