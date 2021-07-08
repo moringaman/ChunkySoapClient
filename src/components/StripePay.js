@@ -160,7 +160,7 @@ const StripePay = ({cartDispatch}) => {
                 <Paragraph danger>
                     { errorMessage && errorMessage }
                 </Paragraph>
-                <img src='./stripe-payment.png' style={{width: '61%'}}/>
+                <img src='./stripe-payment.png' style={{width: '60%'}}/>
             </FrameBody>
             <FrameFooter>
                 <ButtonRow>
