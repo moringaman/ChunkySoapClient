@@ -59,7 +59,7 @@ import AnimatedButton from '../components/ui/AnimatedButton'
                             <div style={{display: 'flex', flexDirection: "columm", paddingLeft: '200' , width: '100%', height: 700, zIndex: 2000, position: 'relative'}}>
                                 <div id="leftside" style={{flex: 2, paddingLeft: 0, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', textAlign: 'right'}}>
                                     <ProductFrame >
-                                        <img src={product_picture_1 && `${product_picture_1.formats.thumbnail.url}`} />
+                                        <img src={product_picture_1 && `${product_picture_1.url}`} />
                                     </ProductFrame>
                                         <div style={{flex: 1, marginTop: 50}}>
                                             {product_discount > 0 &&
