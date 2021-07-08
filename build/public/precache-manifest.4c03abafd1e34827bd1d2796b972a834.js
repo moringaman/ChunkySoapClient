@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "585bbc65603dc74997b2",
+    "revision": "5c27a8d252de45a2fb1d",
     "url": "/static/css/bundle.bba4ade1.css"
   },
   {
-    "revision": "585bbc65603dc74997b2",
-    "url": "/static/js/bundle.585bbc65.js"
+    "revision": "5c27a8d252de45a2fb1d",
+    "url": "/static/js/bundle.5c27a8d2.js"
   },
   {
     "revision": "b9ddca6af362f818465d",
@@ -33,7 +33,7 @@ self.__precacheManifest = [
   },
   {
     "revision": "22d277286562c0b9ceb638a94204e916",
-    "url": "/static/js/bundle.585bbc65.js.LICENSE.txt"
+    "url": "/static/js/bundle.5c27a8d2.js.LICENSE.txt"
   },
   {
     "url": "/icon_180x180.8e34bc6d815173fe01ec33c77c5f660f.png"
