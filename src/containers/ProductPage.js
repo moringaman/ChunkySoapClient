@@ -24,6 +24,7 @@ import AnimatedButton from '../components/ui/AnimatedButton'
 
     const apiCall = async() => {
         const res = await myApi.send(`/products?id=${_id}`, 'GET', undefined, 'public')
+        console.log('Product page ', res)
         dispatch({type: 'FETCH_PRODUCT', payload: res[0]})
     }
 
@@ -41,6 +42,7 @@ import AnimatedButton from '../components/ui/AnimatedButton'
     })
 
     const { product_name, product_short_description, product_picture_1, product_long_description, product_price, product_discount } = currentProduct
+    // const { formats: {thumbnail} } = product_picture_1
     return (
         <>
             <img src="/drips-dark.svg" style={{ position: 'absolute', right: 0, top: 70, width: 500, zIndex: 1 }}/>
@@ -57,7 +59,7 @@ import AnimatedButton from '../components/ui/AnimatedButton'
                             <div style={{display: 'flex', flexDirection: "columm", paddingLeft: '200' , width: '100%', height: 700, zIndex: 2000, position: 'relative'}}>
                                 <div id="leftside" style={{flex: 2, paddingLeft: 0, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', textAlign: 'right'}}>
                                     <ProductFrame >
-                                        <img src={product_picture_1 && `http://localhost:1337${product_picture_1.url}`} />
+                                        <img src={product_picture_1 && `${product_picture_1.formats.thumbnail.url}`} />
                                     </ProductFrame>
                                         <div style={{flex: 1, marginTop: 50}}>
                                             {product_discount > 0 &&
