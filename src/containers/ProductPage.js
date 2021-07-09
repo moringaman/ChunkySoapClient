@@ -24,7 +24,7 @@ import AnimatedButton from '../components/ui/AnimatedButton'
 
     const apiCall = async() => {
         const res = await myApi.send(`/products?id=${_id}`, 'GET', undefined, 'public')
-        console.log('Product page, ', res)
+        console.log('Product page: ', res)
         dispatch({type: 'FETCH_PRODUCT', payload: res[0]})
     }
 
