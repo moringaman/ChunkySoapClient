@@ -6,6 +6,7 @@ import {  MinusCircle, PlusCircle, CreditCard, ArrowLeft } from 'react-feather'
 import { Heading1, Heading2, Heading3, Paragraph } from '../styles/typography'
 import { Container, Section, Wrapper, ButtonRow} from '../styles/layout'
 import { myApi } from '../helpers'
+import { ScrollToTop } from '../components'
 import ProductFrame from '../styles/ui/productFrame'
 import AddToCart from '../components/ui/AddToCartBtn'
 import AnimatedButton from '../components/ui/AnimatedButton'
@@ -47,6 +48,7 @@ import AnimatedButton from '../components/ui/AnimatedButton'
         <>
             <img src="/drips-dark.svg" style={{ position: 'absolute', right: 0, top: 70, width: 500, zIndex: 1 }}/>
         <Container>
+            <ScrollToTop />
             <Wrapper>
                 <Section light height={1050} >
                     {

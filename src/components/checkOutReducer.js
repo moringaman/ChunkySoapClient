@@ -60,6 +60,7 @@ const checkoutReducer = (state, action) => {
         case "SET_POSTAGE":
             return {
                 ...state,
+                loading: false,
                 postage: action.payload
             }
 
