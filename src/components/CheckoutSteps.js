@@ -54,6 +54,10 @@ import * as fn from '../helpers/functions'
             console.log("CART DATA IS ", cartState, user)
         }, [cartState])
 
+        useEffect(() => {
+            window.scrollTo(0, 0);
+        }, [step, guest, authenticated, loading]);
+
         const apiCall = async(query) => {
             try {
                 const res = await myApi.send(`/customers${query}`)

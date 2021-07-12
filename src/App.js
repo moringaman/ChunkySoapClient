@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import { Route, Switch } from 'react-router-dom';
 import combineReducers from '../src/reducers'
 import { HomePage, CheckoutPage, ProductPage, CategoriesPage, AdminPage, SearchResults, AuthPage, InvoicePage} from './containers'
-import Basket from '../src/components/Basket';
+import { Basket, ScrollToTop } from '../src/components';
 import PrivateRoute from './components/PrivateRoute'
 import { loadStripe } from '@stripe/stripe-js'
 import { Elements } from '@stripe/react-stripe-js'
