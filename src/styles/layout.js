@@ -59,13 +59,17 @@ export const SlideGrid = styled.div`
     position: relative;
     max-width: 1294px;
     margin: 0px auto;
-    padding: 140px 100px 90px 100px;
+    padding: 140px 100px 40px 100px;
     background-color: white;
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-between;
+    justify-content: space-around;
     overflowX: hidden;
     z-index: 2;
+
+    &:nth-child() {
+        margin-left: 150px;
+    }
     background-color: transparent;
     ${props => props.dark && `
         background-color: ${vars.palette.primaryColor};
@@ -76,7 +80,7 @@ export const SlideGrid = styled.div`
 `
 
 export const Frame = styled.div`
-    margin: 150px auto 50px auto;
+    margin: 120px auto 50px auto;
     max-width: 650px;
     padding: 40px 50px;
     border: 1px solid #DBDBDB;
@@ -87,7 +91,7 @@ export const Frame = styled.div`
     flex-direction: column;
 `
 export const FrameHeader = styled.div`
-        padding: 30px 0px;
+        padding: 20px 0px;
         flex: 1;
 `
 

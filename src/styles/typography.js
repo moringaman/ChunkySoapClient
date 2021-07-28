@@ -79,6 +79,10 @@ export const Paragraph = styled.p`
         margin-bottom: 5px;
         margin-top: 5px;
     `}
+    ${props => props.narrow &&`
+        margin-bottom: 20px;
+        margin-top: 20px;
+    `}
     ${props => props.centered &&`
         text-align: center;
     `}

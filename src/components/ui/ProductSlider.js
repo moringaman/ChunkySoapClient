@@ -9,17 +9,28 @@ const ProductSlider = ({ data, handleClick, perPage, ...rest }) => {
   const [sliceArray, setSliceArray] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = perPage;
+console.log("DATA LENGTH", data.length)
 
   useEffect(() => {
     if (data && data.length > 0) {
       const slices = data.length / productsPerPage;
-      setSliceArray([...Array(slices)]);
+      console.log('SLices', slices)
+      console.log('ZZ', data.slice(
+        currentPage === 1 ? 0 : currentPage * productsPerPage,
+        productsPerPage
+      ))
+      setSliceArray([...Array(Math.ceil(slices))]);
     }
-  }, [data]);
+  }, [data, currentPage]);
+
+  useEffect(() => {
+    console.log('SLICE', sliceArray)
+  }, [sliceArray])
 
   const selectPage = (e) => {
     setCurrentPage(e.target.value);
   };
+
 
   return (
     <>
@@ -28,8 +39,9 @@ const ProductSlider = ({ data, handleClick, perPage, ...rest }) => {
         {data.length > 1 ? 
           data
             .slice(
-              currentPage === 1 ? 0 : currentPage * productsPerPage,
-              productsPerPage
+             // currentPage === 1 ? 0 : currentPage * productsPerPage,
+             // productsPerPage
+             (currentPage - 1) * productsPerPage, currentPage * productsPerPage
             )
             .map((product, i) => (
               <ProductItem
@@ -75,6 +87,8 @@ const Dots = styled.div`
   width: 100%;
   flex-direction: row;
   justify-content: center;
+  z-index: 9;
+  transform: translateY(-90px);
 `;
 const Dot = styled.button`
   border: none;
@@ -85,7 +99,7 @@ const Dot = styled.button`
   height: 15px;
   margin: 8px;
   ${(props) =>
-    props.page === props.value &&
+    props.page == props.value &&
     css`
       background-color: black;
     `}

@@ -5,7 +5,7 @@ import { SubHeading1 } from '../styles/typography'
 import { checkoutReducer, LoginForm, EditBilling, ShippingOptions, StripePay, CheckoutSuccess } from './'
 import styled from 'styled-components'
 import { auth, myApi, strapi } from '../helpers/'
-import { FrameHeader , Frame, FrameBody } from '../styles/layout'
+import { FrameHeader , Frame, FrameBody, Divider} from '../styles/layout'
 import * as fn from '../helpers/functions'
 
 
@@ -20,7 +20,7 @@ import * as fn from '../helpers/functions'
     const CheckoutSteps = () => {
 
     const initialState = {
-        step: 1,
+        step: 2,
         authenticated: false,
         guest: null,
         loading: false,
@@ -154,6 +154,7 @@ import * as fn from '../helpers/functions'
                                 <SubHeading1>
                                     Choose a Shipping Option
                                 </SubHeading1>
+                                <Divider mb='10px'/>
                             </FrameHeader>
                             <FrameBody>
                                 <ShippingOptions dispatch={dispatch} cartDispatch={cartDispatch} />

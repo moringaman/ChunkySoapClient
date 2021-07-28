@@ -20,9 +20,9 @@ const ShippingOption = ({option, checked, selected, ...rest}) => {
        <CarrierOption>
             <img 
                 src={option.shipping_image.url}
-                style={{maxHeight: 60, maxWidth: 120, marginRight: 20}}
+                style={{maxHeight: 60, maxWidth: 100, marginRight: 20}}
             />
-            <Paragraph>
+            <Paragraph sml>
                 {option.shipping_carrier} - {option.shipping_description}<br />
                 Price:  &pound; {option.shipping_cost.toFixed(2)}
             </Paragraph>
@@ -41,20 +41,19 @@ const Option = styled.input`
 
 const Label = styled.label`
     width: 550px;
-    height: 80px;
-    padding: 20px 40px;
+    height: 60px;
+    padding: 10px 40px;
     border: 3px #F7F2F2 solid;
     border-radius: 10px;
-    margin: 20px 0px 0px 0px;
+    margin: 10px 0px 10px 0px;
     cursor: pointer;
     ${props => props.selected && css`
-        border: 3px #79CBB7 solid;
+        border: 2px #79CBB7 solid;
     `}
 `
 const CarrierOption = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
-    transform: translateY(-20px);
 `
