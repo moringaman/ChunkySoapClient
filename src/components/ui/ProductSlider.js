@@ -14,11 +14,6 @@ console.log("DATA LENGTH", data.length)
   useEffect(() => {
     if (data && data.length > 0) {
       const slices = data.length / productsPerPage;
-      console.log('SLices', slices)
-      console.log('ZZ', data.slice(
-        currentPage === 1 ? 0 : currentPage * productsPerPage,
-        productsPerPage
-      ))
       setSliceArray([...Array(Math.ceil(slices))]);
     }
   }, [data, currentPage]);
@@ -36,7 +31,7 @@ console.log("DATA LENGTH", data.length)
     <>
      { data &&
       <SlideGrid {...rest} mb={'100px'}>
-        {data.length > 1 ? 
+        {data.length > 0 ? 
           data
             .slice(
              // currentPage === 1 ? 0 : currentPage * productsPerPage,
