@@ -44,7 +44,7 @@ const CategoriesPage = (props) => {
   };
 
   const filterProductsById = () => {
-    const filtered = products.products.find(product => product.categories[0]._id === _id)
+    const filtered = products.products.filter(product => product.categories[0]._id === _id)
     setFilteredProducts(filtered)
     console.log("FILTERED ", filtered, _id )
   }
