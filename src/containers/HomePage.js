@@ -12,10 +12,12 @@ import { Modal, OptIn, ProductPreview, Footer, ProductSearch, CategoryRow } from
 import useModal from "../hooks/useModal";
 import * as vars from "../styles/variables";
 import { PageLoader } from '../components/ui'
+import { useViewportCheck } from "../hooks";
 
 export default function HomePage(props) {
   let featured, popular
   const products = useSelector((state) => state.products);
+  const { viewport } = useViewportCheck()
   console.log('PRODUCTS ', products) 
 
   if (products.products) { 
@@ -92,10 +94,10 @@ export default function HomePage(props) {
   return (
     <>
     { 
-      isLoading ? <PageLoader /> 
+      isLoading ? <PageLoader />  
     : 
     <>
-      <Hero>
+      <Hero viewPort={viewport} sm={viewport < 916 ? true : false}>
         <img
           src="/drips.png"
           alt="drips"
@@ -105,26 +107,31 @@ export default function HomePage(props) {
             transform: "translateY(-30px)",
           }}
         />
-        <img
-          src="/logo-big.svg"
-          alt="chunky soap"
-          style={{
-            float: "left",
-            width: "450px",
-            transform: "translateX(-40px)",
-          }}
-        />
-        <img
-          className="girl-pic"
-          src="/girl.webp"
-          alt="chunky soap girl"
-          style={{
-            position: "absolute",
-            width: "480px",
-            transform: "translateX(-120px)",
-            top: 188,
-          }}
-        />
+        { viewport > 963 &&
+          <img
+            src="/logo-big.svg"
+            alt="chunky soap"
+            style={{
+              float: "left",
+              width: "450px",
+              transform: "translateX(-40px)",
+            }}
+          />
+        }
+        {viewport > 961 ? 
+        <>
+          <img
+            className="girl-pic"
+            src="/girl.webp"
+            alt="chunky soap girl"
+            style={{
+              position: "absolute",
+              width: "480px",
+              transform: "translateX(-120px)",
+              top: 188,
+            }}
+          />
+        
         {vars.heroBubbles.map((b, i) => (
           <Bubble {...b} key={i} />
         ))}
@@ -141,17 +148,36 @@ export default function HomePage(props) {
             </div>
           </WxButton>
         </div>
-      </Hero>
+        </>
+        :
+        <>
+          <img
+            className="girl-pic"
+            src="/oversholder.webp"
+            alt="chunky soap girl"
+            style={{
+              position: "absolute",
+              maxWidth: "330px",
+              transform: "translateX(-120px)",
+              top: 105,
+              left: 70
+            }}
+          />
+        </>
+    }
+      </Hero >
       <Container>
+        {viewport > 961 && 
         <Bubbles>
           {vars.bodyBubbles.map((b, i) => (
             <Bubble {...b} key={i} />
           ))}
         </Bubbles>
-        <ProductSearch />
+}
+        <ProductSearch sm={viewport < 450}/>
         <SectionHeading>Featured Products</SectionHeading>
         <ProductSlider perPage={3} data={featured} handleClick={handleClick} />
-        <CategoryRow/>
+        <CategoryRow viewPort={viewport}/>
         <SectionHeading>Most Popular Products</SectionHeading>
         <ProductSlider perPage={3} data={popular} handleClick={handleClick} />
       </Container>
@@ -179,5 +205,6 @@ export default function HomePage(props) {
 }
 
 const Bubbles = styled.div`
+  max-width: 100vw;
   overflow: hidden;
 `

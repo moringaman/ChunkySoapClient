@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'
  
 const useViewportCheck = () => {
-  const [viewport, setViewport] = useState(window.innerWidth)
+  const [viewport, setViewport] = useState(null)
  
   useEffect(() => {
     const handleWindowResize = () => setViewport(window.innerWidth)
@@ -10,8 +10,8 @@ const useViewportCheck = () => {
   }, [])
  
   useEffect(() => {
-    console.log('VIEWPORT ', viewport)
-  }, [viewport])
+      setViewport(window.innerWidth)
+  }, [])
  
   return {viewport}
 }

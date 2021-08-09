@@ -1,6 +1,10 @@
 @import './ui/images.css' ;
 @import 'https://fonts.googleapis.com/css2?family=Shrikhand&display=swap';
 
+:root {
+font-size: 16px;
+}
+
 * {
   margin: 0px;
   padding: 0px;

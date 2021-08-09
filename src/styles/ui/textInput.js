@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components'
 import * as vars from '../variables'
 
 const TextInput = styled.input`
-    height: 50px;
+    height: 55px;
     max-width: 100%;
     display: inline-block;
     border: none;
@@ -12,6 +12,7 @@ const TextInput = styled.input`
     color: ${vars.palette.colorGray4};
     padding: 0px 50px;
     margin: 0px 5px 10px 0px;
+    min-width: 100px;
     ${props => props.inline && css`
         width: 100%; 
     `}

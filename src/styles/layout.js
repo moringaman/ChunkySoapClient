@@ -14,7 +14,7 @@ export const Container = styled.div`
 }
 `
 export const Section = styled.div`
-    max-width: 100%;
+    max-width: 100vw;
     background-color: ${vars.palette.primaryColor};
     min-height: 0px;
     padding: 50px 50px 50px 50px;
@@ -31,6 +31,10 @@ export const Section = styled.div`
     `}
     ${props => props.light && css`
       background-color: white;
+    `}
+    ${props => props.mobile && `
+        padding: 50px 15px 50px 15px
+        width: 100vw;
     `}
     overflow: hidden;
 `
@@ -53,11 +57,14 @@ export const Hero = styled.div`
     color: white;
     overflow: hidden;
     background-color: ${vars.palette.primaryColor};
+    ${props => props.viewPort < 963 && css`
+        height: 520px;
+    `}
 `
 
 export const SlideGrid = styled.div`
     position: relative;
-    max-width: 1294px;
+    max-width: 100vw;
     margin: 0px auto;
     padding: 140px 100px 40px 100px;
     background-color: white;
@@ -77,8 +84,19 @@ export const SlideGrid = styled.div`
     ${props => props.mb && `
         margin-bottom: ${props.mb};
     `}
+    ${props => props.sm && `
+        position: absolute;
+        top: 230px;
+        padding: 0 0 0 0;
+        left: 50%;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content:  center ;
+        width: 90vw;
+        max-width: 90vw;
+        transform: translateX(-50%);
+    `}
 `
-
 export const Frame = styled.div`
     margin: 120px auto 50px auto;
     max-width: 650px;

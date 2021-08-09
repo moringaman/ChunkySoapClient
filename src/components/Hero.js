@@ -12,7 +12,7 @@ const Hero = props => {
     console.log("Location", pathname)
 
     return (
-        <Section dark height={180}>
+        <Section dark height={props.viewPort < 916 ? 100 : 180}>
             {vars.headerBubbles.map((b, i) => (
             <Bubble {...b} key={i} />
             ))}

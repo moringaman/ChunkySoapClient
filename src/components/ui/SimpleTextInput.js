@@ -5,7 +5,7 @@ import { AnimatedButton } from '../ui'
 import Loader from 'react-loader-spinner'
 // import WxButton from "../styles/components/button";
 
-const SimpleTextInput = ({withBigButton, submitHandler, handleChange, label, withButton, buttonText, cols, direction, value, valid, loading,...rest }, ref) => {
+const SimpleTextInput = ({withBigButton, submitHandler, handleChange, label, withButton, buttonText, cols, direction, value, valid, loading, sm , ...rest }, ref) => {
     console.log("REF ", ref)
   const renderLoader = () => {
       return (
@@ -27,8 +27,16 @@ const SimpleTextInput = ({withBigButton, submitHandler, handleChange, label, wit
                 {label}
             </Paragraph>
             <div style={{display: 'flex', flexDirection: 'row'  }}>
-                <TextInput value={ value} ref={ref} inline {...rest} valid={valid} withButton={withButton} onChange={(e) => handleChange(e)} onFocus={() => console.log("focussed")}  />
-                 <AnimatedButton primary big text={buttonText} handleClick={submitHandler} style={{ width: 100, display: 'inline-block' , transform: 'translateX(-60px)'}}/> 
+                <TextInput 
+                     value={ value} 
+                     ref={ref} 
+                     inline {...rest} 
+                     valid={valid} 
+                     withButton={withButton} 
+                     onChange={(e) => handleChange(e)}
+                     onFocus={() => console.log("focussed")} 
+                 />
+                 <AnimatedButton primary big width={'50px'} text={buttonText} handleClick={submitHandler} style={{ width: 100, display: 'inline-block' , transform: 'translateX(-60px)'}}/> 
             </div>
         </div>
         }
@@ -42,10 +50,10 @@ const SimpleTextInput = ({withBigButton, submitHandler, handleChange, label, wit
                     e.preventDefault()
                     submitHandler()
                 }}>
-                    <div style={{display: 'flex', flexDirection: 'row'  }}>
+        <div style={{display: 'flex', flexDirection: 'row'  }}>
 
                         <TextInput value={value} ref={ref} inline {...rest} valid={valid} value={value} withButton={withButton} onChange={(e) => handleChange(e)} onFocus={() => console.log("focussed")}  />
-                        <AnimatedButton primary big xl styled type="submit" style={{ width: 100, display: 'inline-block' , transform: 'translateX(-60px)'}}> 
+                        <AnimatedButton width={'50px'} primary big xl styled type="submit" style={{ width: 100, display: 'inline-block' , transform: 'translateX(-60px)'}}> 
                         { loading === false ?
                              <div className="script-font"> {buttonText}</div>
                             : 

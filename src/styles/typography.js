@@ -5,7 +5,7 @@ export const SectionHeading = styled.h1`
     text-align: center;
     padding-top: 40px;
     height: 45.2px;
-    font-size: 48px;
+    font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 400;
     color: ${vars.palette.colorGray4};
     background-color: white;
@@ -33,7 +33,7 @@ export const BannerHeading2 = styled.h3`
     line-height: 200%;
 `
 export const Heading1 = styled.h1`
-    font-size: 48.9px;
+    font-size: 3rem;
     font-weight: 600;
     margin-bottom: 5px;
     color: ${vars.palette.colorGray3};
@@ -42,7 +42,7 @@ export const Heading1 = styled.h1`
     `}
 `
 export const Heading2 = styled.h2`
-    font-size: 28.6px;
+    font-size: 1.75rem;
     ${'' /* line-height: 20px; */}
     font-weight: 400;
     margin-bottom: 5px;
@@ -53,7 +53,7 @@ export const Heading2 = styled.h2`
 `
 
 export const Heading3 = styled.h1`
-    font-size: 22.9px;
+    font-size: 1.375rem;
     font-weight: 600;
     margin-bottom: 5px;
     color: ${vars.palette.colorGray3};
@@ -62,14 +62,14 @@ export const Heading3 = styled.h1`
     `}
 `
 export const SubHeading1 = styled.h3`
-    font-size: 28px;
+    font-size: 1.75rem;
     font-weight: 400;
     margin-bottom: 15px;
     color: ${vars.palette.colorGray6};
 `
 
 export const Paragraph = styled.p`
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 400;
     margin-bottom: 20px;
     margin-top: 20px;

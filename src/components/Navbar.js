@@ -12,7 +12,7 @@ import { Container } from "../styles/layout";
 import AnimatedButton from "../components/ui/AnimatedButton";
 import { User } from "react-feather";
 import styled from "styled-components";
-import { useIsAuthenticated } from '../hooks'
+import { useIsAuthenticated, useViewportCheck } from '../hooks'
 import { auth, strapi} from '../helpers'
 
 const Navbar = (props) => {
@@ -20,8 +20,12 @@ const Navbar = (props) => {
   const history = useHistory();
   const {isAuthenticated} = useIsAuthenticated()
 
-  console.log('AUTH FROM HOOK', isAuthenticated)
 
+    const { viewport } = useViewportCheck()
+
+
+  console.log('AUTH FROM HOOK', isAuthenticated)
+  console.log(`${process.env.RAZZLE_PUBLIC_DIR}/logo.jpg`)
   const [ loggedIn, setLoggedIn ] = useState(false)
 
   useEffect(() => {
@@ -29,7 +33,9 @@ const Navbar = (props) => {
       console.log("AUTHENTICATED", loggedIn)
   }, [isAuthenticated])
 
-
+ useEffect(() => {
+   console.log("VIEWPORT ", viewport)
+ }, [viewport])
 // console.log("AUTHED ", isAuthenticated)
 
   useEffect(() => {
@@ -77,56 +83,61 @@ const Navbar = (props) => {
 
   return (
     <Container nav={true} location={history.location.pathname} key={key}>
-      <TopNav location={history && history.location.pathname}>
+      <TopNav  location={history && history.location.pathname}>
         {/* <CategoryMenu><Pointer /></CategoryMenu>  */}
-          <Logo>Chunky Soap Co</Logo>
-        <NavList>
-          <li>
-            <PageLink to="/">
-              About
-            </PageLink>
-          </li>
-          <li>
-            <PageLink to="/contact">Contact</PageLink>
-          </li>
-          <li>
-            <PageLink
-              to="/category"
-              withMenu
-              menuData={categories}
-              menuTitle="Categories"
-              display={true}
-            >
-              Categories
-            </PageLink>
-          </li>
-           {/* call auth.clear() to remove auth key to logout */}
-          <li>{fn.isEmpty(user) ? <PageLink to="/authenticate">Sign In</PageLink> : <button onClick={() => {
-            history.push('/authenticate')
-            strapi.logout(dispatch)
-          }
-            }>Sign Out</button>}</li>
-          <li>
-            <AnimatedButton primary sml text="New Account" loading="false" handleClick={() => history.push('/authenticate?register=true')}>
-              <User />
-            </AnimatedButton>
-          </li>
-          <li>
-            <PageLink to="/basket">
-              {/* <PageLink to="/basket" withMenu menuTitle="Cart Items" menuData={basket.products}> */}
-              &pound;{basket && basketTotal}
-              <div style={{ marginLeft: 10, display: 'flex' }}>
-                <ShoppingCart color={vars.palette.secondaryColor1} size={28} />
-              {
-                basket.products.length > 0 &&
-              <ItemCountCircle>
-                  {basket.products.length}
-              </ItemCountCircle>
+          <Logo ><img src="/logogray.jpg" style={{width: 70, margin: -10}} /></Logo>
+          {/* { viewport > 976 &&  */}
+            <NavList viewPort={viewport}>
+              <li className="temp">
+                <PageLink to="/">
+                  About
+                </PageLink>
+              </li>
+              <li className="temp">
+                <PageLink to="/contact">Contact</PageLink>
+              </li>
+              <li className="temp">
+                <PageLink
+                  to="/category"
+                  withMenu
+                  menuData={categories}
+                  menuTitle="Categories"
+                  display={true}
+                >
+                  Categories
+                </PageLink>
+              </li>
+              {/* call auth.clear() to remove auth key to logout */}
+              <li className="temp">{fn.isEmpty(user) ? <PageLink to="/authenticate">Sign In</PageLink> : <button onClick={() => {
+                history.push('/authenticate')
+                strapi.logout(dispatch)
               }
-              </div>
-            </PageLink>
-          </li>
-        </NavList>
+                }>Sign Out</button>}</li>
+              <li className="temp">
+                <AnimatedButton primary sml text="New Account" loading="false" handleClick={() => history.push('/authenticate?register=true')}>
+                  <User />
+                </AnimatedButton>
+              </li>
+              <li>
+                <PageLink to="/basket">
+                  {/* <PageLink to="/basket" withMenu menuTitle="Cart Items" menuData={basket.products}> */}
+                  &pound;{basket && basketTotal}
+                  <div style={{ marginLeft: 10, display: 'flex' }}>
+                    <ShoppingCart color={vars.palette.secondaryColor1} size={28} />
+                  {
+                    basket.products.length > 0 &&
+                  <ItemCountCircle>
+                      {basket.products.length}
+                  </ItemCountCircle>
+                  }
+                  </div>
+                </PageLink>
+              </li>
+              <li className="hamburger">
+                MENU
+              </li>
+            </NavList>
+          {/* } */}
       </TopNav>
     </Container>
   );

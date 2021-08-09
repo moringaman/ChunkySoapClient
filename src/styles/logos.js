@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components'
 
 export const Logo = styled.div`
-    font-size: 20px;
-    letter-spacing: 2px;
-    width: 20%;
+    width: 10%;
+    max-height: 50px;
     margin-left: 10px;
-`
+    z-index: 3000;
+     `
