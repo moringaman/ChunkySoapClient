@@ -22,11 +22,11 @@
   },
   "client": {
     "css": [
-      "/static/css/bundle.bba4ade1.css"
+      "/static/css/bundle.2d80b716.css"
     ],
     "js": [
-      "/static/js/bundle.f3c00585.js",
-      "/static/js/bundle.f3c00585.js.map"
+      "/static/js/bundle.806739b3.js",
+      "/static/js/bundle.806739b3.js.map"
     ]
   }
 }
