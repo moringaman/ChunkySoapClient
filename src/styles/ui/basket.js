@@ -6,6 +6,7 @@ export const ProductRow = styled.div`
     margin: 0px 20px;
     padding: 20px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: flex-end;
     align-items: center;
     align-content: center;

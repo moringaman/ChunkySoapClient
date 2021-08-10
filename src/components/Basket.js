@@ -8,13 +8,17 @@ import AnimatedButton from '../components/ui/AnimatedButton'
 import AddToCart from '../components/ui/AddToCartBtn'
 import { Trash2, MinusCircle, PlusCircle, CreditCard, ArrowLeft } from 'react-feather'
 import * as fn from '../helpers/functions'
+import { useViewportCheck } from '../hooks'
 import { BasketWrapper, ProductRow, Divider } from '../styles/ui/basket'
 import { withHero } from '../components/layout'
 
 const Basket = (props) => {
 
     const { basket } = useSelector(state => state.basket)
+    const { viewport } = useViewportCheck()
+
     const history = useHistory()
+
     const [ postage, setPostage ] = useState(0)
     const [ total, setTotal ] = useState(0)
 
@@ -41,15 +45,19 @@ const Basket = (props) => {
 
     return (
         <>
-        <Section light color={'white'} height={1000}>
+        <Section light color={'white'} height={1000} mobile={viewport < 904}>
             <Wrapper>
                 <Heading1>Your Basket</Heading1>
                 <BasketWrapper>
                 <ProductRow>
+                    { viewport > 904 &&
+                    <> 
                     <Heading2 style={{flex: 3}}>Product</Heading2>
-                    <Heading2 style={{flex: 1}}>Price</Heading2>
+                        <Heading2 style={{flex: 1}}>Price</Heading2>
                     <Heading2 style={{flex: 1}}>Quantity</Heading2>
                     <Heading2 style={{flex: 1}}>Total</Heading2>
+                    </>
+                    }
                 </ProductRow>
                     <Divider />
                 <ProductRow>
@@ -57,29 +65,35 @@ const Basket = (props) => {
                     {basket.products.length > 0 ?  basket.products.map(el => 
                         
                         <ProductRow key={el._id}>
-                            <ProductFrame sml style={{flex: 1, marginRight: 70}} >
+                            <ProductFrame sml style={{flex: 1, marginRight: viewport < 904 ? 20 : 70}} >
                                 <img src={el.product_picture_1} 
                                 style={{display: 'block', maxHeight: '70px', maxWidth: '70px', width: 'auto', height: 'auto'}}
                                 />
                             </ProductFrame>
-                            <div style={{flex: 2, paddingRight: 90}}>
-                                {el.product_name} <br/>
-                                {el.product_description}
-                            </div>
+                            {viewport > 904  &&
+                                <div style={{flex: 2, paddingRight: 90}}>
+                                    {el.product_name} <br/>
+                                    {el.product_description}
+                                </div>
+                            }
                             <div style={{flex: 1, margin: 5}}>
                                 &pound;{el.product_price}
                             </div>
-                            <div style={{flex: .5, marginRight: 75, display: 'flex', justifyContent: 'space-around', alignItems: 'center'}}>
-                                <AddToCart product={el} function="delete" icon={true}>
-                                    <MinusCircle color='gray' size={28}/>
-                                </AddToCart>
+                            <div style={{flex: .5, marginRight: viewport < 904 ? 20 : 75, display: 'flex', justifyContent: 'space-around', alignItems: 'center'}}>
+                                {viewport > 904 && 
+                                    <AddToCart product={el} function="delete" icon={true}>
+                                        <MinusCircle color='gray' size={28}/>
+                                    </AddToCart>
+                                }
                                 {el.product_qty}
                                 {/* <AddToCart product={delete Object.assign(el, {['product_picture_1.url']: el['product_picture_1']})['product_picture_1']} function="add" icon={true}> */}
-                                <AddToCart product={el} function="add" icon={true}>
-                                    <PlusCircle color="lightgreen" size={28}/>
-                                </AddToCart>
+                                {viewport > 904 &&
+                                    <AddToCart product={el} function="add" icon={true}>
+                                        <PlusCircle color="lightgreen" size={28}/>
+                                    </AddToCart>
+                                }
                             </div>
-                            <div style={{flex: 1, marginRight: 60, display: 'flex', alignItems: 'center', justifyContent: 'space-around'}}>
+                            <div style={{flex: 1, marginRight: viewport < 904 ? 20 :60, display: 'flex', alignItems: 'center', justifyContent: 'space-around'}}>
                                &pound;{el.total_price.toFixed(2)}
                                 {/* <Trash2 size={32} color="#837D7D" style={{transform: 'translateX(20px)'}}/> */}
                             </div>
@@ -100,6 +114,7 @@ const Basket = (props) => {
                         </Heading2>
                     </ProductRow>
                     <ProductRow>
+                        {viewport > 904 && 
                             <AnimatedButton text="Back" med secondary 
                                 handleClick={() => goBack()}
                             // style={{position: 'absolute', right: 130, transform: 'translateX(-50%)'}}
@@ -107,6 +122,7 @@ const Basket = (props) => {
                             >
                                 <ArrowLeft />
                             </AnimatedButton>
+                        }
                             <AnimatedButton text="Secure Checkout" med 
                                 handleClick={() => navigate("/checkout")}
                             // style={{position: 'absolute', right: 130, transform: 'translateX(-50%)'}}
