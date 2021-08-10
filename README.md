@@ -6,6 +6,6 @@ Development
 
 ``npm i && npm run start``
 
-# Viewing Production Site
+# Viewing the Production Site
 
 Navigate to the [Home Page](https://chunkysoap.co.uk)
