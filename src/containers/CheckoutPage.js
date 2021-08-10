@@ -36,9 +36,6 @@ const CheckoutPage = () => {
         setTotal(fn.getCartTotal(basket.products, postage))
     }, [postage])
 
-    // const handleChange = (e) => {
-    //     console.log("EVENT ", e.target.value, e.target.name)
-    // }
 
     const steps = [
         {no: 1, label: 'Account'},   
