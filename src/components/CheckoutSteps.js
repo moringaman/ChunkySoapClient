@@ -183,7 +183,6 @@ import * as fn from '../helpers/functions'
    export default CheckoutSteps
 
 const Steps = styled.div`
-  ${'' /* position: absolute; */}
    min-width: 750px;
    margin-top: 10px;
    margin-right: auto;

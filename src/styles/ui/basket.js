@@ -6,6 +6,7 @@ export const ProductRow = styled.div`
     margin: 0px 20px;
     padding: 20px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: flex-end;
     align-items: center;
     align-content: center;
@@ -13,7 +14,6 @@ export const ProductRow = styled.div`
     ${props => props.narrow && css`
         padding: 10px 10%;
     `}
-    ${'' /* border: 1px red solid; */}
 `
 
 export const Divider = styled.div`

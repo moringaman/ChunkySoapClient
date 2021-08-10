@@ -85,11 +85,13 @@ const Navbar = (props) => {
     <Container nav={true} location={history.location.pathname} key={key}>
       <TopNav  location={history && history.location.pathname}>
         {/* <CategoryMenu><Pointer /></CategoryMenu>  */}
+        <PageLink to="/">
           <Logo ><img src="/logogray.jpg" style={{width: 70, margin: -10}} /></Logo>
+        </PageLink>
           {/* { viewport > 976 &&  */}
             <NavList viewPort={viewport}>
               <li className="temp">
-                <PageLink to="/">
+                <PageLink to="#">
                   About
                 </PageLink>
               </li>

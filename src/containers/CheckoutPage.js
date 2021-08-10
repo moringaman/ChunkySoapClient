@@ -11,7 +11,6 @@ import * as vars from '../styles/variables'
 import * as fn from '../helpers/functions'
 
 const CheckoutPage = () => {
-// do logged in check
     const { basket } = useSelector(state => state.basket)
     const [ total, setTotal ] = useState(0)
     const [ postage, setPostage ] = useState(0.00)
@@ -36,9 +35,6 @@ const CheckoutPage = () => {
         setTotal(fn.getCartTotal(basket.products, postage))
     }, [postage])
 
-    // const handleChange = (e) => {
-    //     console.log("EVENT ", e.target.value, e.target.name)
-    // }
 
     const steps = [
         {no: 1, label: 'Account'},   
