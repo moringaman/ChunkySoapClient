@@ -39,6 +39,7 @@ const ProductSearch = props => {
     const getData = async() => {
         if(!searchTerm.term) return
         setLoading(true)
+        // TODO: Perform strapi query to return correct data
         console.log('pulling data from server ', searchTerm)
         let products = await myApi.send("/products", "GET", undefined, "public")
         // filter result accoring to search term
