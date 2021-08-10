@@ -13,6 +13,17 @@ const CategoryFrame = styled.div`
     margin-left: 100px;
     cursor: pointer;
     text-align:center;
+    ${props => props.sm == true && `
+        min-width: 100px;
+        width: 100px;
+        height: 100px;
+        border-radius: 25px;
+        border: 7px solid white;
+        margin-left: 2.0vw;
+        &:first-of-type {
+            margin-left: 95px;
+        }
+    `}
     transition: all 0.2s ease-in;
         &:hover {
             transform: rotate(-10deg) translateY(-300px) scale(1.03);

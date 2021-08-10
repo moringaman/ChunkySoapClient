@@ -14,6 +14,9 @@ const  WxButton = styled.button`
     z-index: 1000;
     overflow: hidden;
     margin: 0px 10px;
+    ${props => props.width && css`
+        width: props.width !important;
+    `}
     & .button-content >* {
         font-weight: 400;
         font-size: 18px;

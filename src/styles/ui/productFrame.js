@@ -4,8 +4,8 @@ const ProductFrame = styled.div`
   &, :after { 
     ${'' /* margin-top: 20px; */}
     height: 330px;
-    width: 360px;
-    min-width: 360px;
+    width: 340px;
+    min-width: 340px;
     border-radius: 80px;
     background-color: #CCEAE3;
     display: flex;

@@ -4,13 +4,13 @@ import { Container, Wrapper, Section} from '../styles/layout'
 
 const OptIn = (props) => {
     return (
-        <Section light narrow height={props.height}>
-            <Wrapper width={850} mt={40}>
+        <Section light narrow={!props.sm} mobile={props.sm} height={props.height}>
+            <Wrapper width={ 850} mt={40}>
                 <SimpleTextInput
-                    big
+                    big={!props.sm}
                     handleChange={props.handleChange}
                     submitHandler={props.handleSubmit}
-                    withBigButton 
+                    withBigButton
                     loading={props.loading}
                     value={props.searchValue}
                     valid={props.valid}
@@ -18,6 +18,7 @@ const OptIn = (props) => {
                     label={props.label}
                     type="text"
                     placeholder={props.placeholder}
+                    withButton={props.sm}
                 />
             </Wrapper>
         </Section>

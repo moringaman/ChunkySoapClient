@@ -37,7 +37,9 @@ const ProductSearch = props => {
     }, [searchTerm])
 
     const getData = async() => {
+        if(!searchTerm.term) return
         setLoading(true)
+        // TODO: Perform strapi query to return correct data
         console.log('pulling data from server ', searchTerm)
         let products = await myApi.send("/products", "GET", undefined, "public")
         // filter result accoring to search term
@@ -53,12 +55,13 @@ const ProductSearch = props => {
 
     return (
           <OptIn 
+            sm={props.sm} 
             height={180}
             cols="100%" 
             valid={false}
             loading={loading}
-            placeholder="type product name here"
-            btnText="Search" 
+            placeholder="product name"
+            btnText='Search'
             searchValue={searchTerm.term}
             label="Search our catalogue for your favorite products"
             handleChange={(e) => {setSearchTerm({...searchTerm, ['term']: e.target.value})}}

@@ -38,7 +38,7 @@ const CategoriesPage = (props) => {
   };
 
   const _apiCall = async () => {
-    if (products.products.length > 1) return
+    if (products.products.length > 0) return
     const data = await myApi.send(`/products`, 'GET', undefined, 'public');
     dispatch({ type: "FETCH_PRODUCTS", payload: data });
   };

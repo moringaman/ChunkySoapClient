@@ -20,7 +20,7 @@ import * as fn from '../helpers/functions'
     const CheckoutSteps = () => {
 
     const initialState = {
-        step: 2,
+        step: 1,
         authenticated: false,
         guest: null,
         loading: false,
