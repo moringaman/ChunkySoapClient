@@ -1,6 +1,6 @@
-### ChunkySoap Website
+### ChunkySoap Website front end
 
-# Instruction for running
+# Instruction for running 
 
 Development
 
@@ -8,4 +8,4 @@ Development
 
 # Viewing Production Site
 
-navigate to [Home Page](https://chunkysoap.co.uk)
+Navigate to the [Home Page](https://chunkysoap.co.uk)
