@@ -4,11 +4,13 @@ import { BannerHeading, Heading1, Heading2, Paragraph } from '../styles/typograp
 import { Container , Section, Wrapper} from '../styles/layout'
 import * as vars from '../styles/variables'
 import { Bubble } from '../styles/ui'
+import { useViewportCheck  } from '../hooks'
 
 const Hero = props => {
 
     const history = useHistory()
     const { pathname } = history.location 
+    const { viewport } = useViewportCheck()
     console.log("Location", pathname)
 
     return (
@@ -22,7 +24,7 @@ const Hero = props => {
                     We offer FREE delivery on all orders over &pound;25
                 </BannerHeading>
             </Container>
-            <img src="/oversholder.webp" alt="girl-pic" style={{position: 'absolute', top: 50, left: 560, maxHeight: 320}}/>
+            <img src="/oversholder.webp" alt="girl-pic" style={{position: 'absolute', top: 50, left: viewport < 747 ? 0 : 560, maxHeight: 320, zIndex: '4000'}}/>
         </Section>
     )
 }
