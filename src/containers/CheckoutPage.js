@@ -11,7 +11,6 @@ import * as vars from '../styles/variables'
 import * as fn from '../helpers/functions'
 
 const CheckoutPage = () => {
-// do logged in check
     const { basket } = useSelector(state => state.basket)
     const [ total, setTotal ] = useState(0)
     const [ postage, setPostage ] = useState(0.00)
