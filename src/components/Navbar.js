@@ -84,7 +84,6 @@ const Navbar = (props) => {
   return (
     <Container nav={true} location={history.location.pathname} key={key}>
       <TopNav  location={history && history.location.pathname}>
-        {/* <CategoryMenu><Pointer /></CategoryMenu>  */}
         <PageLink to="/">
           <Logo ><img src="/logogray.jpg" style={{width: 70, margin: -10}} /></Logo>
         </PageLink>
