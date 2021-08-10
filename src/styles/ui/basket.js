@@ -14,7 +14,6 @@ export const ProductRow = styled.div`
     ${props => props.narrow && css`
         padding: 10px 10%;
     `}
-    ${'' /* border: 1px red solid; */}
 `
 
 export const Divider = styled.div`
