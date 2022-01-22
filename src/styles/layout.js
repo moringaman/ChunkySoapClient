@@ -7,6 +7,9 @@ export const Container = styled.div`
   margin-right: auto;
   overflowX: hidden;
   position: relative;
+  ${props => props.nav === true && css`
+        width: 110%;
+  `}
   ${props => props.location && /product|checkout/.test(props.location) && (props.nav === true)  && css`
         max-width: 100%;
         background-color: ${vars.palette.primaryColor};
