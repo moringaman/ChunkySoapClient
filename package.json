@@ -10,11 +10,11 @@
     "git:commit": "git commit -m '[BUILD]: Pre-push build step'",
     "start:prod": "NODE_ENV=production node build/server.js"
   },
-  "pre-push": [
-    "build",
-    "git:add",
-    "git:commit"
-  ],
+  // "pre-push": [
+  //   "build",
+  //   "git:add",
+  //   "git:commit"
+  // ],
   "dependencies": {
     "@stripe/react-stripe-js": "^1.1.2",
     "@stripe/stripe-js": "^1.10.0",
