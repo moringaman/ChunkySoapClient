@@ -119,5 +119,8 @@ const manifestConfig = {
 const modify = modifyBuilder({ pwaConfig, manifestConfig })
 
 module.exports = {
+  options: {
+    forceRuntimeEnvVars: ['HOST', 'PORT'],
+    },
   plugins: [{ func: modify }]
 }
