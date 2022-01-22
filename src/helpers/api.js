@@ -12,7 +12,7 @@ export default {
    */
   async send(url, method, data, type = "protected") {
     // const apiAddress = process.env.RAZZLE_API_URI 
-    const apiAddress = process.env.NODE_ENV === 'production' ? process.env.RAZZLE_API_URI : "http://localhost:1337";
+    const apiAddress = process.env.NODE_ENV === 'production' ? process.env.RAZZLE_API_URI : "https://chunky-soap-api.herokuapp.com" // "http://localhost:1337";
     // fn.getApiAddress()
     const token = await JSON.parse(sessionStorage.getItem("jwtToken"));
     // await fn.getTokenFromStorage('sessionToken')

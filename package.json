@@ -11,7 +11,7 @@
   },
   "comments": {
     "scripts": {
-    "test": "razzle test --env=jsdom"
+      "test": "razzle test --env=jsdom"
     },
     "pre-push": [
       "build",
@@ -39,6 +39,7 @@
     "react-paginate": "^7.1.2",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
+    "react-useanimations": "^2.0.8",
     "redux": "^4.0.5",
     "stripe": "^8.114.0",
     "styled-components": "4.2.0",
