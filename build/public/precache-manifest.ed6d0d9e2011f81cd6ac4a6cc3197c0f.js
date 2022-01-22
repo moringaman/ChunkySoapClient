@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "63a1e2d2ea70c7fe008a",
+    "revision": "5096b97789b8afa0d203",
     "url": "/static/css/bundle.2d80b716.css"
   },
   {
-    "revision": "63a1e2d2ea70c7fe008a",
-    "url": "/static/js/bundle.63a1e2d2.js"
+    "revision": "5096b97789b8afa0d203",
+    "url": "/static/js/bundle.5096b977.js"
   },
   {
     "revision": "b9ddca6af362f818465d",
@@ -20,10 +20,6 @@ self.__precacheManifest = [
     "url": "/static/js/3.561ebf46.chunk.js"
   },
   {
-    "revision": "312b03fc2032f4a26db5e85de50ce98a",
-    "url": "/static/js/2.5784441e.chunk.js.LICENSE.txt"
-  },
-  {
     "revision": "385c9a659c8a5182b86a7090d58d0fbc",
     "url": "/static/js/3.561ebf46.chunk.js.LICENSE.txt"
   },
@@ -32,8 +28,12 @@ self.__precacheManifest = [
     "url": "/static/js/1.b9ddca6a.chunk.js.LICENSE.txt"
   },
   {
+    "revision": "312b03fc2032f4a26db5e85de50ce98a",
+    "url": "/static/js/2.5784441e.chunk.js.LICENSE.txt"
+  },
+  {
     "revision": "22d277286562c0b9ceb638a94204e916",
-    "url": "/static/js/bundle.63a1e2d2.js.LICENSE.txt"
+    "url": "/static/js/bundle.5096b977.js.LICENSE.txt"
   },
   {
     "url": "/icon_180x180.8e34bc6d815173fe01ec33c77c5f660f.png"
