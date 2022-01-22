@@ -23,6 +23,11 @@ export default function basketReducer(state=initialState, action) {
                     products:action.payload
                 }
             }
+        case 'EMPTY_BASKET':
+            return {
+                ...state,
+                basket: initialState.basket
+            }
         case 'ADD_TO_BASKET':
             return {
                 ...state,

@@ -3,8 +3,9 @@ import { useHistory } from 'react-router'
 import { BannerHeading, Heading1, Heading2, Paragraph } from '../styles/typography'
 import { Container , Section, Wrapper} from '../styles/layout'
 import * as vars from '../styles/variables'
+import { useViewportCheck } from '../hooks'
 import { Bubble } from '../styles/ui'
-import { useViewportCheck  } from '../hooks'
+
 
 const Hero = props => {
 
@@ -24,7 +25,7 @@ const Hero = props => {
                     We offer FREE delivery on all orders over &pound;25
                 </BannerHeading>
             </Container>
-            <img src="/oversholder.webp" alt="girl-pic" style={{position: 'absolute', top: 50, left: viewport < 747 ? 0 : 560, maxHeight: 320, zIndex: '4000'}}/>
+            <img src="/oversholder.webp" alt="girl-pic" style={{position: 'absolute', top: 50, left: viewport < 751 ? 0 : 560, maxHeight: 320, zIndex: '4000'}}/>
         </Section>
     )
 }

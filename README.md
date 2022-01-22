@@ -8,4 +8,5 @@ Development
 
 # Viewing the Production Site
 
-Navigate to the [Home Page](https://chunkysoap.co.uk)
+navigate to [Home Page](https://chunkysoap.co.uk)
+end

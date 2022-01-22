@@ -52,6 +52,7 @@ const CheckoutPage = () => {
                     <CheckoutActions>
                         <CheckoutSteps />
                     </CheckoutActions>
+                    {!cartState.step === 4 &&
                     <BasketSection style={{borderLeft: '1px solid #D8D8D8'}}>
                 <BasketWrapper style={{transform: 'translateY(-120px)'}}>
                 <ProductRow>
@@ -110,6 +111,7 @@ const CheckoutPage = () => {
                     </ProductRow>
                 </BasketWrapper>
                     </BasketSection>
+}   
                 </CheckoutWrapper>
             </Container>
         </Section>

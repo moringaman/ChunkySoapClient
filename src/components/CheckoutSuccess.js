@@ -8,6 +8,7 @@ const CheckoutSuccess = ({cartState}) => {
     //TODO:
     // Delete cart State
     // remove cart data from local storage
+    localStorage.setItem('soap-cart', JSON.stringify([]))
     // Send confirmation email with cart details
 
     return (

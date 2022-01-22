@@ -172,7 +172,7 @@ import * as fn from '../helpers/functions'
                 {
                     step === 4 && (
                         <>
-                            <CheckoutSuccess cartState={cartState} />
+                            <CheckoutSuccess cartState={cartState}  dispatch={dispatch} />
                         </>
                     )
                 }

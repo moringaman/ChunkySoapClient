@@ -3,6 +3,7 @@ import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 import { AnimatedButton } from '../components/ui'
+import { OrderFactory } from '../factories/Order'
 import { SubHeading1, Paragraph } from '../styles/typography'
 import { Frame, FrameHeader, FrameBody, FrameFooter, ButtonRow } from '../styles/layout'
 import * as vars from '../styles/variables'
@@ -77,6 +78,7 @@ const StripePay = ({cartDispatch}) => {
     const handleFormSubmit = async(e) => {
         e.preventDefault()
         console.log("Submitting ", e)
+        if(isLoading === true) return
         setIsLoading(true)
         // put billing details in to an object
         const billingDetails = {
@@ -91,15 +93,15 @@ const StripePay = ({cartDispatch}) => {
         }
 
 
-    let myHeaders = new Headers();
-        myHeaders.append('Content-Type', 'application/json');
+            let myHeaders = new Headers();
+            myHeaders.append('Content-Type', 'application/json');
 
-        var requestOptions = {
-        method: 'GET',
-        headers: myHeaders,
-        redirect: 'follow',
-        };
-
+            var requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow',
+            };
+    
         const result = await fetch(`/api/payment_intents/?amount=${(cartTotal*100).toFixed(0)}`, requestOptions)
         const clientSecret = await result.text()
         console.log("STRIPE ENDPOINT ", clientSecret) // error handle
@@ -129,15 +131,36 @@ const StripePay = ({cartDispatch}) => {
             })
             
                 console.log(confirmedCardPayment)
-                setIsLoading(false)
                 //  Mark order as completed in database
                 const data = {
                     order_confirmed: true
                 }
                 await myApi.send(`/orders/${orderId}`, 'PUT', data)
-                // Remove cart from local storage
+                console.log("Sending confirmation email for.", user)
+                // Send confirmation email to http://wx-microservice-email.herokuapp.com/api/v1/order-confirmation
+                
+                const confirmationEmail = new OrderFactory()
+                const emailData = confirmationEmail.create(user, basket, cartTotal, orderId, 1)
+                console.log("CONFIRMATION EMAIL: ", emailData)
+
+                let myHeaders = new Headers();
+                myHeaders.append("x-api-key", "1ab2c3d4e5f61ab2c3d4e5f6");
+                myHeaders.append('Content-Type', 'application/json');
+
+                var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: JSON.stringify(emailData),
+                redirect: 'follow',
+                };
+                const response = await fetch('https://wx-microservice-email.herokuapp.com/api/v1/order-confirmation', requestOptions)
+                const email  = await response.text()
+                console.log('Email send status ', email)
                 // Payment completed step redirect to success step
                 cartDispatch({type: "CHECKOUT_SUCCESS"})
+
+                // Add last flag ttcart from local storage
+                setIsLoading(false)
         } catch (err) {
             console.log("PAYMENT REQ ERR ", err)
                 setIsLoading(false)
