@@ -10,14 +10,13 @@ const DropDownMenu = (props) => {
     <>
       <CategoryMenu onMouseLeave={closeMenu}>
         <Pointer />
-        <Heading2 light>{title}</Heading2>
+        {/* <Heading2 light>{title}</Heading2> */}
         <ul>
           {menuData &&
             menuData.map((el, i) => (
               <li key={i}>
                 <PageLink color="dark" to={`/category/${el._id}`}>
                   {el.category_name}
-                  {/* <>{el.product_name}</> */}
                 </PageLink>
               </li>
             ))}
