@@ -120,7 +120,15 @@ const modify = modifyBuilder({ pwaConfig, manifestConfig })
 
 module.exports = {
   options: {
+    config: {
+    performance: {
+      maxAssetSize: 100000,
+      maxEntrypointSize: 300000,
+      hints: false
+    }
+  },
     forceRuntimeEnvVars: ['HOST', 'PORT'],
     },
-  plugins: [{ func: modify }]
+  plugins: [{ func: modify }],
+
 }
