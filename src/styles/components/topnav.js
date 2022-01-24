@@ -3,12 +3,15 @@ import * as vars from '../variables'
 
 const TopNav = styled.div`
     width: 80%;
+    max-width: 100vw;
     margin: 0px auto;
     height: 90px;
     background-color: white;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    z-index: 9000;
+    overflow: hidden;
     ${props => props.viewPort  < 961 && css`
     width: 50%;
     margin: 0px 0px 0px 10px;
@@ -25,9 +28,10 @@ const TopNav = styled.div`
 export const NavList = styled.ul`
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     list-style: none;
     width: 100%;
+    z-index: 3000;
     ${props => props.viewPort  < 961 && css`
     width: 80%;
     margin: 0px 0px 0px 10px;

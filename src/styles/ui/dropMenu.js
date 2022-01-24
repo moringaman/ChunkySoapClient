@@ -26,6 +26,7 @@ export const CategoryMenu = styled.div`
 
     & ul > li {
         font-size: 24px;
+        margin-top: 10px;
         margin-right: 10px;
     }
 `

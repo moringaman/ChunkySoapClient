@@ -8,7 +8,7 @@ export const Container = styled.div`
   overflowX: hidden;
   position: relative;
   ${props => props.nav === true && css`
-        width: 110%;
+        width: 100%;
   `}
   ${props => props.location && /product|checkout/.test(props.location) && (props.nav === true)  && css`
         max-width: 100%;

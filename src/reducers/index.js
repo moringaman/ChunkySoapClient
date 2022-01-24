@@ -6,6 +6,7 @@ import categoryReducer from './categoryReducer'
 import currentProductReducer from './currentProductReducer';
 import searchReducer from './searchReducer'
 import ordersReducer from './ordersReducer'
+import uiReducer from './uiReducer'
 
 export default combineReducers({
     currentProduct:currentProductReducer,
@@ -14,5 +15,6 @@ export default combineReducers({
     categories: categoryReducer,
     user: userReducer,
     searchResults: searchReducer,
-    orders: ordersReducer
+    orders: ordersReducer,
+    ui: uiReducer
 })
