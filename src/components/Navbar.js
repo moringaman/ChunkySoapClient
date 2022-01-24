@@ -14,7 +14,8 @@ import { User } from "react-feather";
 import styled from "styled-components";
 import { useIsAuthenticated, useViewportCheck } from '../hooks'
 import { auth, strapi} from '../helpers'
-
+import UseAnimations from 'react-useanimations'
+import menu from 'react-useanimations/lib/menu'
 const Navbar = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -135,7 +136,7 @@ const Navbar = (props) => {
                 </PageLink>
               </li>
               <li className="hamburger">
-                MENU
+              <UseAnimations animation={menu} strokeColor="#666" size={56} wrapperStyle={{ padding: 10 }} />
               </li>
             </NavList>
           {/* } */}
