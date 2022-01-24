@@ -16,8 +16,7 @@ const store = createStore(combineReducers)
 const stripePromise = loadStripe(process.env.RAZZLE_STRIPE_PUBLIC_KEY)
  // ADD PUBLISHABLE KEY
  // sk_test_rvboOk0S3wSR1tPGYuzzcjpV
- console.log("DEV: ", process.env.RAZZLE_API_URI)
-
+//  console.log("DEV: ", process.env.RAZZLE_API_URI)
 const App = () => (
   <Provider store={store}>
     <Elements stripe={stripePromise}>
