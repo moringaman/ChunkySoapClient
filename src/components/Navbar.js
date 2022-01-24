@@ -71,8 +71,7 @@ const Navbar = (props) => {
   console.log("CATS ", basket, user);
 
   const [basketTotal, setBasketTotal] = useState(0);
-  // const [basketValue] = useSelector(state => state.basket[products])
-  // .reduce((item, total) => item.total_price + total))
+
   useEffect(() => {
     let myArray = basket.products;
     console.log("PRODUCTS IN CART ", myArray);
