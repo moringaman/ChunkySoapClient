@@ -9,6 +9,11 @@
     "git:commit": "git commit -m '[BUILD]: Pre-push build step'",
     "start:prod": "NODE_ENV=production node build/server.js"
   },
+  "pre-push": [
+    "build",
+    "git:add",
+    "git:commit"
+  ],
   "comments": {
     "scripts": {
       "test": "razzle test --env=jsdom"
