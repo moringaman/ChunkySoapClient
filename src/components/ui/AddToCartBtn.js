@@ -147,7 +147,6 @@ const AddToCart = props  => {
             {loading === false ? props.children : <UseAnimations animation={loadingCircle} strokeColor="green" />}
           </IconButton>
         }
-
         </>
     )
 }
