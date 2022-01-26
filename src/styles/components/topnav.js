@@ -55,7 +55,6 @@ export const NavList = styled.ul`
     .active {
         color: red;
     }
-
 `
 
 export default TopNav
