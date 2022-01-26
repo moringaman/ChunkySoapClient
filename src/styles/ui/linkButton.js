@@ -8,5 +8,4 @@ color: #069;
 text-decoration: underline;
 cursor: pointer;
 `
-
 export default LinkButton
