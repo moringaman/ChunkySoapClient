@@ -56,5 +56,4 @@ export const NavList = styled.ul`
         color: red;
     }
 `
-
 export default TopNav
