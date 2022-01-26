@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import {reactRename} from 'react-rename'
 import styled from 'styled-components'
 import Button from '../../styles/components/button'
 import AnimatedButton from '../ui/AnimatedButton'
+import UseAnimations from 'react-useanimations'
+import loading from 'react-useanimations/lib/loading'
 import Loader from 'react-loader-spinner'
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import { ShoppingCart, Trash2 } from 'react-feather'
+
+const loadingCircle = reactRename(loading,'loadingCircle')
 
 const AddToCart = props  => {
     
@@ -105,7 +110,7 @@ const AddToCart = props  => {
       }
    setLoading(false)
    setAdded(true)
-        }, 2000)
+        }, 1000)
   }
 
     return (
@@ -135,11 +140,11 @@ const AddToCart = props  => {
         }
         {props.icon && props.function === 'add' ?
           <IconButton handleClick onClick={() => addToCart()}>
-            {props.children}
+            {loading === false ? props.children : <UseAnimations animation={loadingCircle} strokeColor="green" size={28}/>}
           </IconButton>
           :
           <IconButton onClick={() => removeFromCart()}>
-            {props.children}
+            {loading === false ? props.children : <UseAnimations animation={loadingCircle} strokeColor="green" />}
           </IconButton>
         }
 
