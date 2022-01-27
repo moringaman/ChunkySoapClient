@@ -2,6 +2,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
+import _ from 'lodash'
 import DropDownMenu from '../ui/DropDownMenu'
 import  * as fn  from '../../helpers/functions'
 import * as vars from '../../styles/variables'
@@ -52,16 +53,22 @@ const PageLink = ({children, to, withMenu, menuData, menuTitle , color, display 
   return (
     <>
     {color === 'dark' ? 
-      <a href={to} onClick={handleClick} onMouseOver={handleMouseOver} onMouseOut={handleMouseOver} style={style, altStyle }>
+      <a href={to} onClick={handleClick} onMouseOver={() => _.debounce(handleMouseOver, 100, {
+        'leading': true,
+        'trailing': false
+      })} onMouseOut={handleMouseOver} style={style, color === 'dark' ? altStyle: null }>
         {children}
       </a>
     :
-      <a href={to} onClick={handleClick} onMouseOver={handleMouseOver} onMouseOut={handleMouseOver} style={style }>
+      <a href={to} onClick={handleClick} onMouseOver={() => _.debounce(handleMouseOver, 100, {
+        'leading': true,
+        'trailing': false
+      })} onMouseOut={handleMouseOver} style={style }>
         {children}
       </a>
     }
       {withMenu && showMenu === true ? 
-        <DropDownMenu closeMenu={closeMenu} title={menuTitle} menuData={menuData}/> 
+        <DropDownMenu closeMenu={closeMenu} title={menuTitle} menuData={menuData} /> 
         : null
       }
     </>

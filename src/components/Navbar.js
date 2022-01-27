@@ -123,7 +123,7 @@ const Navbar = (props) => {
               }
               }>Sign Out</button>}</li>
           <li className="temp">
-            <AnimatedButton primary sml text="New Account" loading="false" handleClick={() => history.push('/authenticate?register=true')}>
+            <AnimatedButton primary sml text="New Account" loading="false" handleClick={() => history.push('/authenticate?register=true')} >
               <User />
             </AnimatedButton>
           </li>

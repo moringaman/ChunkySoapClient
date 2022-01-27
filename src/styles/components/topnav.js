@@ -31,7 +31,7 @@ export const NavList = styled.ul`
     justify-content: space-between;
     list-style: none;
     width: 100%;
-    z-index: 3000;
+    z-index: 1900;
     ${props => props.viewPort  < 961 && css`
     width: 80%;
     margin: 0px 0px 0px 10px;

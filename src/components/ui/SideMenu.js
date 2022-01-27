@@ -2,6 +2,7 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import { useSelector, useDispatch } from "react-redux";
 import { palette } from '../../styles/variables'
+import { Logo } from '../../styles/logos'
 
 const SideMenu = () => {
 
@@ -9,6 +10,7 @@ const SideMenu = () => {
 
     return (
         <SideMenuContainer show={showMenu}>
+          <Logo ><img src="/logogray.png" style={{ position: 'absolute', width: 60, marginLeft: 25, top:25 }} /></Logo>
             <ul>
                 <li>Creams</li>
                 <li>Soaps</li>
@@ -27,8 +29,8 @@ position: absolute;
 top: -10px;
 bottom: 0;
 left: -120vw;
-background-color: rgba(250,250,250, 0.9);
-z-index: 1500;
+background-color: rgba(250,250,250, 1);
+z-index: 1900;
 transition: all 0.2s ease-in;
 box-shadow: 20px 10px 8px rgba(0,0,0, 0.2);
 font-size: 24px;
@@ -39,7 +41,7 @@ ${props => props.show === true && css`
 & ul {
     list-style: none;
     font-size: 25px;
-    margin-left: 20px;
+    margin-left: 40px;
 }
 
 & ul > li {

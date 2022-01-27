@@ -11,7 +11,7 @@ const  WxButton = styled.button`
     color: white;
     font-weight: 400;
     cursor: pointer;
-    z-index: 1000;
+    z-index: 100;
     overflow: hidden;
     margin: 0px 10px;
     ${props => props.width && css`
