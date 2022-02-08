@@ -40,14 +40,14 @@ const Navbar = (props) => {
   //   console.log("AUTHENTICATED", isAuthenticated)
   // }, [isAuthenticated])
 
-  // useEffect(() => {
+  useEffect(() => {
   //   if(fn.isEmpty(user) === false) {
   //     setLoggedIn(true)
   //   } else {
   //     setLoggedIn(false)
   //   }
-  //   console.log("USER __> ", user)
-  // }, [user])
+    console.log("USER __> ", user)
+  }, [user])
   // console.log("AUTHED ", isAuthenticated)
 
   useEffect(() => {
