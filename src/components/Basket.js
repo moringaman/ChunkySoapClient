@@ -11,6 +11,7 @@ import * as fn from '../helpers/functions'
 import { useViewportCheck } from '../hooks'
 import { BasketWrapper, ProductRow, Divider } from '../styles/ui/basket'
 import { withHero } from '../components/layout'
+import LoadingBubble from './ui/LoadingBubble'
 
 const Basket = (props) => {
 
@@ -98,7 +99,11 @@ const Basket = (props) => {
                                 {/* <Trash2 size={32} color="#837D7D" style={{transform: 'translateX(20px)'}}/> */}
                             </div>
                         </ProductRow>
-                    ) :  <Heading2>You Dont Have any Items in you basket yet</Heading2>}
+                    ) :  
+                    <>
+                    <Heading2>You Dont Have any Items in you basket yet</Heading2>
+                    {/* <LoadingBubble /> */}
+                    </>}
                     <ProductRow>
                         <Divider />
                     </ProductRow>

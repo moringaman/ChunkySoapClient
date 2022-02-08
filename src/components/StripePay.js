@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
-import { AnimatedButton } from '../components/ui'
+import { AnimatedButton, LoadingBubble } from '../components/ui'
 import { OrderFactory } from '../factories/Order'
 import { SubHeading1, Paragraph } from '../styles/typography'
 import { Frame, FrameHeader, FrameBody, FrameFooter, ButtonRow } from '../styles/layout'
@@ -169,7 +169,8 @@ const StripePay = ({cartDispatch}) => {
     }
 
      return (
-         <Frame>
+         <>
+         <Frame style={{display: isLoading === false ? 'block' : 'none'}}>
             <form onSubmit={(e) => handleFormSubmit(e)}>
             <FrameHeader>
                 <SubHeading1>
@@ -193,6 +194,10 @@ const StripePay = ({cartDispatch}) => {
             </FrameFooter>
             </form>
          </Frame>
+         <div style={{visibility: isLoading === true ? 'visible' : 'hidden', height: 600}}>
+             <LoadingBubble />
+         </div>
+        </>
      )
 }
 

@@ -1,5 +1,6 @@
 const initialState = {
-    user: {}
+    user: {},
+    loggedIn: false
 }
 
 export default function userReducer(state = initialState, action) {
@@ -7,12 +8,14 @@ export default function userReducer(state = initialState, action) {
         case 'SET_USER_SESSION':
             return {
                 ...state,
-                user: action.payload
+                user: action.payload,
+                loggedIn: true
             }
         case 'END_USER_SESSION':
             return {
                 ...state,
-                user: {}
+                user: {},
+                loggedIn: false
             }
         default:
             return state;

@@ -36,7 +36,7 @@ const PageLink = ({children, to, withMenu, menuData, menuTitle , color, display 
     const handleMouseOver = () => {
             setHovered(!hovered)
             if (withMenu) {
-              setShowMenu(true)
+              setShowMenu(!hovered ? false : true)
             }
     }
 

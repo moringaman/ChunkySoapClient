@@ -22,23 +22,32 @@ const Navbar = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { isAuthenticated } = useIsAuthenticated()
-
+  const { basket } = useSelector((state) => state.basket);
+  const { showMenu } = useSelector((state) => state.ui);
+  const { categories } = useSelector((state) => state.categories || []);
+  const { user, loggedIn } = useSelector((state) => state.user);
+  const [key, setKey] = useState(0)
 // const loggedInUser = auth.getUserInfo()
   const { viewport } = useViewportCheck()
 
 
   // console.log('AUTH FROM HOOK', isAuthenticated, loggedInUser)
   console.log(`${process.env.RAZZLE_PUBLIC_DIR}/logo.jpg`)
-  const [loggedIn, setLoggedIn] = useState(false)
+  // const [loggedIn, setLoggedIn] = useState(false)
 
-  useEffect(() => {
-    setLoggedIn(isAuthenticated)
-    console.log("AUTHENTICATED", isAuthenticated)
-  }, [isAuthenticated])
+  // useEffect(() => {
+  //   setLoggedIn(isAuthenticated)
+  //   console.log("AUTHENTICATED", isAuthenticated)
+  // }, [isAuthenticated])
 
-  useEffect(() => {
-    console.log("VIEWPORT ", viewport)
-  }, [viewport])
+  // useEffect(() => {
+  //   if(fn.isEmpty(user) === false) {
+  //     setLoggedIn(true)
+  //   } else {
+  //     setLoggedIn(false)
+  //   }
+  //   console.log("USER __> ", user)
+  // }, [user])
   // console.log("AUTHED ", isAuthenticated)
 
   useEffect(() => {
@@ -62,13 +71,9 @@ const Navbar = (props) => {
     })()
   }, []);
 
-  const { basket } = useSelector((state) => state.basket);
-  const { showMenu } = useSelector((state) => state.ui);
-  const { categories } = useSelector((state) => state.categories || []);
-  const { user } = useSelector(({user}) => user);
-  const [key, setKey] = useState(0)
+  
   // const [ showMenu, setShowMenu ] = useState(false)
-  console.log("CATS ", basket, user);
+  console.log("CATS ", basket, JSON.stringify(user), loggedIn);
 
   const [basketTotal, setBasketTotal] = useState(0);
   // const [basketValue] = useSelector(state => state.basket[products])
@@ -115,7 +120,7 @@ const Navbar = (props) => {
             </PageLink>
           </li>
           {/* call auth.clear() to remove auth key to logout */}
-          <li className="temp">{isAuthenticated === false ? <PageLink to="/authenticate">Sign In</PageLink> :
+          <li className="temp">{loggedIn === false ? <PageLink to="/authenticate">Sign In</PageLink> :
             <button style={{ backgroundColor: 'rgba(250, 250, 250, 0.0)', border: 'none', fontWeight: 'bold'}}
               onClick={() => {
                 history.push('/authenticate')

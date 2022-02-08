@@ -26,15 +26,16 @@ const useStrapiLogin = (
             }
             console.log("REGISTERING NEW USER")
         const body = {email: email, password: password, username: username};
-           await strapi.register(body, dispatch)
-            dispatch({type: 'LOGGED_IN'})
-
+         const userInfo = await strapi.register(body, dispatch)
+            dispatch({type: 'LOGGED_IN', payload: userInfo})
+            console.log(userInfo)
         } else {
             console.log("LOGGING IN USER with ", email, password)
             const body = {identifier: email, password: password, username: username};
             try {
-                await strapi.login(body, dispatch)
-                dispatch({type: 'LOGGED_IN'})
+                const userInfo =  await strapi.login(body, dispatch)
+                dispatch({type: 'LOGGED_IN', payload: userInfo})
+                console.log("USER ", userInfo)
             } catch (err) {
                 console.log(err)
                 dispatch({type: 'LOGIN_FAIL', payload: err})
